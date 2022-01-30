@@ -12,11 +12,10 @@ passport.use(
 		{
 			clientID: process.env.G_CLIENT_ID,
 			clientSecret: process.env.G_CLIENT_SECRET,
-			callbackURL: "http://localhost:8000/google/callback",
+			callbackURL: "/user/google/callback",
 			passReqToCallback: true,
 		},
 		function (request, accessToken, refreshToken, profile, done) {
-			// console.log(profile._json.picture);
 			User.findOne({
 				googleID: profile.id
 			}).then((existingUser) => {
