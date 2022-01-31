@@ -1,12 +1,13 @@
 import React from "react";
-const Card = () => {
-	const cardComponent = {
-		width: "40vw",
-		height: "70vh",
-		boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
-		borderRadius: "15px",
+const Card = (props) => {
+	const loginCard = {
+		width: "70vw",
 	};
-	return <div style={cardComponent} className=""></div>;
+	return (
+		<div className="cardComponent" style={loginCard}>
+			<div className="heading">{props.heading}</div>
+		</div>
+	);
 };
 
 export default Card;
