@@ -7,3 +7,35 @@
 	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 	border-radius: 15px;
 }
+
+.button {
+	background: #fff;
+	border: 2px solid #5f2eea;
+	font-weight: 500;
+	font-family: inherit;
+	border-radius: 10px;
+	padding: 15px 10px;
+	color: #5f2eea;
+	font-size: 14px;
+	width: 48%;
+	transition: 0.3s all ease-in-out;
+	/* transition: 0.5s background ease-in-out;
+	transition: 0.5s color ease-in-out; */
+}
+
+.button:hover {
+	background: #5f2eea;
+	color: #fff;
+	cursor: pointer;
+}
+
+.buttons {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.button-full {
+	width: 100%;
+}

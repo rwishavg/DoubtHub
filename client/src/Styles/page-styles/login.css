@@ -6,8 +6,77 @@
 	width: 100vw;
 }
 
+a {
+	text-align: center;
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+}
+
 .heading {
-	margin: 50px;
 	font-weight: 800;
 	font-size: 30px;
+}
+
+.form {
+	margin: 80px;
+}
+
+.inputParent {
+	margin: 18px 0;
+	background-color: #eff0f6;
+	height: 63px;
+	width: 100%;
+	border: 2px solid transparent;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	/* transition: border 0.5s ease; */
+}
+
+.inputParent:focus-within {
+	background-color: transparent;
+	border: 2px solid #5f2eea;
+	/* transition: border 0.3s ease-in; */
+}
+
+.formInput {
+	border: none;
+	background: transparent;
+	outline: none;
+	font-size: 14px;
+	font-family: inherit;
+	font-weight: 500;
+	color: #000;
+	margin: 0;
+	width: 300px;
+	height: 20px;
+	padding: 0;
+	position: relative;
+}
+
+.formInput:focus {
+	border: none;
+}
+
+.formInput::placeholder {
+	color: #6e7191;
+	border: none;
+}
+
+.icon {
+	height: 25px;
+	margin: 0 20px;
+}
+
+.inputHeading {
+	font-size: 13px;
+	color: #6e7191;
+}
+
+.centerSignUp {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: -18px;
 }
