@@ -22,7 +22,8 @@ exports.data = async (req, res, next) => {
 exports.logout = async (req, res, next) => {
 	try {
 		req.logout();
-		res.redirect(host + "/");
+		res.redirect(host + "/login");
+		console.log("logged out");
 	} catch (err) {
 		res.json(err);
 	}
@@ -34,6 +35,6 @@ exports.googleAuthenticate = passport.authenticate("google", {
 });
 
 exports.googleCallback = passport.authenticate("google", {
-	successRedirect: host + "/",
+	successRedirect: host + "/dashboard",
 	failureRedirect: "/login",
 })

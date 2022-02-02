@@ -47,7 +47,6 @@ if (process.env.NODE_ENV === "production") {
 } 
 else {
 	app.use("/user", apiRoutes);
-	app.get('*', (req, res) => res.sendFile(path.resolve('client', 'build', 'index.html')));
 }
 
 app.listen(process.env.PORT || 5000, () => {
