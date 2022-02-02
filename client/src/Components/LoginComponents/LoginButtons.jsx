@@ -1,26 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
+const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
 const LoginButtons = (props) => {
 	const [toRegister, setRegister] = useState(false);
-	const [host, setHost] = useState("");
-	useEffect(() => {
-		if (process.env.NODE_ENV === "development") {
-			setHost("http://localhost:8000");
-		}
-	});
 
 	if (toRegister === true) {
 		return <Navigate to="/register" />;
 	}
-
-	const orStyle = {
-		textAlign: "center",
-		width: "100%",
-		margin: "18px 0",
-		fontWeight: "700",
-	};
-
 	const signInWithGoogle = () => {};
 
 	return (
@@ -39,10 +26,10 @@ const LoginButtons = (props) => {
 			>
 				Register
 			</button>
-			<div style={orStyle}>OR</div>
+			<div className="orStyle">OR</div>
 
 			<a
-				href={host + "/user/auth/google"}
+				href={api_endpoint + "/user/auth/google"}
 				className="button button-full"
 				onClick={signInWithGoogle}
 			>
@@ -52,4 +39,4 @@ const LoginButtons = (props) => {
 	);
 };
 
-export default LoginButtons;
+export default React.memo(LoginButtons);

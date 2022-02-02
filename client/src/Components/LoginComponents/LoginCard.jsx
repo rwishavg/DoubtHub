@@ -15,14 +15,8 @@ const LoginCard = (props) => {
 		console.log(rePassword);
 	};
 
-	const loginCard = {
-		width: "40vw",
-		height: "65vh",
-		minWidth: "470px",
-	};
-
 	return (
-		<div className="cardComponent" style={loginCard}>
+		<div className="cardComponent loginComponent">
 			<form className="form" action="">
 				<div className="heading">{props.heading}</div>
 				<FormInput

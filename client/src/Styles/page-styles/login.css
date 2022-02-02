@@ -80,3 +80,20 @@ a {
 	align-items: center;
 	margin-top: -18px;
 }
+
+.loginComponent {
+	width: 40vw;
+	height: 65vh;
+	min-width: 470px;
+}
+
+.orStyle {
+	text-align: center;
+	width: 100%;
+	margin: 18px 0;
+	font-weight: 700;
+}
+
+.wid {
+	width: 48%;
+}
