@@ -1,42 +1,41 @@
-.App {
-	text-align: center;
-}
-
-.App-logo {
-	height: 40vmin;
-	pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-	.App-logo {
-		animation: App-logo-spin infinite 20s linear;
-	}
-}
-
-.App-header {
-	background-color: #282c34;
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	font-size: calc(10px + 2vmin);
-	color: white;
-}
-
-.App-link {
-	color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
-}
-
 :root {
 	background-color: #fcfcfc;
+}
+.cardComponent {
+	width: 40vw;
+	height: 70vh;
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+	border-radius: 15px;
+}
+
+.button {
+	background: #fff;
+	border: 2px solid #5f2eea;
+	font-weight: 500;
+	font-family: inherit;
+	border-radius: 10px;
+	padding: 15px 10px;
+	color: #5f2eea;
+	font-size: 14px;
+	width: 48%;
+	transition: 0.3s all ease-in-out;
+	/* transition: 0.5s background ease-in-out;
+	transition: 0.5s color ease-in-out; */
+}
+
+.button:hover {
+	background: #5f2eea;
+	color: #fff;
+	cursor: pointer;
+}
+
+.buttons {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.button-full {
+	width: 100%;
 }
