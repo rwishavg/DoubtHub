@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import axios from "axios";
 import Login from "./Login";
 import Sidebar from "../Components/DashboardComponents/Sidebar";
@@ -11,17 +11,19 @@ const Dashboard = () => {
 	const [user, setUser] = useState({});
 	useEffect(() => {
 		axios
-		.get(api_endpoint + "/user/data", { withCredentials: true })
-		.then((response) => setUser(response.data));
-		console.log(process.env.REACT_APP_API_ENDPOINT);
+			.get(api_endpoint + "/user/data", { withCredentials: true })
+			.then((response) => setUser(response.data));
 	}, []);
 
 	return (
 		<div className="container">
-			<Routes>
-				<Route path="/test" element={<Login />}></Route>
-			</Routes>
-			<Sidebar user={user}/>
+			<Sidebar user={user} />
+			<div className="dashContainer">
+				<Routes>
+					<Route path="/trending" element={<Login />}></Route>
+					<Route path="/trending" element={<Login />}></Route>
+				</Routes>
+			</div>
 		</div>
 	);
 };
