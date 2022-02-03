@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === "development") {
 
 exports.data = async (req, res, next) => {
 	try {
-		console.log(req.user);
+		// console.log(req.user);
 		res.send(req.user);
 	} catch (err) {
 		res.json(err);
