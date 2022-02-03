@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === "development") {
 
 exports.data = async (req, res, next) => {
 	try {
-		console.log(host)
+		console.log(req.user);
 		res.send(req.user);
 	} catch (err) {
 		res.json(err);
@@ -37,4 +37,4 @@ exports.googleAuthenticate = passport.authenticate("google", {
 exports.googleCallback = passport.authenticate("google", {
 	successRedirect: host + "/dashboard",
 	failureRedirect: "/login",
-})
+});

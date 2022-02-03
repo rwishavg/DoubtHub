@@ -17,14 +17,13 @@ passport.use(
 		},
 		function (request, accessToken, refreshToken, profile, done) {
 			User.findOne({
-				googleID: profile.id
+				emailID: profile.email,
 			}).then((existingUser) => {
-				if(existingUser){
-					console.log('Exists!!');
-				}
-				else{
-					console.log('Does not Exist');
-					new User({ 
+				if (existingUser) {
+					console.log("Exists!!");
+				} else {
+					console.log("Does not Exist");
+					new User({
 						googleID: profile.id,
 						firstName: profile.given_name,
 						lastName: profile.family_name,
@@ -32,18 +31,20 @@ passport.use(
 						profileIMG: profile._json.picture,
 						username: profile.email,
 					}).save();
-					console.log('New User Created')
+					console.log("New User Created");
 				}
-			})
+			});
 			return done(null, profile);
 		}
 	)
 );
 
 passport.serializeUser(function (user, done) {
-	done(null, user);
+	done(null, user.email);
 });
 
-passport.deserializeUser(function (user, done) {
-	done(null, user);
+passport.deserializeUser(function (email, done) {
+	User.findOne({
+		emailID: email,
+	}).then((user) => done(null, user));
 });
