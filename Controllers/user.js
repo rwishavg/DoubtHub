@@ -50,17 +50,15 @@ exports.signup = async (req, res, next) => {
 				new User({
 					emailID: req.body.username,
 					username: req.body.username,
-					password: req.body.password
+					password: req.body.password,
 				}).save();
 				console.log("new user created!");
 				res.send("User Created");
-			}
-			else {
+			} else {
 				res.send("User Already Exists");
 			}
 		});
-	}		
-	catch (err) {
+	} catch (err) {
 		res.json(err);
 	}
 };

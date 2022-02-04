@@ -4,7 +4,7 @@ const FormInput = (props) => {
 	return (
 		<div className="inputParent">
 			<img src={props.icon} className="icon" alt="icon" />
-			<div>
+			<div className="inputWidth">
 				<div className="inputHeading">{props.heading}</div>
 				<input
 					className="formInput"

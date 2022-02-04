@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import LoginCard from "../Components/LoginComponents/LoginCard";
+import { Navigate } from "react-router-dom";
+import { userObjectContext } from "../Context";
 import "../Styles/page-styles/login.css";
 
 const Login = () => {
-	return (
-		<div className="container">
-			<LoginCard page="login" heading="Login" />
-		</div>
-	);
+	const [user, isAuthenticated] = useContext(userObjectContext);
+	if (isAuthenticated === false) {
+		return (
+			<div className="container">
+				<LoginCard page="login" heading="Login" />
+			</div>
+		);
+	} else if (isAuthenticated === true) {
+		return <Navigate to="/dashboard" />;
+	} else {
+		return null;
+	}
 };
 
 export default Login;

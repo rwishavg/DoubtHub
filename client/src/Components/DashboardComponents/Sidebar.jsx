@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Logo from "../../Assets/DoubtHub Logo.png";
 import { Link } from "react-router-dom";
 import home from "../../Assets/Icons/home.svg";
@@ -7,9 +7,11 @@ import atsign from "../../Assets/Icons/atsign.svg";
 import question from "../../Assets/Icons/question.svg";
 import logout from "../../Assets/Icons/logout.svg";
 import "../../Styles/component-styles/sidebar.css";
+import { userObjectContext } from "../../Context";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
-const Sidebar = (props) => {
+const Sidebar = () => {
+	const [user, isAuthenticated] = useContext(userObjectContext);
 	return (
 		<div className="sidebarContainer">
 			<div className="cardComponent sidebarComponent">
@@ -19,7 +21,7 @@ const Sidebar = (props) => {
 					<img src={home} className="iconSmaller" alt="icon" />
 					Dashboard
 				</Link>
-				<Link to="./myquestions" className="sidebarLink">
+				<Link to="./login" className="sidebarLink">
 					<img src={question} className="iconSmaller" alt="icon" />
 					My Questions
 				</Link>
@@ -36,13 +38,9 @@ const Sidebar = (props) => {
 					Logout
 				</a>
 				<Link to="./profile" className="cardComponent userCard">
-					<img
-						src={props.user.profileIMG}
-						alt=""
-						className="userPhoto"
-					/>
+					<img src={user.profileIMG} alt="" className="userPhoto" />
 					<div className="name">
-						{props.user.firstName} {props.user.lastName}
+						{user.firstName} {user.lastName}
 					</div>
 				</Link>
 			</div>
