@@ -1,31 +1,31 @@
 const passport = require("passport");
-const crypto = require('crypto');
+const crypto = require("crypto");
+const User = require("../Models/newUser");
 const LocalStrategy = require("passport-local").Strategy;
 const dotenv = require("dotenv");
-const User = require("../Models/newUser");
-
-
+const bcrypt = require("bcrypt");
 dotenv.config({
 	path: "./utils/config.env",
 });
 
-passport.use(new LocalStrategy(function verify(username, password, done) {
-    User.findOne({ username: username }, function (err, user) {
-      if (err) {
-        return done(err);
-      }
-      if (!user) {
-        return done(null, false, { message: 'Incorrect username or password.' });
-      }
-      crypto.pbkdf2(password, user.salt, 310000, 32, 'sha256', function(err, hashedPassword) {
-        if (err) { return done(err); }
-        if (!crypto.timingSafeEqual(user.hashed_password, hashedPassword)) {
-          return done(null, false, { message: 'Incorrect password.' });
-        }
-        return done(null, user);
-      });
-    });
-}));
+passport.use(
+	new LocalStrategy((username, password, done) => {
+		User.findOne({ username: username }, (err, user) => {
+			if (err) throw err;
+			if (!user) return done(null, false);
+			bcrypt.compare(password, user.password, (err, result) => {
+				if (err) throw err;
+				if (result === true) {
+					console.log("Right Pass");
+					return done(null, user);
+				} else {
+					console.log("Wrong Pass");
+					return done(null, false);
+				}
+			});
+		});
+	})
+);
 
 passport.serializeUser(function (user, done) {
 	done(null, user.username);
