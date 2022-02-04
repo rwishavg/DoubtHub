@@ -60,7 +60,7 @@ exports.signup = async (req, res, next) => {
 						password: hashedPassword,
 					}).save();
 					console.log("new user created!");
-					res.send("User Created");
+					res.send("New User Created")
 				} else {
 					res.send("User Already Exists");
 				}
