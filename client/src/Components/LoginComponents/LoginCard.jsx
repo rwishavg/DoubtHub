@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FormInput from "../LoginComponents/FormInput";
 import LoginButtons from "./LoginButtons";
 import "../../Styles/page-styles/login.css";
@@ -12,21 +12,42 @@ const LoginCard = (props) => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [rePassword, setRePassword] = useState("");
-
+	const [localAuth, setLocalAuth] = useState(null);
 	const submitLogin = () => {
-		axios.post(api_endpoint + "/user/auth/local", { username: email, password: password })
-			.then((response) => console.log(response));
-	}
-	
+		console.log("asd");
+		axios({
+			method: "POST",
+			data: {
+				username: email,
+				password: password,
+			},
+			withCredentials: true,
+			url: api_endpoint + "/user/auth/local",
+		}).then((response) => setLocalAuth(response.data));
+	};
+
 	const submitSignUp = () => {
-		if (password === rePassword && password!=="") {
-			axios.post(api_endpoint + "/user/signup", { username: email, password: password})
+		if (password === rePassword && password !== "") {
+			axios
+				.post(api_endpoint + "/user/signup", {
+					username: email,
+					password: password,
+				})
 				.then((response) => console.log(response));
-		}
-		else {
+		} else {
 			alert("Password mismatch");
 		}
-	}
+	};
+
+	useEffect(() => {
+		if (localAuth === true) {
+			window.open("/dashboard", "_self");
+		} else if (localAuth === false) {
+			alert("Incorrect Pass");
+			setPassword("");
+		} else {
+		}
+	}, [localAuth]);
 
 	return (
 		<div className="cardComponent loginComponent">
