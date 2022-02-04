@@ -8,16 +8,23 @@ const {
 	data,
 	googleCallback,
 	googleAuthenticate,
+	signup
 } = require("../Controllers/user");
 
 router.route("/data").get(data);
 router.route("/logout").get(logout);
-router.route("/auth/google").get(googleAuthenticate)
-router.route("/google/callback").get(googleCallback)
+router.route("/auth/google").get(googleAuthenticate);
+router.route("/google/callback").get(googleCallback);
 
-app.post('/login', passport.authenticate('local', { failureRedirect: '/' }),  function(req, res) {
-	console.log(req.user)
-	res.redirect('/dashboard');
-});
+router.route("/signup").post(signup);
+
+// router.get('/login', function(req, res, next) {
+//   res.render('login');
+// });
+
+router.post('/auth/local', passport.authenticate('local', {
+  successRedirect: '/dashboard',
+  failureRedirect: '/login'
+}));
 
 module.exports = router;

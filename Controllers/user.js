@@ -1,6 +1,7 @@
-const schema = require("../Models/newUser");
 const passport = require("passport");
 const dotenv = require("dotenv");
+const User = require("../Models/newUser");
+
 dotenv.config({
 	path: "./utils/config.env",
 });
@@ -39,3 +40,27 @@ exports.googleCallback = passport.authenticate("google", {
 	failureRedirect: "/login",
 });
 
+exports.signup = async (req, res, next) => {
+	try {
+		User.findOne({ username: req.body.username }, function (err, user) {
+			if (err) {
+				return done(err);
+			}
+			if (!user) {
+				new User({
+					emailID: req.body.username,
+					username: req.body.username,
+					password: req.body.password
+				}).save();
+				console.log("new user created!");
+				res.send("User Created");
+			}
+			else {
+				res.send("User Already Exists");
+			}
+		});
+	}		
+	catch (err) {
+		res.json(err);
+	}
+};
