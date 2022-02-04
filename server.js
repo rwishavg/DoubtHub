@@ -13,24 +13,32 @@ dotenv.config({
 
 const apiRoutes = require("./Routes/user");
 const auth = require("./Middlewares/auth");
+const localauth = require("./Middlewares/localauth");
 const passport = require("passport");
 
 const url = process.env.MONGO;
 
-const whitelist = ["http://localhost:3000"];
-const corsOptions = {
-	origin: function (origin, callback) {
-		if (!origin || whitelist.indexOf(origin) !== -1) {
-			callback(null, true);
-		} else {
-			callback(new Error("Not allowed by CORS"));
-		}
-	},
-	credentials: true,
-};
+// const whitelist = ["http://localhost:3000"];
+// const corsOptions = {
+// 	origin: function (origin, callback) {
+// 		if (!origin || whitelist.indexOf(origin) !== -1) {
+// 			callback(null, true);
+// 		} else {
+// 			callback(new Error("Not allowed by CORS"));
+// 		}
+// 	},
+// 	credentials: true,
+// };
 
-app.use(cors());
-app.use(cors(corsOptions));
+// app.use(cors());
+// app.use(cors(corsOptions));
+
+app.use(
+	cors({
+		origin: "http://localhost:3000",
+		credentials: true,
+	})
+);
 
 // app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(express.json());

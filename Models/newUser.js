@@ -5,18 +5,15 @@ const userSchema = new Schema({
 	googleID: {
 		type: String,
 		required: false,
-		unique: true,
 	},
 	firstName: {
 		type: String,
 		required: false,
-		unique: false,
 	},
 	lastName: {
 		type: String,
 		default: "",
 		required: false,
-		unique: false,
 	},
 	emailID: {
 		type: String,
