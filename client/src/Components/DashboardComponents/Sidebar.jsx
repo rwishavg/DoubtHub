@@ -6,6 +6,7 @@ import settings from "../../Assets/Icons/settings.svg";
 import atsign from "../../Assets/Icons/atsign.svg";
 import question from "../../Assets/Icons/question.svg";
 import logout from "../../Assets/Icons/logout.svg";
+import profile from "../../Assets/Icons/profile.svg";
 import "../../Styles/component-styles/sidebar.css";
 import { userObjectContext } from "../../Context";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
@@ -33,16 +34,20 @@ const Sidebar = (props) => {
 					<img src={settings} className="iconSmaller" alt="icon" />
 					Settings
 				</Link>
+				<Link to="./profile" className="sidebarLink">
+					<img src={profile} className="iconSmaller" alt="icon" />
+					Profile
+				</Link>
 				<a href={api_endpoint + "/user/logout"} className="sidebarLink">
 					<img src={logout} className="iconSmaller" alt="icon" />
 					Logout
 				</a>
-				<Link to="./profile" className="cardComponent userCard">
+				<div className="cardComponent userCard">
 					<img src={user.profileIMG} alt="" className="userPhoto" />
 					<div className="name">
 						{user.firstName} {user.lastName}
 					</div>
-				</Link>
+				</div>
 			</div>
 		</div>
 	);

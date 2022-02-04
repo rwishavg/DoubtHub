@@ -9,10 +9,11 @@ const userSchema = new Schema({
 	firstName: {
 		type: String,
 		required: false,
+		default: "No"
 	},
 	lastName: {
 		type: String,
-		default: "",
+		default: "Name",
 		required: false,
 	},
 	emailID: {
@@ -22,7 +23,7 @@ const userSchema = new Schema({
 	},
 	bio: {
 		type: String,
-		default: "",
+		default: "Say Something About Yourself...",
 		required: false,
 		unique: false,
 	},
@@ -30,7 +31,7 @@ const userSchema = new Schema({
 		type: String,
 		required: false,
 		unique: false,
-		default: "",
+		default: "https://cms.qz.com/wp-content/uploads/2017/03/twitter_egg_blue.png?quality=75&strip=all&w=900&h=900&crop=1",
 	},
 	password: {
 		type: String,
@@ -45,11 +46,3 @@ const userSchema = new Schema({
 	},
 });
 module.exports = mongoose.model("user", userSchema, "userSchema");
-
-// Data:
-//  {
-//    id: '100376543808895462698',
-//    displayName: 'Raghav Mathur',
-//    name: { familyName: 'Mathur', givenName: 'Raghav' },
-//    emails: [ { value: 'raghav3501@gmail.com' } ]
-//  }
