@@ -16,10 +16,12 @@ const Dashboard = () => {
 				</Routes>
 			</div>
 		);
-	} else if (isAuthenticated === false) {
+	}
+	// else if (isAuthenticated === false) {
+	// 	return <Navigate to="/login" />;
+	// }
+	else {
 		return <Navigate to="/login" />;
-	} else {
-		return <div></div>;
 	}
 };
 

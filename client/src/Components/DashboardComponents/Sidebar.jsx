@@ -10,7 +10,7 @@ import "../../Styles/component-styles/sidebar.css";
 import { userObjectContext } from "../../Context";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
-const Sidebar = (props) => {
+const Sidebar = () => {
 	const [user, isAuthenticated] = useContext(userObjectContext);
 	return (
 		<div className="sidebarContainer">
@@ -21,11 +21,9 @@ const Sidebar = (props) => {
 					<img src={home} className="iconSmaller" alt="icon" />
 					Dashboard
 				</Link>
-				<Link to="/login" className="sidebarLink">
+				<Link to="./login" className="sidebarLink">
 					<img src={question} className="iconSmaller" alt="icon" />
-					{/* <button onClick={() => console.log(user, isAuthenticated)}> */}
 					My Questions
-					{/* </button> */}
 				</Link>
 				<Link to="./trending" className="sidebarLink">
 					<img src={atsign} className="iconSmaller" alt="icon" />

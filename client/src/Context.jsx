@@ -26,3 +26,7 @@ const Context = (props) => {
 };
 
 export default Context;
+
+//Provider  -> data
+//Consumer
+//
