@@ -8,7 +8,6 @@ const LoginButtons = (props) => {
 	if (toRegister === true) {
 		return <Navigate to="/register" />;
 	}
-	const signInWithGoogle = () => {};
 
 	return (
 		<div className="buttons">
@@ -31,7 +30,6 @@ const LoginButtons = (props) => {
 			<a
 				href={api_endpoint + "/user/auth/google"}
 				className="button button-full"
-				onClick={signInWithGoogle}
 			>
 				Sign In With google
 			</a>

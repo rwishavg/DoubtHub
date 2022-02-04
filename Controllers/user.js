@@ -38,3 +38,4 @@ exports.googleCallback = passport.authenticate("google", {
 	successRedirect: host + "/dashboard",
 	failureRedirect: "/login",
 });
+
