@@ -8,7 +8,7 @@ const {
 	data,
 	googleCallback,
 	googleAuthenticate,
-	signup
+	signup,
 } = require("../Controllers/user");
 
 router.route("/data").get(data);
@@ -22,9 +22,12 @@ router.route("/signup").post(signup);
 //   res.render('login');
 // });
 
-router.post('/auth/local', passport.authenticate('local', {
-  successRedirect: '/dashboard',
-  failureRedirect: '/login'
-}));
+router.post(
+	"/auth/local",
+	passport.authenticate("local", {
+		successRedirect: "/dashboard",
+		failureRedirect: "/login",
+	})
+);
 
 module.exports = router;
