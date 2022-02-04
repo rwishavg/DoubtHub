@@ -10,7 +10,7 @@ import "../../Styles/component-styles/sidebar.css";
 import { userObjectContext } from "../../Context";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
-const Sidebar = () => {
+const Sidebar = (props) => {
 	const [user, isAuthenticated] = useContext(userObjectContext);
 	return (
 		<div className="sidebarContainer">

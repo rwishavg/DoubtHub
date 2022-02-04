@@ -11,11 +11,7 @@ const LoginButtons = (props) => {
 
 	return (
 		<div className="buttons">
-			<button
-				type="button"
-				className="button"
-				onClick={props.submitLogin}
-			>
+			<button type="button" className="button" onClick={props.submit}>
 				Log In
 			</button>
 			<button
