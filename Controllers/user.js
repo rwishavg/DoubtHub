@@ -57,7 +57,7 @@ exports.signup = async (req, res, next) => {
 					new User({
 						emailID: req.body.username,
 						username: req.body.username,
-						password: req.body.hashedPassword,
+						password: hashedPassword,
 					}).save();
 					console.log("new user created!");
 					res.send("User Created");
