@@ -2,18 +2,31 @@ import React, { useState } from "react";
 import FormInput from "../LoginComponents/FormInput";
 import LoginButtons from "./LoginButtons";
 import "../../Styles/page-styles/login.css";
-
 import mailIcon from "../../Assets/Icons/mail.svg";
 import eye from "../../Assets/Icons/eye.svg";
+import axios from "axios";
+
+const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
 const LoginCard = (props) => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [rePassword, setRePassword] = useState("");
+
 	const submitLogin = () => {
-		console.log(email, password);
-		console.log(rePassword);
-	};
+		axios.post(api_endpoint + "/user/auth/local", { username: email, password: password })
+			.then((response) => console.log(response));
+	}
+	
+	const submitSignUp = () => {
+		if (password === rePassword && password!=="") {
+			axios.post(api_endpoint + "/user/signup", { username: email, password: password})
+				.then((response) => console.log(response));
+		}
+		else {
+			alert("Password mismatch");
+		}
+	}
 
 	return (
 		<div className="cardComponent loginComponent">
@@ -49,7 +62,7 @@ const LoginCard = (props) => {
 						<button
 							type="button"
 							className="button"
-							onClick={submitLogin}
+							onClick={submitSignUp}
 						>
 							Sign Up
 						</button>

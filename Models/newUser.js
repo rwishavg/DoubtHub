@@ -9,7 +9,7 @@ const userSchema = new Schema({
 	},
 	firstName: {
 		type: String,
-		required: true,
+		required: false,
 		unique: false,
 	},
 	lastName: {
@@ -43,7 +43,7 @@ const userSchema = new Schema({
 	},
 	username: {
 		type: String,
-		required: false,
+		required: true,
 		unique: true,
 	},
 });
