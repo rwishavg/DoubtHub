@@ -8,7 +8,7 @@ const Login = () => {
 	const [user, isAuthenticated] = useContext(userObjectContext);
 	if (isAuthenticated === false) {
 		return (
-			<div className="container">
+			<div className="loginContainer">
 				<LoginCard page="login" heading="Login" />
 			</div>
 		);

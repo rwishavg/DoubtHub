@@ -1,0 +1,9 @@
+.profileCard {
+	height: 70vh;
+	margin-left: 10vh;
+	display: flex;
+}
+
+.profileForm {
+	margin: 80px;
+}

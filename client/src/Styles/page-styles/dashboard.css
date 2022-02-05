@@ -1,6 +1,13 @@
 .container {
 	display: flex;
-	justify-content: center;
 	width: 100vw;
 	position: relative;
+	padding-bottom: 4vh;
+}
+
+.centerContent {
+	margin-top: 4vh;
+	width: 50vw;
+	min-width: 400px;
+	margin-left: 300px;
 }

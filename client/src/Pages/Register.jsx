@@ -4,7 +4,7 @@ import "../Styles/page-styles/login.css";
 
 const Register = () => {
 	return (
-		<div className="container">
+		<div className="loginContainer">
 			<LoginCard page="register" heading="Register" />
 		</div>
 	);

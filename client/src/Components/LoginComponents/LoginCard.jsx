@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import FormInput from "../LoginComponents/FormInput";
+import Input from "../DashboardComponents/Input";
 import LoginButtons from "./LoginButtons";
 import "../../Styles/page-styles/login.css";
 import mailIcon from "../../Assets/Icons/mail.svg";
 import eye from "../../Assets/Icons/eye.svg";
 import axios from "axios";
-import validator from 'validator'
+import validator from "validator";
 
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
@@ -29,8 +29,8 @@ const LoginCard = (props) => {
 				withCredentials: true,
 				url: api_endpoint + "/user/auth/local",
 			}).then((response) => setLocalAuth(response.data));
-		}else {
-      setErrorMessage("Enter valid Email!")
+		} else {
+			setErrorMessage("Enter valid Email!");
 		}
 	};
 
@@ -44,12 +44,12 @@ const LoginCard = (props) => {
 						password: password,
 					})
 					.then((response) => setLocalSignUp(response.data));
-				console.log("axios")
+				console.log("axios");
 			} else {
 				setErrorMessage("Password Mismatch!");
 			}
 		} else {
-      setErrorMessage("Enter valid Email!")
+			setErrorMessage("Enter valid Email!");
 		}
 	};
 
@@ -76,16 +76,26 @@ const LoginCard = (props) => {
 	return (
 		<div className="cardComponent loginComponent">
 			<form className="form" action="">
-				<div className="heading">{props.heading}<span style={{fontSize:"15px", color:"red", padding:"15px"}}>{errorMessage}</span></div>
-				<FormInput
+				<div className="heading">
+					{props.heading}
+					<span
+						style={{
+							fontSize: "15px",
+							color: "red",
+							padding: "15px",
+						}}
+					>
+						{errorMessage}
+					</span>
+				</div>
+				<Input
 					icon={mailIcon}
 					heading="Email"
 					type="email"
 					placeholder="Enter Email"
 					update={setEmail}
-
 				/>
-				<FormInput
+				<Input
 					icon={eye}
 					heading="Password"
 					type="password"
@@ -97,7 +107,7 @@ const LoginCard = (props) => {
 					<LoginButtons submit={submitLogin} />
 				) : (
 					<div className="centerSignUp">
-						<FormInput
+						<Input
 							icon={eye}
 							heading="Re-enter Password"
 							type="password"
