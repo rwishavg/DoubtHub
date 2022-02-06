@@ -12,20 +12,16 @@ if (process.env.NODE_ENV === "development") {
 
 exports.editProfile = async (req, res, next) => {
 	try {
-		console.log(req.body);
-		console.log(User);
+		// console.log(req.body);
 		const update = {
 			firstName: req.body.firstNam,
 			lastName: req.body.lastName,
 			username: req.body.username,
 			bio: req.body.bio,
 		};
-		const query = { emailID: req.body.emailID };
-		const A = await User.findOneAndUpdate(query, { $set: update },{upsert: true}, { new: true }, function(err,doc) {
-			if (err) { throw err; }
-			else { console.log("Updated"); }
-		});
-		console.log(A.firstName);
+		const query = { emailID: req.body.email };
+		const A = await User.findOneAndUpdate(query, { $set: update });
+		res.send("success");
 	} catch (err) {
 		res.json(err);
 	}

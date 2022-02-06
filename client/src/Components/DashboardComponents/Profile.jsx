@@ -17,22 +17,24 @@ const Profile = () => {
 	const [firstName, setFirstName] = useState(user.firstName);
 	const [lastName, setLastName] = useState(user.lastName);
 	const [bioData, setBioData] = useState(user.bio);
-	
 
 	const submit = () => {
-			axios({
-				method: "POST",
-				data: {
-					username: username,
-					firstName: firstName,
-					lastName: lastName,
-					bio: bioData,
-					email: user.emailID
-				},
-				withCredentials: true,
-				url: api_endpoint + "/user/profile/edit",
-			}).then((response) =>  console.log(response));
-	} 
+		axios({
+			method: "POST",
+			data: {
+				username: username,
+				firstName: firstName,
+				lastName: lastName,
+				bio: bioData,
+				email: user.emailID,
+			},
+			withCredentials: true,
+			url: api_endpoint + "/user/profile/edit",
+		}).then((response) => {
+			console.log(response);
+			alert("data updated");
+		});
+	};
 
 	return (
 		<div className="cardComponent profileCard">
@@ -84,8 +86,14 @@ const Profile = () => {
 						</textarea>
 					</div>
 				</div>
-				
-				<button className="button button-full" type="button" onClick={submit}>Submit</button>
+
+				<button
+					className="button button-full"
+					type="button"
+					onClick={submit}
+				>
+					Submit
+				</button>
 			</form>
 		</div>
 	);
