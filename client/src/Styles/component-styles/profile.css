@@ -18,6 +18,7 @@
 	/* justify-content: space-between; */
 	transition: 0.3s all ease;
 	border: 2px solid transparent;
+	margin-bottom: 18px;
 }
 .bioBg:hover {
 	border: 2px solid #602eea70;
