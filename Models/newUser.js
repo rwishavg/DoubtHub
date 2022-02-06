@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
-
+const { nanoid } = require("nanoid");
 const userSchema = new Schema({
 	googleID: {
 		type: String,
@@ -9,7 +9,7 @@ const userSchema = new Schema({
 	firstName: {
 		type: String,
 		required: false,
-		default: "No"
+		default: "No",
 	},
 	lastName: {
 		type: String,
@@ -31,7 +31,8 @@ const userSchema = new Schema({
 		type: String,
 		required: false,
 		unique: false,
-		default: "https://cms.qz.com/wp-content/uploads/2017/03/twitter_egg_blue.png?quality=75&strip=all&w=900&h=900&crop=1",
+		default:
+			"https://cms.qz.com/wp-content/uploads/2017/03/twitter_egg_blue.png?quality=75&strip=all&w=900&h=900&crop=1",
 	},
 	password: {
 		type: String,
@@ -43,6 +44,7 @@ const userSchema = new Schema({
 		type: String,
 		required: true,
 		unique: true,
+		default: nanoid(10),
 	},
 });
 module.exports = mongoose.model("user", userSchema, "userSchema");

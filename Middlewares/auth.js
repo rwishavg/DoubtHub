@@ -29,7 +29,6 @@ passport.use(
 						lastName: profile.family_name,
 						emailID: profile.email,
 						profileIMG: profile._json.picture,
-						username: profile.email,
 					}).save();
 					console.log("New User Created");
 				}

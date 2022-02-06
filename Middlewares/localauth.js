@@ -9,8 +9,8 @@ dotenv.config({
 });
 
 passport.use(
-	new LocalStrategy((username, password, done) => {
-		User.findOne({ username: username }, (err, user) => {
+	new LocalStrategy((email, password, done) => {
+		User.findOne({ emailID: email }, (err, user) => {
 			if (err) throw err;
 			if (!user) return done(null, false);
 			bcrypt.compare(password, user.password, (err, result) => {
@@ -28,11 +28,11 @@ passport.use(
 );
 
 passport.serializeUser(function (user, done) {
-	done(null, user.username);
+	done(null, user.emailID);
 });
 
 passport.deserializeUser(function (Username, done) {
 	User.findOne({
-		username: Username,
+		emailID: Username,
 	}).then((user) => done(null, user));
 });
