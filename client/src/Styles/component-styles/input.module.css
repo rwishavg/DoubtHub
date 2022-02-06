@@ -3,6 +3,7 @@
 	margin: 18px 0;
 	background-color: #eff0f6;
 	height: 63px;
+	/* height: 10vh; */
 	width: 100%;
 	border: 2px solid transparent;
 	border-radius: 10px;
@@ -47,7 +48,7 @@
 }
 
 .icon {
-	height: 25px;
+	height: 3vh;
 	margin: 0 20px;
 }
 

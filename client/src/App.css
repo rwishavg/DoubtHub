@@ -49,9 +49,20 @@ a {
 
 .heading {
 	font-weight: 800;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	font-size: 30px;
 }
 
 textarea {
 	padding: 0;
+}
+
+.errorMessage {
+	font-size: 14px;
+	color: rgba(236, 47, 47, 0.801);
+	font-family: inherit;
+	font-weight: 700;
+	letter-spacing: 1px;
 }

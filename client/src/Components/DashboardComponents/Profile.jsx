@@ -34,7 +34,7 @@ const Profile = () => {
 						<Input
 							icon={profile}
 							heading="Last Name"
-							type="email"
+							type="text"
 							placeholder="Enter Last Name"
 							update={setLastName}
 							value={lastName}

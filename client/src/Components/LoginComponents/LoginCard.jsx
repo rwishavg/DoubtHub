@@ -58,7 +58,7 @@ const LoginCard = (props) => {
 		if (localSignUp === "New User Created") {
 			window.open("/login", "_self");
 		} else if (localSignUp === "User Already Exists") {
-			alert("User Already Exists");
+			setErrorMessage("User Already Exists");
 		} else {
 		}
 	}, [localSignUp]);
@@ -67,7 +67,7 @@ const LoginCard = (props) => {
 		if (localAuth === true) {
 			window.open("/dashboard", "_self");
 		} else if (localAuth === false) {
-			alert("Incorrect Pass");
+			setErrorMessage("Incorrect Password");
 			setPassword("");
 		} else {
 		}
@@ -78,15 +78,7 @@ const LoginCard = (props) => {
 			<form className="form" action="">
 				<div className="heading">
 					{props.heading}
-					<span
-						style={{
-							fontSize: "15px",
-							color: "red",
-							padding: "15px",
-						}}
-					>
-						{errorMessage}
-					</span>
+					<span className="errorMessage">{errorMessage}</span>
 				</div>
 				<Input
 					icon={mailIcon}
