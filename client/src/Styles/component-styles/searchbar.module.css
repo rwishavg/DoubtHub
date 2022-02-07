@@ -45,15 +45,14 @@
 	font-size: 13px;
 	letter-spacing: 1px;
 }
-/* .searchInput {
-	background-color: transparent;
-	width: 80%;
-	outline: none;
-	border: 0;
-	font-family: inherit;
+
+.searchTag {
 	font-size: 13px;
-	letter-spacing: 1px;
-} */
+	background-color: rgba(255, 255, 255, 0.856);
+	border-radius: 5px;
+	padding: 0.2vh 1vh 0.2vh 1vh;
+	margin-right: 0.5vh;
+}
 
 .filterIcon {
 	width: 2vh;
