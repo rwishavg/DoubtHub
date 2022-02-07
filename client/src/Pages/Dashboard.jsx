@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Profile from "../Components/DashboardComponents/Profile";
 import Sidebar from "../Components/DashboardComponents/Sidebar";
+import Searchbar from "../Components/DashboardComponents/Searchbar";
 import "../Styles/page-styles/dashboard.css";
 import { userObjectContext } from "../Context";
 const Dashboard = () => {
@@ -11,6 +12,7 @@ const Dashboard = () => {
 			<div className="container">
 				<Sidebar />
 				<div className="centerContent">
+					<Searchbar />
 					<Routes>
 						<Route path="/profile" element={<Profile />}></Route>
 					</Routes>

@@ -7,6 +7,7 @@
 
 .centerContent {
 	margin-top: 4vh;
-	width: 50vw;
-	margin-left: 34vh;
+	width: 45vw;
+	min-width: 500px;
+	margin-left: 44vh;
 }

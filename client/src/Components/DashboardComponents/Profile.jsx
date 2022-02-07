@@ -81,9 +81,8 @@ const Profile = () => {
 							className="bio"
 							placeholder="Say Something..."
 							onChange={(e) => setBioData(e.target.value)}
-						>
-							{bioData}
-						</textarea>
+							value={bioData}
+						></textarea>
 					</div>
 				</div>
 
