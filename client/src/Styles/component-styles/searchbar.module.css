@@ -1,13 +1,17 @@
 .container {
 	padding-top: 4vh;
-	width: 45vw;
-	min-width: 500px;
-	margin-left: 44vh;
+	width: 47vw;
+	min-width: 530px;
+	margin-left: calc(44vh - 1vw);
 	background: #fcfcfc;
 	position: fixed;
 	z-index: 500;
+	display: flex;
+	justify-content: center;
 }
+
 .searchComponent {
+	width: 100%;
 	height: 8vh;
 	display: flex;
 	align-items: center;
