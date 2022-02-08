@@ -33,6 +33,7 @@ const Profile = () => {
 		}).then((response) => {
 			console.log(response);
 			alert("data updated");
+			window.open("/dashboard/profile", "_self");
 		});
 	};
 

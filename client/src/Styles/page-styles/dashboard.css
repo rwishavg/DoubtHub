@@ -1,13 +1,15 @@
 .container {
 	display: flex;
+	flex-direction: column;
 	width: 100vw;
 	position: relative;
 	padding-bottom: 4vh;
 }
 
 .centerContent {
-	margin-top: 4vh;
+	margin-top: 16vh;
 	width: 45vw;
 	min-width: 500px;
 	margin-left: 44vh;
+	/* overflow-x: hidden; */
 }
