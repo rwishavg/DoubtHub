@@ -18,26 +18,32 @@ const Searchbar = () => {
 	}, [counter]);
 
 	return (
-		<div className={`cardComponent ${classes.searchComponent}`}>
-			<div className={`${classes.background}`}>
-				{/* Name: */}
-				<div className={classes["searchTag"]}>
-					<img
-						src={search}
-						alt=""
-						className={classes["searchIcon"]}
-					/>
-					{filterState}
-				</div>
+		<div className={classes["container"]}>
+			<div className={`cardComponent ${classes.searchComponent}`}>
+				<div className={`${classes.background}`}>
+					{/* Name: */}
+					<div className={classes["searchTag"]}>
+						<img
+							src={search}
+							alt=""
+							className={classes["searchIcon"]}
+						/>
+						{filterState}
+					</div>
 
-				<input
-					type="text"
-					className={classes["searchInput"]}
-					onChange={(e) => setSearchText(e.target.value)}
-				/>
-			</div>
-			<div className={`${classes.filterBg}`} onClick={changeTag}>
-				<img src={filter} alt="" className={classes["filterIcon"]} />
+					<input
+						type="text"
+						className={classes["searchInput"]}
+						onChange={(e) => setSearchText(e.target.value)}
+					/>
+				</div>
+				<div className={`${classes.filterBg}`} onClick={changeTag}>
+					<img
+						src={filter}
+						alt=""
+						className={classes["filterIcon"]}
+					/>
+				</div>
 			</div>
 		</div>
 	);

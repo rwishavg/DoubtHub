@@ -20,7 +20,7 @@ exports.editProfile = async (req, res, next) => {
 			bio: req.body.bio,
 		};
 		const query = { emailID: req.body.email };
-		const A = await User.findOneAndUpdate(query, { $set: update });
+		const result = await User.findOneAndUpdate(query, { $set: update });
 		res.send("success");
 	} catch (err) {
 		res.json(err);
