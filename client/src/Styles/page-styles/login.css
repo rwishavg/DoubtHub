@@ -19,7 +19,7 @@
 
 .loginComponent {
 	width: 40vw;
-	height: 65vh;
+	min-height: 65vh;
 	min-width: 470px;
 }
 
