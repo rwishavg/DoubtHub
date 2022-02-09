@@ -12,23 +12,21 @@ const questionSchema = new Schema({
 		default: "Name",
 		required: false,
 	},
-	timestamp: {
-		type: Timestamp,
-		required: true,
-		unique: true,
+	createdAt: {
+		type: Date,
+		default: Date.now(),
 	},
 	heading: {
 		type: String,
 		required: true,
-		default: "No",
+		default: "THIS IS A QUESTION",
 	},
 	description: {
 		type: String,
-		default: "Say Something About Yourself...",
-		required: true,
+		default: "THIS IS A QUESTION DESCRIPTION",
 	},
 	likes: {
-		type: Integer,
+		type: Number,
 		unique: false,
 		default: 0,
 	},

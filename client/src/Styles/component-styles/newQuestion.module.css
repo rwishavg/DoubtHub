@@ -3,6 +3,7 @@
 	width: 60%;
 	margin-bottom: 4vh;
 	height: 18vh;
+	overflow: hidden;
 	transition: all 0.5s ease-in-out;
 }
 .content {
@@ -32,7 +33,7 @@
 	letter-spacing: 1px;
 }
 
-.textArea{
+.textArea {
 	background-color: transparent;
 	outline: none;
 	border: 0;
@@ -45,7 +46,7 @@
 	resize: none;
 }
 
-.bg{
+.bg {
 	height: 35vh;
 	display: flex;
 	background-color: #eff0f6;
@@ -54,13 +55,13 @@
 	margin-bottom: 7vh;
 }
 
-.inputRow{
+.inputRow {
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 2vh;
 }
 
-.buttonStyle{
+.buttonStyle {
 	margin-left: 3vh;
 	height: 1vh;
 	max-width: 5vw;
@@ -70,7 +71,7 @@
 }
 
 .filterBg {
-	bottom:0;
+	bottom: 0;
 	position: absolute;
 	user-select: none;
 	height: 4vh;
@@ -89,6 +90,9 @@
 	transition: background 0.3s ease;
 	cursor: pointer;
 	/* margin-bottom: 2vh; */
+	opacity: 0;
+	transition: opacity 0.5s ease;
+	transition-delay: 0.2s;
 	box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 4px;
 }
 

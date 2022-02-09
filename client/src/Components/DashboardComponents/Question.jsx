@@ -20,7 +20,7 @@ const inactiveStyle = {
 	},
 	moreText: "MORE",
 };
-const Question = () => {
+const Question = (props) => {
 	const user = useContext(userObjectContext)[0];
 	const [currentCard, setCurrentCard] = useState(false);
 	const [styleState, setStyleState] = useState(inactiveStyle);
@@ -54,37 +54,13 @@ const Question = () => {
 					</div>
 				</div>
 				<div className={classes["questionHeading"]}>
-					What is Introduction to Amazon Managed Streaming for Apache
-					Kafka (Amazon MSK)?
+					{props.heading}
 				</div>
 				<div
 					className={classes["questionDescription"]}
 					style={styleState.maskStyle}
 				>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-						sed do eiusmod tempor incididunt ut labore et dolore
-						magna aliqua. Ut enim ad minim veniam, quis nostrud
-						exercitation ullamco laboris Lorem ipsum dolor sit amet,
-						consectetur adipiscing elit, sed do eiusmod tempor
-						incididunt ut labore et dolore magna aliqua. Ut enim ad
-						minim veniam, quis nostrud exercitation ullamco laboris
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-						sed do eiusmod tempor incididunt ut labore et dolore
-						magna aliqua.
-					</p>
-					Ut enim ad minim veniam, quis nostrud exercitation ullamco
-					laboris Lorem ipsum dolor sit amet, consectetur adipiscing
-					elit, sed do eiusmod tempor incididunt ut labore et dolore
-					magna aliqua. Ut enim ad minim veniam, quis nostrud
-					exercitation ullamco laboris Lorem ipsum dolor sit amet,
-					consectetur adipiscing elit, sed do eiusmod tempor
-					incididunt ut labore et dolore magna aliqua. Ut enim ad
-					minim veniam, quis nostrud exercitation ullamco laboris
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-					do eiusmod tempor incididunt ut labore et dolore magna
-					aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-					ullamco laboris
+					{props.description}
 				</div>
 				<div className={`${classes.filterBg}`} onClick={expandCard}>
 					VIEW {styleState.moreText}

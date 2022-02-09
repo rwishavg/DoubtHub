@@ -1,49 +1,70 @@
-import React, { useEffect, useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState, useContext } from "react";
 import classes from "../../Styles/component-styles/newQuestion.module.css";
-
+import { userObjectContext } from "../../Context";
+const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 const activeStyle = {
 	cardStyle: { height: "60vh", width: "100%" },
 	body: { height: "35vh", width: "100%" },
 	descriptionStyle: {},
+	collapse: { opacity: "1", zIndex: "1" },
 };
 
 const inactiveStyle = {
 	cardStyle: { height: "18vh" },
 	body: { display: "none" },
 	descriptionStyle: { display: "none" },
-	collapse: {display:"none"}
+	collapse: { opacity: "0", zIndex: "-1" },
 };
 
 const NewQuestion = () => {
 	const [cardState, setCardState] = useState(false);
 	const [style, setStyle] = useState(inactiveStyle);
-	const [title1, setTitle1] = useState("Have a Question?");
+	const [title, setTitle] = useState("Have a Question?");
+	const [description, setDescription] = useState("");
+	const [questionText, setQuestionText] = useState("");
+	const user = useContext(userObjectContext)[0];
+	const postQuestion = () => {
+		axios({
+			method: "POST",
+			data: {
+				username: user.username,
+				questionHeading: questionText,
+				description: description,
+			},
+			withCredentials: true,
+			url: api_endpoint + "/question/addNewQuestion",
+		}).then((response) => console.log(response.data));
+	};
+
 	useEffect(() => {
 		if (cardState === true) {
 			setStyle(activeStyle);
-			setTitle1("Question Title:");
-		}
-		else {
-			setStyle(inactiveStyle)
-			setTitle1("Have a Question?")
+			setTitle("Question Title:");
+		} else {
+			setStyle(inactiveStyle);
+			setTitle("Have a Question?");
 		}
 	}, [cardState]);
-
 	return (
 		<div
 			className={`cardComponent ${classes.newQuestion}`}
 			style={style.cardStyle}
 		>
 			<div className={classes["content"]}>
-				<div className={classes["heading"]}>{title1}</div>
+				<div className={classes["heading"]}>{title}</div>
 				<div className={classes["inputRow"]}>
 					<input
 						type="text"
 						className={classes["Input"]}
 						placeholder="Start typing here..."
 						onClick={(e) => setCardState(true)}
+						onChange={(e) => setQuestionText(e.target.value)}
 					/>
-					<div className={`button ${classes.buttonStyle}`} >
+					<div
+						className={`button ${classes.buttonStyle}`}
+						onClick={postQuestion}
+					>
 						Submit
 					</div>
 				</div>
@@ -57,10 +78,17 @@ const NewQuestion = () => {
 					<textarea
 						type="text"
 						className={classes["textArea"]}
-						placeholder="Start typing here..."
-						/>
+						placeholder="Description..."
+						onChange={(e) => setDescription(e.target.value)}
+					/>
 				</div>
-				<div className={classes["filterBg"]} style={style.collapse} onClick={(e) => setCardState(false)}>COLLAPSE</div>
+				<div
+					className={classes["filterBg"]}
+					style={style.collapse}
+					onClick={(e) => setCardState(false)}
+				>
+					COLLAPSE
+				</div>
 			</div>
 		</div>
 	);
