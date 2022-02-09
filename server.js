@@ -11,7 +11,8 @@ dotenv.config({
 	path: "./utils/config.env",
 });
 
-const apiRoutes = require("./Routes/user");
+const userRoutes = require("./Routes/user");
+const questionRoutes = require("./Routes/questions");
 const auth = require("./Middlewares/auth");
 const localauth = require("./Middlewares/localauth");
 const passport = require("passport");
@@ -53,12 +54,14 @@ mongoose.connect(url).then(() => console.log("Connected to DB"));
 
 if (process.env.NODE_ENV === "production") {
 	app.use(express.static("client/build"));
-	app.use("/user", apiRoutes);
+	app.use("/user", userRoutes);
+	app.use("/question", questionRoutes);
 	app.get("*", (req, res) =>
 		res.sendFile(path.resolve("client", "build", "index.html"))
 	);
 } else {
-	app.use("/user", apiRoutes);
+	app.use("/user", userRoutes);
+	app.use("/question", questionRoutes);
 }
 
 app.listen(process.env.PORT || 5000, () => {
