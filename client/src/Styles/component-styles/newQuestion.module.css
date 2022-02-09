@@ -1,0 +1,12 @@
+.newQuestion {
+	display: flex;
+	width: 50%;
+	height: 20vh;
+	margin-bottom: 4vh;
+}
+.content {
+	margin: 2vh;
+}
+
+.heading {
+}
