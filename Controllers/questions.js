@@ -15,8 +15,10 @@ exports.addNewQuestion = async (req, res, next) => {
 			username: req.body.username,
 			heading: req.body.questionHeading,
 			description: req.body.description,
-		}).save();
-		res.send("Question Created");
+		}).save((err, result) => {
+			// console.log(result);
+			res.send(result);
+		});
 	} catch (err) {
 		res.json(err);
 	}

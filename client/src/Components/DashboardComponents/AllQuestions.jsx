@@ -21,7 +21,10 @@ const AllQuestions = () => {
 
 	return (
 		<div>
-			<NewQuestion />
+			<NewQuestion
+				updateFunction={setQuestionData}
+				prevData={questionData}
+			/>
 			{questionData.map((question) => (
 				<Question
 					key={question._id}

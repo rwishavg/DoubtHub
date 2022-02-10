@@ -14,14 +14,18 @@ exports.editProfile = async (req, res, next) => {
 	try {
 		// console.log(req.body);
 		const update = {
-			firstName: req.body.firstNam,
+			firstName: req.body.firstName,
 			lastName: req.body.lastName,
 			username: req.body.username,
 			bio: req.body.bio,
 		};
 		const query = { emailID: req.body.email };
-		const result = await User.findOneAndUpdate(query, { $set: update });
-		res.send("success");
+		const result = await User.findOneAndUpdate(
+			query,
+			{ $set: update },
+			{ new: true }
+		);
+		res.send(result);
 	} catch (err) {
 		res.json(err);
 	}

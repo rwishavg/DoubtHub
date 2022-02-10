@@ -17,7 +17,7 @@ const inactiveStyle = {
 	collapse: { opacity: "0", zIndex: "-1" },
 };
 
-const NewQuestion = () => {
+const NewQuestion = (props) => {
 	const [cardState, setCardState] = useState(false);
 	const [style, setStyle] = useState(inactiveStyle);
 	const [title, setTitle] = useState("Have a Question?");
@@ -34,7 +34,14 @@ const NewQuestion = () => {
 			},
 			withCredentials: true,
 			url: api_endpoint + "/question/addNewQuestion",
-		}).then((response) => console.log(response.data));
+		}).then((response) => {
+			console.log([...props.prevData, response.data]);
+			props.updateFunction([...props.prevData, response.data]);
+		});
+		alert("Question Created");
+		setCardState(false);
+		setDescription("");
+		setQuestionText("");
 	};
 
 	useEffect(() => {
@@ -60,6 +67,7 @@ const NewQuestion = () => {
 						placeholder="Start typing here..."
 						onClick={(e) => setCardState(true)}
 						onChange={(e) => setQuestionText(e.target.value)}
+						value={questionText}
 					/>
 					<div
 						className={`button ${classes.buttonStyle}`}
@@ -80,6 +88,7 @@ const NewQuestion = () => {
 						className={classes["textArea"]}
 						placeholder="Description..."
 						onChange={(e) => setDescription(e.target.value)}
+						value={description}
 					/>
 				</div>
 				<div

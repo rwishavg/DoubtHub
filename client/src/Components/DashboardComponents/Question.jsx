@@ -20,6 +20,16 @@ const inactiveStyle = {
 	},
 	moreText: "MORE",
 };
+
+const smallDesc = {
+	cardStyle: { maxHeight: "35vh" },
+	maskStyle: {
+		WebkitMaskImage: "none",
+	},
+	buttonDisplay: {
+		display: "none",
+	},
+};
 const Question = (props) => {
 	const user = useContext(userObjectContext)[0];
 	const [currentCard, setCurrentCard] = useState(false);
@@ -29,10 +39,14 @@ const Question = (props) => {
 	};
 
 	useEffect(() => {
-		if (currentCard === true) {
-			setStyleState(activeStyle);
+		if (props.description.length > 250) {
+			if (currentCard === true) {
+				setStyleState(activeStyle);
+			} else {
+				setStyleState(inactiveStyle);
+			}
 		} else {
-			setStyleState(inactiveStyle);
+			setStyleState(smallDesc);
 		}
 	}, [currentCard]);
 
@@ -62,7 +76,11 @@ const Question = (props) => {
 				>
 					{props.description}
 				</div>
-				<div className={`${classes.filterBg}`} onClick={expandCard}>
+				<div
+					className={`${classes.filterBg}`}
+					onClick={expandCard}
+					style={styleState.buttonDisplay}
+				>
 					VIEW {styleState.moreText}
 				</div>
 				<div className="icons">{/* <img src={home} alt="" /> */}</div>

@@ -13,6 +13,7 @@ const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
 const Profile = () => {
 	const user = useContext(userObjectContext)[0];
+	const updateUser = useContext(userObjectContext)[2];
 	const [username, setUsername] = useState(user.username);
 	const [firstName, setFirstName] = useState(user.firstName);
 	const [lastName, setLastName] = useState(user.lastName);
@@ -32,8 +33,7 @@ const Profile = () => {
 			url: api_endpoint + "/user/profile/edit",
 		}).then((response) => {
 			console.log(response);
-			alert("data updated");
-			window.open("/dashboard/profile", "_self");
+			updateUser(response.data);
 		});
 	};
 
