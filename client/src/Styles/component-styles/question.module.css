@@ -89,3 +89,44 @@
 .filterIcon {
 	width: 2vh;
 }
+
+.options {
+	display: flex;
+	align-items: center;
+	position: absolute;
+	height: 3vh;
+	right: 4vh;
+	top: 4vh;
+	cursor: pointer;
+}
+
+.icons {
+	display: flex;
+	align-items: center;
+	position: absolute;
+	font-weight: 500;
+	right: 4vh;
+	bottom: 4vh;
+}
+
+.icons * {
+	margin-left: 1vh;
+}
+
+.icons img {
+	width: 2.5vh;
+}
+
+.moreOptions {
+	background: #eff0f6;
+	padding: 1.5vh 1vh;
+	border-radius: 1vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.moreOptions img {
+	width: 2.2vh;
+	margin: 0 1vh;
+}
