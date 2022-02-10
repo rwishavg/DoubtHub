@@ -19,7 +19,9 @@ const Context = (props) => {
 	}, []);
 
 	return (
-		<userObjectContext.Provider value={[userObject, isAuthenticated]}>
+		<userObjectContext.Provider
+			value={[userObject, isAuthenticated, setUserObject]}
+		>
 			{props.children}
 		</userObjectContext.Provider>
 	);
