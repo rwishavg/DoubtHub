@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import classes from "../../Styles/component-styles/question.module.css";
+import axios from "axios";
 import { userObjectContext } from "../../Context";
 import options from "../../Assets/Icons/options.svg";
 import like from "../../Assets/Icons/like.svg";
 import comment from "../../Assets/Icons/comment.svg";
-import report from "../../Assets/Icons/report.svg";
-import del from "../../Assets/Icons/delete.svg";
-import edit from "../../Assets/Icons/edit.svg";
+import { ReactComponent as EditSvg } from "../../Assets/Icons/edit.svg";
+import { ReactComponent as DelSvg } from "../../Assets/Icons/delete.svg";
+import { ReactComponent as RepSvg } from "../../Assets/Icons/report.svg";
+const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 const activeStyle = {
 	cardStyle: { maxHeight: "999vh" },
 	maskStyle: {
@@ -67,6 +69,19 @@ const Question = (props) => {
 		}
 	}, [optionState]);
 
+	const deleteQuestion = () => {
+		axios({
+			method: "POST",
+			data: {
+				id: props.id,
+			},
+			withCredentials: true,
+			url: api_endpoint + "/question/delete",
+		}).then((response) => {
+			props.updateData();
+		});
+	};
+
 	return (
 		<div
 			className={`cardComponent ${classes.questionComponent}`}
@@ -86,9 +101,16 @@ const Question = (props) => {
 				</div>
 				<div className={classes["options"]}>
 					<div className={classes["moreOptions"]} style={optionStyle}>
-						<img src={edit} alt="" />
-						<img src={del} alt="" />
-						<img src={report} alt="" />
+						<EditSvg style={{ stroke: "black" }} />
+						<DelSvg
+							style={{ stroke: "black" }}
+							className={classes["redClass"]}
+							onClick={deleteQuestion}
+						/>
+						<RepSvg
+							style={{ stroke: "black" }}
+							className={classes["redClass"]}
+						/>
 					</div>
 					<img
 						src={options}

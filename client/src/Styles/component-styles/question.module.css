@@ -98,6 +98,7 @@
 	right: 4vh;
 	top: 4vh;
 	cursor: pointer;
+	user-select: none;
 }
 
 .icons {
@@ -126,7 +127,26 @@
 	justify-content: center;
 }
 
-.moreOptions img {
+.moreOptions svg {
 	width: 2.2vh;
 	margin: 0 1vh;
 }
+.moreOptions svg > * {
+	stroke: inherit;
+}
+.moreOptions svg:hover > * {
+	stroke: #5f2eea;
+}
+.redClass:active > * {
+	stroke: rgb(226, 104, 104) !important;
+}
+
+/* 
+.moreOptions div {
+	display: flex;
+	align-items: center;
+}
+.red * {
+	stroke: red;
+	color: red;
+} */

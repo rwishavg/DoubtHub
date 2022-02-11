@@ -35,8 +35,7 @@ const NewQuestion = (props) => {
 			withCredentials: true,
 			url: api_endpoint + "/question/addNewQuestion",
 		}).then((response) => {
-			console.log([...props.prevData, response.data]);
-			props.updateFunction([...props.prevData, response.data]);
+			props.updateFunction();
 		});
 		alert("Question Created");
 		setCardState(false);

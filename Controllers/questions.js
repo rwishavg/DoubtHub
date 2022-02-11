@@ -32,3 +32,12 @@ exports.getQuestions = async (req, res, next) => {
 		res.json(err);
 	}
 };
+exports.deleteQuestion = async (req, res, next) => {
+	try {
+		await QuestionSchema.deleteOne({ _id: req.body.id });
+		res.send("Deleted");
+		// console.log(req.body);
+	} catch (err) {
+		res.json(err);
+	}
+};

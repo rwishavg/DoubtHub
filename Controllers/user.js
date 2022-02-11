@@ -13,7 +13,6 @@ if (process.env.NODE_ENV === "development") {
 
 exports.data = async (req, res, next) => {
 	try {
-		// console.log(req.user);
 		res.send(req.user);
 	} catch (err) {
 		res.json(err);
@@ -24,7 +23,6 @@ exports.logout = async (req, res, next) => {
 	try {
 		req.logout();
 		res.redirect(host + "/");
-		console.log("logged out");
 	} catch (err) {
 		res.json(err);
 	}

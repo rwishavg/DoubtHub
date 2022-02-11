@@ -5,7 +5,7 @@ import axios from "axios";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 const AllQuestions = () => {
 	const [questionData, setQuestionData] = useState([]);
-	useEffect(() => {
+	const getData = () => {
 		axios
 			.get(api_endpoint + "/question/getQuestions", {
 				withCredentials: true,
@@ -13,6 +13,9 @@ const AllQuestions = () => {
 			.then((response) => {
 				setQuestionData(response.data);
 			});
+	};
+	useEffect(() => {
+		getData();
 	}, []);
 
 	useEffect(() => {
@@ -21,15 +24,14 @@ const AllQuestions = () => {
 
 	return (
 		<div>
-			<NewQuestion
-				updateFunction={setQuestionData}
-				prevData={questionData}
-			/>
+			<NewQuestion updateFunction={getData} prevData={questionData} />
 			{questionData.map((question) => (
 				<Question
 					key={question._id}
 					heading={question.heading}
 					description={question.description}
+					id={question._id}
+					updateData={getData}
 				/>
 			))}
 		</div>
