@@ -1,0 +1,32 @@
+.landingContainer {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	position: relative;
+}
+.logoLanding {
+	width: 40vw;
+}
+
+.logoLanding img {
+	width: 100%;
+	user-select: none;
+}
+
+.loginSign {
+	position: absolute;
+	top: 4vh;
+	right: 2vw;
+	width: 30vh;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	cursor: pointer;
+}
+
+.loginSign a {
+	margin: 0 2vh;
+}
