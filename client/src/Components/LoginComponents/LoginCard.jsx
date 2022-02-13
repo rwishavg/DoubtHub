@@ -67,7 +67,7 @@ const LoginCard = (props) => {
 		if (localAuth === true) {
 			window.open("/dashboard", "_self");
 		} else if (localAuth === false) {
-			setErrorMessage("Incorrect Password");
+			setErrorMessage("Incorrect Credentials");
 			setPassword("");
 		} else {
 		}

@@ -7,7 +7,7 @@ import Searchbar from "../Components/DashboardComponents/Searchbar";
 import "../Styles/page-styles/dashboard.css";
 import { userObjectContext } from "../Context";
 const Dashboard = () => {
-	const createQuestion = () => {};
+	// const createQuestion = () => {};
 	const isAuthenticated = useContext(userObjectContext)[1];
 	if (isAuthenticated === true) {
 		return (
