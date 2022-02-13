@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const express = require("express");
 const session = require("cookie-session");
 const cors = require("cors");
+require("colors");
 
 const app = express();
 
@@ -19,23 +20,6 @@ const passport = require("passport");
 
 const url = process.env.MONGO;
 
-// const whitelist = ["http://localhost:3000"];
-// const corsOptions = {
-// 	origin: function (origin, callback) {
-// 		if (!origin || whitelist.indexOf(origin) !== -1) {
-// 			callback(null, true);
-// 		} else {
-// 			callback(new Error("Not allowed by CORS"));
-// 		}
-// 	},
-// 	credentials: true,
-// };
-//
-//
-
-// app.use(cors());
-// app.use(cors(corsOptions));
-
 app.use(
 	cors({
 		origin: "http://localhost:3000",
@@ -44,6 +28,7 @@ app.use(
 );
 
 // app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+
 app.use(express.json());
 app.use(session({ secret: "secret" }));
 
@@ -66,5 +51,5 @@ if (process.env.NODE_ENV === "production") {
 
 app.listen(process.env.PORT || 5000, () => {
 	console.log(process.env.PORT);
-	console.log(`Server running at port ${process.env.PORT}`);
+	console.log(`Server running at port ${process.env.PORT}`.green.inverse);
 });

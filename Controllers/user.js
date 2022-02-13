@@ -41,7 +41,7 @@ exports.googleCallback = passport.authenticate("google", {
 exports.signup = async (req, res, next) => {
 	try {
 		User.findOne(
-			{ username: req.body.username },
+			{ emailID: req.body.username },
 			async function (err, user) {
 				if (err) {
 					return done(err);

@@ -24,6 +24,7 @@
   "homepage": "https://github.com/raghavmathur1/DoubtHub#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "colors": "^1.4.0",
     "concurrently": "^7.0.0",
     "cookie-session": "^2.0.0",
     "cors": "^2.8.5",
