@@ -1,5 +1,7 @@
 const dotenv = require("dotenv");
 const QuestionSchema = require("../Models/newQuestion");
+const User = require("../Models/newUser");
+
 dotenv.config({
 	path: "./utils/config.env",
 });
@@ -23,6 +25,7 @@ exports.addNewQuestion = async (req, res, next) => {
 		res.json(err);
 	}
 };
+
 exports.getQuestions = async (req, res, next) => {
 	try {
 		QuestionSchema.find({}, function (err, questions) {
@@ -32,11 +35,26 @@ exports.getQuestions = async (req, res, next) => {
 		res.json(err);
 	}
 };
+
 exports.deleteQuestion = async (req, res, next) => {
 	try {
 		await QuestionSchema.deleteOne({ _id: req.body.id });
 		res.send("Deleted");
 		// console.log(req.body);
+	} catch (err) {
+		res.json(err);
+	}
+};
+
+exports.saveQuestion = async (req, res, next) => {
+	try {
+		const result = await User.findOneAndUpdate(
+			{ emailID: req.body.email },
+			{ $push: { saved: req.body.id } },
+			{new: true}
+		);
+		console.log(result);
+		res.send("Saved");
 	} catch (err) {
 		res.json(err);
 	}

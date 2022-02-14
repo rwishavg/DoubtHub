@@ -1,13 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import classes from "../../Styles/component-styles/question.module.css";
 import axios from "axios";
-import { userObjectContext } from "../../Context";
+import Context, { userObjectContext } from "../../Context";
 import options from "../../Assets/Icons/options.svg";
 import like from "../../Assets/Icons/like.svg";
 import comment from "../../Assets/Icons/comment.svg";
 import { ReactComponent as EditSvg } from "../../Assets/Icons/edit.svg";
 import { ReactComponent as DelSvg } from "../../Assets/Icons/delete.svg";
 import { ReactComponent as RepSvg } from "../../Assets/Icons/report.svg";
+import { ReactComponent as StarSvg } from "../../Assets/Icons/star.svg";
+
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 const activeStyle = {
 	cardStyle: { maxHeight: "999vh" },
@@ -82,6 +84,20 @@ const Question = (props) => {
 		});
 	};
 
+	const saveQuestion = () => {
+		axios({
+			method: "POST",
+			data: {
+				email: user.emailID,
+				id: props.id,
+			},
+			withCredentials: true,
+			url: api_endpoint + "/question/saveQuestion",
+		}).then((response) => {
+			// props.updateData();
+		});
+	}
+
 	return (
 		<div
 			className={`cardComponent ${classes.questionComponent}`}
@@ -101,6 +117,11 @@ const Question = (props) => {
 				</div>
 				<div className={classes["options"]}>
 					<div className={classes["moreOptions"]} style={optionStyle}>
+						<StarSvg
+							style={{ stroke: "black" }}
+							className={classes["blueClass"]}
+							onClick={saveQuestion}
+						/>
 						<EditSvg style={{ stroke: "black" }} />
 						<DelSvg
 							style={{ stroke: "black" }}

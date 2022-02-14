@@ -56,9 +56,6 @@
 	font-size: 1.2vh;
 }
 
-.icons {
-}
-
 .filterBg {
 	position: absolute;
 	bottom: 3vh;
@@ -140,13 +137,6 @@
 .redClass:active > * {
 	stroke: rgb(226, 104, 104) !important;
 }
-
-/* 
-.moreOptions div {
-	display: flex;
-	align-items: center;
+.blueClass:active > * {
+	stroke: rgb(28, 198, 228) !important;
 }
-.red * {
-	stroke: red;
-	color: red;
-} */

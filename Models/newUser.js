@@ -46,5 +46,9 @@ const userSchema = new Schema({
 		unique: true,
 		default: nanoid(10),
 	},
+	saved: {
+		type: [String],
+		default: ["abcd", "1234"],
+ },
 });
 module.exports = mongoose.model("user", userSchema, "userSchema");

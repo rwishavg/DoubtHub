@@ -3,7 +3,7 @@ import Logo from "../../Assets/DoubtHub Logo.png";
 import { Link } from "react-router-dom";
 import home from "../../Assets/Icons/home.svg";
 import settings from "../../Assets/Icons/settings.svg";
-import atsign from "../../Assets/Icons/atsign.svg";
+import saved from "../../Assets/Icons/saved.svg";
 import question from "../../Assets/Icons/question.svg";
 import logout from "../../Assets/Icons/logout.svg";
 import profile from "../../Assets/Icons/profile.svg";
@@ -36,11 +36,11 @@ const Sidebar = (props) => {
 				</Link>
 				<Link to="./trending" className={`${classes.sidebarLink}`}>
 					<img
-						src={atsign}
+						src={saved}
 						className={`${classes.iconSmaller}`}
 						alt="icon"
 					/>
-					Trending
+					Saved
 				</Link>
 				<Link to="./settings" className={`${classes.sidebarLink}`}>
 					<img
