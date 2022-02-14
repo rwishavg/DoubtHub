@@ -41,6 +41,7 @@ const smallDesc = {
 
 const optionActiveStyle = { display: "flex" };
 const optionInactiveStyle = { display: "none" };
+
 const Question = (props) => {
 	const user = useContext(userObjectContext)[0];
 	const [currentCard, setCurrentCard] = useState(false);
@@ -93,9 +94,7 @@ const Question = (props) => {
 			},
 			withCredentials: true,
 			url: api_endpoint + "/question/saveQuestion",
-		}).then((response) => {
-			// props.updateData();
-		});
+		}).then((response) => {});
 	};
 
 	return (
@@ -112,7 +111,7 @@ const Question = (props) => {
 					/>
 					<div className={`${classes.name}`}>
 						{props.userid.firstName} {props.userid.lastName}
-						<div className={classes["date"]}>20 January 2022</div>
+						<div className={classes["date"]}>{props.date}</div>
 					</div>
 				</div>
 				<div className={classes["options"]}>
