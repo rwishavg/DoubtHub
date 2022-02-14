@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === "development") {
 exports.addNewQuestion = async (req, res, next) => {
 	try {
 		new QuestionSchema({
-			username: req.body.username,
+			userid: req.body.userid,
 			heading: req.body.questionHeading,
 			description: req.body.description,
 		}).save((err, result) => {
@@ -28,9 +28,11 @@ exports.addNewQuestion = async (req, res, next) => {
 
 exports.getQuestions = async (req, res, next) => {
 	try {
-		QuestionSchema.find({}, function (err, questions) {
-			res.send(questions);
-		});
+		QuestionSchema.find()
+			.populate("userid", "firstName lastName profileIMG")
+			.exec((err, questions) => {
+				res.send(questions);
+			});
 	} catch (err) {
 		res.json(err);
 	}
@@ -51,9 +53,8 @@ exports.saveQuestion = async (req, res, next) => {
 		const result = await User.findOneAndUpdate(
 			{ emailID: req.body.email },
 			{ $push: { saved: req.body.id } },
-			{new: true}
+			{ new: true }
 		);
-		console.log(result);
 		res.send("Saved");
 	} catch (err) {
 		res.json(err);

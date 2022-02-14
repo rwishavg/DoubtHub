@@ -28,7 +28,7 @@ const NewQuestion = (props) => {
 		axios({
 			method: "POST",
 			data: {
-				username: user.username,
+				userid: user._id,
 				questionHeading: questionText,
 				description: description,
 			},

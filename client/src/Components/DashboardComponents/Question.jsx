@@ -96,7 +96,7 @@ const Question = (props) => {
 		}).then((response) => {
 			// props.updateData();
 		});
-	}
+	};
 
 	return (
 		<div
@@ -106,12 +106,12 @@ const Question = (props) => {
 			<div className={classes["content"]}>
 				<div className={classes["user"]}>
 					<img
-						src={user.profileIMG}
+						src={props.userid.profileIMG}
 						alt=""
 						className={`${classes.userPhoto}`}
 					/>
 					<div className={`${classes.name}`}>
-						{user.firstName} {user.lastName}
+						{props.userid.firstName} {props.userid.lastName}
 						<div className={classes["date"]}>20 January 2022</div>
 					</div>
 				</div>
@@ -122,12 +122,16 @@ const Question = (props) => {
 							className={classes["blueClass"]}
 							onClick={saveQuestion}
 						/>
-						<EditSvg style={{ stroke: "black" }} />
-						<DelSvg
-							style={{ stroke: "black" }}
-							className={classes["redClass"]}
-							onClick={deleteQuestion}
-						/>
+						{props.userid._id === user._id && (
+							<>
+								<EditSvg style={{ stroke: "black" }} />
+								<DelSvg
+									style={{ stroke: "black" }}
+									className={classes["redClass"]}
+									onClick={deleteQuestion}
+								/>
+							</>
+						)}
 						<RepSvg
 							style={{ stroke: "black" }}
 							className={classes["redClass"]}

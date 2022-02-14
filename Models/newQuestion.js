@@ -1,16 +1,16 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const { nanoid } = require("nanoid");
+// const userSchema = require("./newUser");
 const questionSchema = new Schema({
 	questionID: {
 		type: String,
 		default: nanoid(15),
 		required: false,
 	},
-	username: {
-		type: String,
-		default: "Name",
-		required: false,
+	userid: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "User",
 	},
 	createdAt: {
 		type: Date,
@@ -31,7 +31,9 @@ const questionSchema = new Schema({
 		default: 0,
 	},
 });
-module.exports = mongoose.model("question", questionSchema, "questionSchema");
+
+module.exports = mongoose.model("question", questionSchema, "Questions");
+
 /*
 	{
 		username: "raghav";
