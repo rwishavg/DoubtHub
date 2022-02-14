@@ -26,7 +26,7 @@ const Sidebar = (props) => {
 					/>
 					Dashboard
 				</Link>
-				<Link to="./login" className={`${classes.sidebarLink}`}>
+				<Link to="./myQuestions" className={`${classes.sidebarLink}`}>
 					<img
 						src={question}
 						className={`${classes.iconSmaller}`}
@@ -34,7 +34,7 @@ const Sidebar = (props) => {
 					/>
 					My Questions
 				</Link>
-				<Link to="./trending" className={`${classes.sidebarLink}`}>
+				<Link to="./saved" className={`${classes.sidebarLink}`}>
 					<img
 						src={saved}
 						className={`${classes.iconSmaller}`}

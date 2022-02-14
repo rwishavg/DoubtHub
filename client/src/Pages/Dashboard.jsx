@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Profile from "../Components/DashboardComponents/Profile";
 import AllQuestions from "../Components/DashboardComponents/AllQuestions";
+import MyQuestions from "../Components/DashboardComponents/MyQuestions";
 import Sidebar from "../Components/DashboardComponents/Sidebar";
 import Searchbar from "../Components/DashboardComponents/Searchbar";
 import "../Styles/page-styles/dashboard.css";
@@ -21,6 +22,12 @@ const Dashboard = () => {
 							path="/"
 							element={<AllQuestions />}
 						></Route>
+						<Route
+							exact
+							path="/myQuestions"
+							element={<MyQuestions />}
+						></Route>
+
 						<Route
 							exact
 							path="/profile"
