@@ -49,6 +49,6 @@ const userSchema = new Schema({
 	saved: {
 		type: [String],
 		default: ["abcd", "1234"],
- },
+	},
 });
-module.exports = mongoose.model("user", userSchema, "userSchema");
+module.exports = mongoose.model("User", userSchema, "User");

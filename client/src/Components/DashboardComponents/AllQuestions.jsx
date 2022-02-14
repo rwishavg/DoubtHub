@@ -11,6 +11,7 @@ const AllQuestions = () => {
 				withCredentials: true,
 			})
 			.then((response) => {
+				// console.log(response);
 				setQuestionData(response.data);
 			});
 	};
@@ -28,6 +29,7 @@ const AllQuestions = () => {
 			{questionData.map((question) => (
 				<Question
 					key={question._id}
+					userid={question.userid}
 					heading={question.heading}
 					description={question.description}
 					id={question._id}
