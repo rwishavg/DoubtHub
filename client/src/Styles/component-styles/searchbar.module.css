@@ -93,6 +93,7 @@
 
 @media screen and (max-width: 550px) {
 	.container {
+		padding-top: 2vh;
 		width: 90vw;
 		min-width: 0;
 		margin-left: 2vh;
