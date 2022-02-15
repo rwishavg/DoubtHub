@@ -1,8 +1,8 @@
 <div align="center"> 
   <p align='center'> 
-   <img src="https://img.shields.io/badge/Name%20-%20DoubtHUB-purple?style=for-the-badge" />
+   <img src="https://img.shields.io/badge/Name%20-%20DoubtHUB-blue?style=for-the-badge" />
    <img src="https://forthebadge.com/images/badges/built-with-love.svg" />
-   <img src="https://img.shields.io/badge/By-Rwishav+Raghav-red?style=for-the-badge" /><br>
+   <img src="https://img.shields.io/badge/By-Rwishav+Raghav-blue?style=for-the-badge" /><br>
    <img src="https://forthebadge.com/images/badges/made-with-javascript.svg" />
     <br>
    <img src="https://img.shields.io/badge/License-MIT-yellow.svg?logo=Microsoft%20Word&style=for-the-badge" /><br>
@@ -16,11 +16,12 @@
   <img src="https://img.shields.io/badge/Why%20%7C%20What%20it%20does-darkslategrey?logo=Windows%20Terminal&style=for-the-badge" /> 
 </div>
 
+It is a full stack web application that lets users post questions and get them answered or hold discussions. It had user authentication implemented along with Google Sign In. Built by members of the community for the community!
  <div align="center">
  <p>
  <br>
    <img src="https://img.shields.io/badge/License-MIT-yellow.svg?logo=Microsoft%20Word&style=for-the-badge" /><br>
-   <br><strong><Repo-Name></strong> is available under MIT License, read the LICENSE file for more info
+   <br><strong><Repo-Name></strong> It is available under the MIT License, read the LICENSE file for more info
   <p>
  </div>
  <hr>
@@ -42,26 +43,47 @@
 </div>
 
    ```
-   git clone https://github.com/rwishavg/PassportJS-OAuth.git  
+   1) git clone https://github.com/raghavmathur1/DoubtHub.git  
    ```   
 
    ```
-   npm install
+   2) npm install
    ```
-   ```
-   Create: /utils/config.env
-   ```
-   Add the following in config.env:
+   
+  ```
+  3) cd client
+  ```
+  ```
+  4) npm install
+  ```
+  
+  ```
+  5) Create: /utils/config.env
+  ```
+   Add the following as cofig variables to config.env:
    ```
    PORT=
    MONGO=
    NODE_ENV=
    G_CLIENT_ID=
    G_CLIENT_SECRET=
-   ```
-   ```
+  ```
+  
+Return to root directory
+
+For Development Server :
+  ```
    npm run both
-   ```
+  ```
+For Production Server :
+
+```
+cd client
+npm run build
+cd ..
+npm run start
+```
+
   
 <div align="center"> 
   <img src="https://img.shields.io/badge/Tech%20Stack%20Used-chocolate?logo=Tesla&style=for-the-badge" /> 
@@ -80,12 +102,12 @@
   - MongoDB
   
   Deployment
-  - NIL
+  - Heroku
   ```
   <br>
   
   <div align="center"> 
-  <img src="https://img.shields.io/badge/Contributors-black?logo=Github&style=for-the-badge" /> 
+  <img src="https://img.shields.io/badge/Team-black?logo=Github&style=for-the-badge" /> 
 </div>
   <br>
 
@@ -125,15 +147,10 @@ Raghav Mathur
 </a>
 </p>
 </td>
-
-
-
-
   </table>
 </tr>
 </div>
   <br>
-  
   
 <div align="center">
   <img src="https://img.shields.io/badge/Please%20star%20if%20you%20like%20it-lightcoral?logo=Starship&style=for-the-badge" width="300" height="35"/>
