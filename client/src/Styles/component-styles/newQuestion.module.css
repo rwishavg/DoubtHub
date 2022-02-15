@@ -64,7 +64,7 @@
 .buttonStyle {
 	margin-left: 3vh;
 	height: 1vh;
-	max-width: 5vw;
+	max-width: 10vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -102,4 +102,10 @@
 
 .filterIcon {
 	width: 2vh;
+}
+
+@media screen and (max-width: 650px) {
+	.newQuestion {
+		width: 100%;
+	}
 }
