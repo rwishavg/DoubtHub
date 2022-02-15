@@ -50,11 +50,10 @@ exports.deleteQuestion = async (req, res, next) => {
 
 exports.saveQuestion = async (req, res, next) => {
 	try {
-		const result = await User.findOneAndUpdate(
-			{ emailID: req.body.email },
-			{ $push: { saved: req.body.id } },
-			{ new: true }
-		);
+		const result = await User.findOne({ emailID: req.body.email });
+		result.saved.push({ question: req.body.id });
+		console.log(result);
+		await result.save();
 		res.send("Saved");
 	} catch (err) {
 		res.json(err);
