@@ -13,3 +13,18 @@
 	margin-left: 44vh;
 	/* overflow-x: hidden; */
 }
+
+@media screen and (max-width: 900px) {
+	.centerContent {
+		width: 90vw;
+		margin-left: 5vh;
+		padding-bottom: 6vh;
+	}
+}
+
+@media screen and (max-width: 550px) {
+	.centerContent {
+		min-width: 0;
+		margin-left: 2vh;
+	}
+}

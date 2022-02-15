@@ -60,3 +60,19 @@ exports.saveQuestion = async (req, res, next) => {
 		res.json(err);
 	}
 };
+
+exports.myQuestions = async (req, res, next) => {
+	try {
+		// console.log(req.body.emailID);
+		QuestionSchema.find()
+			.populate("userid", "firstName lastName profileIMG emailID")
+			.exec((err, questions) => {
+				const result = questions.filter(
+					(question) => question.userid.emailID === req.body.emailID
+				);
+				res.send(result);
+			});
+	} catch (err) {
+		res.json(err);
+	}
+};

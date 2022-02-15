@@ -83,3 +83,18 @@
 	justify-content: space-between;
 	align-items: center;
 }
+
+@media screen and (max-width: 900px) {
+	.container {
+		margin-left: 5vh;
+		width: 90vw;
+	}
+}
+
+@media screen and (max-width: 550px) {
+	.container {
+		width: 90vw;
+		min-width: 0;
+		margin-left: 2vh;
+	}
+}

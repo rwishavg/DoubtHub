@@ -24,31 +24,34 @@ const Sidebar = (props) => {
 						className={`${classes.iconSmaller}`}
 						alt="icon"
 					/>
-					Dashboard
+					<div className={`${classes.hide}`}>Dashboard</div>
 				</Link>
-				<Link to="./login" className={`${classes.sidebarLink}`}>
+				<Link
+					to="./myQuestions"
+					className={`${classes.sidebarLink} ${classes.hide}`}
+				>
 					<img
 						src={question}
 						className={`${classes.iconSmaller}`}
 						alt="icon"
 					/>
-					My Questions
+					<div className={`${classes.hide}`}>My Questions</div>
 				</Link>
-				<Link to="./trending" className={`${classes.sidebarLink}`}>
+				<Link to="./saved" className={`${classes.sidebarLink}`}>
 					<img
 						src={saved}
 						className={`${classes.iconSmaller}`}
 						alt="icon"
 					/>
-					Saved
+					<div className={`${classes.hide}`}>Saved</div>
 				</Link>
 				<Link to="./settings" className={`${classes.sidebarLink}`}>
 					<img
 						src={settings}
-						className={`${classes.iconSmaller}`}
+						className={`${classes.iconSmaller} `}
 						alt="icon"
 					/>
-					Settings
+					<div className={`${classes.hide}`}>Settings</div>
 				</Link>
 				<Link to="./profile" className={`${classes.sidebarLink}`}>
 					<img
@@ -56,7 +59,7 @@ const Sidebar = (props) => {
 						className={`${classes.iconSmaller}`}
 						alt="icon"
 					/>
-					Profile
+					<div className={`${classes.hide}`}>Profile</div>
 				</Link>
 				<a
 					href={api_endpoint + "/user/logout"}
@@ -67,7 +70,7 @@ const Sidebar = (props) => {
 						className={`${classes.iconSmaller}`}
 						alt="icon"
 					/>
-					Logout
+					<div className={`${classes.hide}`}>Logout</div>
 				</a>
 				<div className={`cardComponent ${classes.userCard}`}>
 					<img
@@ -75,7 +78,7 @@ const Sidebar = (props) => {
 						alt=""
 						className={`${classes.userPhoto}`}
 					/>
-					<div className={`${classes.name}`}>
+					<div className={`${classes.name} ${classes.hide}`}>
 						{user.firstName} {user.lastName}
 					</div>
 				</div>
