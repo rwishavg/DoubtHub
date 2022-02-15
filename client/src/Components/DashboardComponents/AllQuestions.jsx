@@ -2,28 +2,8 @@ import React, { useEffect, useState } from "react";
 import Question from "./Question";
 import NewQuestion from "./NewQuestion";
 import axios from "axios";
-const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
-const AllQuestions = () => {
-	const [questionData, setQuestionData] = useState([]);
-	const getData = () => {
-		axios
-			.get(api_endpoint + "/question/getQuestions", {
-				withCredentials: true,
-			})
-			.then((response) => {
-				// console.log(response);
-				setQuestionData(response.data);
-			});
-	};
-	useEffect(() => {
-		getData();
-	}, []);
-
-	useEffect(() => {
-		console.log(questionData);
-	}, [questionData]);
-
+const AllQuestions = (props) => {
 	let convertDate = (createdAt) => {
 		let result = createdAt.substring(0, 10);
 		let day = result.substring(8, 10);
@@ -44,19 +24,19 @@ const AllQuestions = () => {
 		result = day + " " + month + " " + year;
 		console.log(result);
 		return result;
-	}
+	};
 
 	return (
 		<div>
-			<NewQuestion updateFunction={getData} prevData={questionData} />
-			{questionData.map((question) => (
+			<NewQuestion updateFunction={props.getData} prevData={props.data} />
+			{props.data.map((question) => (
 				<Question
 					key={question._id}
 					userid={question.userid}
 					heading={question.heading}
 					description={question.description}
 					id={question._id}
-					updateData={getData}
+					updateData={props.getData}
 					date={convertDate(question.createdAt)}
 				/>
 			))}
