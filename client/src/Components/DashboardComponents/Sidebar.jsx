@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import Logo from "../../Assets/DoubtHub Logo.png";
 import { Link } from "react-router-dom";
 import home from "../../Assets/Icons/home.svg";
@@ -7,8 +7,10 @@ import saved from "../../Assets/Icons/saved.svg";
 import question from "../../Assets/Icons/question.svg";
 import logout from "../../Assets/Icons/logout.svg";
 import profile from "../../Assets/Icons/profile.svg";
+import menuIcon from "../../Assets/Icons/menu.svg";
 import classes from "../../Styles/component-styles/sidebar.module.css";
 import { userObjectContext } from "../../Context";
+
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
 const Sidebar = (props) => {
@@ -67,11 +69,17 @@ const Sidebar = (props) => {
 				>
 					<img
 						src={logout}
-						className={`${classes.iconSmaller}`}
+						className={`${classes.iconSmaller} ${classes.hide}`}
 						alt="icon"
 					/>
 					<div className={`${classes.hide}`}>Logout</div>
 				</a>
+					<img
+						onClick={() => props.setMenu(!props.menu)}
+						src={menuIcon}
+						className={`${classes.iconSmaller} ${classes.unhide}`}
+						alt="icon"
+					/>
 				<div className={`cardComponent ${classes.userCard}`}>
 					<img
 						src={user.profileIMG}
