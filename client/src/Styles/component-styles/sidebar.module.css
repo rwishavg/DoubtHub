@@ -62,9 +62,16 @@
 	margin: 0 2vh 0 2vh;
 }
 
+.unhide{
+	display: none;
+}
+
 @media screen and (max-width: 900px) {
 	.hide {
 		display: none;
+	}
+	.unhide {
+		display: block;
 	}
 	.eventCard {
 		display: none;

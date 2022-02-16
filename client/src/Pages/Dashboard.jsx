@@ -6,12 +6,14 @@ import MyQuestions from "../Components/DashboardComponents/MyQuestions";
 import Sidebar from "../Components/DashboardComponents/Sidebar";
 import Searchbar from "../Components/DashboardComponents/Searchbar";
 import "../Styles/page-styles/dashboard.css";
+import Menu from "../Components/DashboardComponents/Menu";
 import { userObjectContext } from "../Context";
 import axios from "axios";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 const Dashboard = () => {
 	// const createQuestion = () => {};
 	const [questionData, setQuestionData] = useState([]);
+	const [menu, setMenu] = useState(false);
 	const getData = () => {
 		axios
 			.get(api_endpoint + "/question/getQuestions", {
@@ -34,8 +36,9 @@ const Dashboard = () => {
 	if (isAuthenticated === true) {
 		return (
 			<div className="container">
-				<Sidebar />
+				<Sidebar setMenu={setMenu} menu={menu}/>
 				<Searchbar />
+				<Menu menu={menu}/>
 				<div className="centerContent">
 					<Routes>
 						<Route

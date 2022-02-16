@@ -10,10 +10,10 @@ import profile from "../../Assets/Icons/profile.svg";
 import menuIcon from "../../Assets/Icons/menu.svg";
 import classes from "../../Styles/component-styles/sidebar.module.css";
 import { userObjectContext } from "../../Context";
+
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
 const Sidebar = (props) => {
-	const [menu, setMenu] = useState(false);
 	const [user, isAuthenticated] = useContext(userObjectContext);
 	return (
 		<div className={`${classes.sidebarContainer}`}>
@@ -63,21 +63,21 @@ const Sidebar = (props) => {
 					/>
 					<div className={`${classes.hide}`}>Profile</div>
 				</Link>
-				{/* <a
+				<a
 					href={api_endpoint + "/user/logout"}
 					className={`${classes.sidebarLink}`}
 				>
 					<img
 						src={logout}
-						className={`${classes.iconSmaller}`}
+						className={`${classes.iconSmaller} ${classes.hide}`}
 						alt="icon"
 					/>
 					<div className={`${classes.hide}`}>Logout</div>
-				</a> */}
+				</a>
 					<img
-						onClick={() => setMenu(!menu)}
+						onClick={() => props.setMenu(!props.menu)}
 						src={menuIcon}
-						className={`${classes.iconSmaller}`}
+						className={`${classes.iconSmaller} ${classes.unhide}`}
 						alt="icon"
 					/>
 				<div className={`cardComponent ${classes.userCard}`}>
