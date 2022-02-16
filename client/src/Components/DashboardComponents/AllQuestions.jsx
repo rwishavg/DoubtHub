@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Question from "./Question";
 import NewQuestion from "./NewQuestion";
-import axios from "axios";
 
 const AllQuestions = (props) => {
 	let convertDate = (createdAt) => {
