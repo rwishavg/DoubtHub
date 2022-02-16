@@ -1,8 +1,26 @@
-import React from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Question from "./Question";
-import NewQuestion from "./NewQuestion";
+import { userObjectContext } from "../../Context";
+import axios from "axios";
+const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
-const AllQuestions = (props) => {
+const Saved = (props) => {
+	const [user, isAuthenticated] = useContext(userObjectContext);
+	const [savedData, setSavedData] = useState([]);
+	useEffect(() => {
+		props.getData();
+		axios({
+			method: "POST",
+			data: {
+				saved: user.saved,
+			},
+			withCredentials: true,
+			url: api_endpoint + "/question/getSavedQuestions",
+		}).then((response) => {
+			setSavedData(response.data);
+		});
+	}, []);
+
 	let convertDate = (createdAt) => {
 		let result = createdAt.substring(0, 10);
 		let day = result.substring(8, 10);
@@ -26,15 +44,14 @@ const AllQuestions = (props) => {
 
 	return (
 		<div>
-			<NewQuestion updateFunction={props.getData} prevData={props.data} />
-			{props.data.map((question) => (
+			{savedData.map((question) => (
 				<Question
 					key={question._id}
 					userid={question.userid}
 					heading={question.heading}
 					description={question.description}
 					id={question._id}
-					updateData={props.getData}
+					// updateData={getData}
 					date={convertDate(question.createdAt)}
 				/>
 			))}
@@ -42,4 +59,4 @@ const AllQuestions = (props) => {
 	);
 };
 
-export default AllQuestions;
+export default Saved;

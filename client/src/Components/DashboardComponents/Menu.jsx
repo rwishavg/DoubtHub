@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 const Menu = ({ menu }) => {
-	console.log(menu);
 	return (
 		<DevContainer menuStatus={menu}>
 			<H1>Rwishav Ghosh</H1>

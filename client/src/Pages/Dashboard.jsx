@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Profile from "../Components/DashboardComponents/Profile";
 import AllQuestions from "../Components/DashboardComponents/AllQuestions";
 import MyQuestions from "../Components/DashboardComponents/MyQuestions";
+import Saved from "../Components/DashboardComponents/Saved";
 import Sidebar from "../Components/DashboardComponents/Sidebar";
 import Searchbar from "../Components/DashboardComponents/Searchbar";
 import "../Styles/page-styles/dashboard.css";
@@ -27,10 +28,6 @@ const Dashboard = () => {
 	useEffect(() => {
 		getData();
 	}, []);
-
-	useEffect(() => {
-		console.log(questionData);
-	}, [questionData]);
 
 	const isAuthenticated = useContext(userObjectContext)[1];
 	if (isAuthenticated === true) {
@@ -59,6 +56,13 @@ const Dashboard = () => {
 									data={questionData}
 									getData={setQuestionData}
 								/>
+							}
+						></Route>
+						<Route
+							exact
+							path="/saved"
+							element={
+								<Saved data={questionData} getData={getData} />
 							}
 						></Route>
 
