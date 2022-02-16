@@ -23,10 +23,10 @@ const DevContainer = styled.div`
 	box-shadow: 2px 2px 50px rgb(204, 204, 204);
 	user-select: none;
 	overflow: scroll;
-	// transform: translateX(${(p) => (p.menuStatus ? "0%" : "100%")});
+	transform: translateX(${(p) => (p.menuStatus ? "0%" : "100%")});
 	transition: all 0.3s ease;
 	opacity: ${(p) => (p.menuStatus ? "100" : "0")};
-	// opacity: 1;
+
 	scrollbar-width: thin;
 	scrollbar-color: rgba(155, 155, 155, 0.5) tranparent;
 	&::-webkit-scrollbar {
@@ -36,7 +36,7 @@ const DevContainer = styled.div`
 		background: transparent;
 	}
 	@media screen and (max-width: 768px) {
-		height : 100%;
+		height: 100%;
 		box-shadow: none;
 		width: 100%;
 		z-index: 9;

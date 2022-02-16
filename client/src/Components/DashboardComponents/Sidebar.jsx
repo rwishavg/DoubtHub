@@ -9,6 +9,7 @@ import logout from "../../Assets/Icons/logout.svg";
 import profile from "../../Assets/Icons/profile.svg";
 import menuIcon from "../../Assets/Icons/menu.svg";
 import classes from "../../Styles/component-styles/sidebar.module.css";
+import { Home } from "../../Assets/Icons/Icons";
 import { userObjectContext } from "../../Context";
 
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
@@ -26,6 +27,7 @@ const Sidebar = (props) => {
 						className={`${classes.iconSmaller}`}
 						alt="icon"
 					/>
+					{/* <Home className={`${classes.iconSmaller}`} /> */}
 					<div className={`${classes.hide}`}>Dashboard</div>
 				</Link>
 				<Link
@@ -74,12 +76,12 @@ const Sidebar = (props) => {
 					/>
 					<div className={`${classes.hide}`}>Logout</div>
 				</a>
-					<img
-						onClick={() => props.setMenu(!props.menu)}
-						src={menuIcon}
-						className={`${classes.iconSmaller} ${classes.unhide}`}
-						alt="icon"
-					/>
+				<img
+					onClick={() => props.setMenu(!props.menu)}
+					src={menuIcon}
+					className={`${classes.iconSmaller} ${classes.unhide}`}
+					alt="icon"
+				/>
 				<div className={`cardComponent ${classes.userCard}`}>
 					<img
 						src={user.profileIMG}
