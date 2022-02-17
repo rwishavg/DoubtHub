@@ -21,7 +21,6 @@ const AllQuestions = (props) => {
 		else if (month === "11") month = "Nov";
 		else if (month === "12") month = "Dec";
 		result = day + " " + month + " " + year;
-		console.log(result);
 		return result;
 	};
 
@@ -43,4 +42,4 @@ const AllQuestions = (props) => {
 	);
 };
 
-export default AllQuestions;
+export default React.memo(AllQuestions);

@@ -1,4 +1,5 @@
 const dotenv = require("dotenv");
+const { exists } = require("../Models/newQuestion");
 const QuestionSchema = require("../Models/newQuestion");
 const User = require("../Models/newUser");
 
@@ -17,6 +18,7 @@ exports.addNewQuestion = async (req, res, next) => {
 			userid: req.body.userid,
 			heading: req.body.questionHeading,
 			description: req.body.description,
+			createdAt: Date.now(),
 		}).save((err, result) => {
 			// console.log(result);
 			res.send(result);
@@ -30,9 +32,55 @@ exports.getQuestions = async (req, res, next) => {
 	try {
 		QuestionSchema.find()
 			.populate("userid", "firstName lastName profileIMG")
+			.sort({ createdAt: -1 })
 			.exec((err, questions) => {
 				res.send(questions);
 			});
+	} catch (err) {
+		res.json(err);
+	}
+};
+
+exports.getSavedQuestions = async (req, res, next) => {
+	try {
+		let allPromise = [];
+		req.body.saved.map((id) => {
+			let promise = new Promise(function (resolve, reject) {
+				QuestionSchema.findOne({
+					_id: id,
+				})
+					.populate("userid", "firstName lastName profileIMG")
+					.exec((err, question) => {
+						if (question === null) {
+							resolve({
+								exists: false,
+								_id: id,
+								questionID: "",
+								userid: {
+									_id: "",
+									firstName: "",
+									lastName: "",
+									profileIMG: "",
+								},
+								createdAt: "",
+								heading: "",
+								description: "",
+								likes: 0,
+								__v: 0,
+							});
+							// console.log(question.exists);
+						} else {
+							resolve(question);
+						}
+					});
+			});
+			allPromise.push(promise);
+		});
+
+		Promise.all(allPromise).then((values) => {
+			// console.log(values);
+			res.send(values);
+		});
 	} catch (err) {
 		res.json(err);
 	}
@@ -50,11 +98,17 @@ exports.deleteQuestion = async (req, res, next) => {
 
 exports.saveQuestion = async (req, res, next) => {
 	try {
-		const result = await User.findOne({ emailID: req.body.email });
-		result.saved.push({ question: req.body.id });
-		console.log(result);
-		await result.save();
-		res.send("Saved");
+		const userData = await User.findOne({ emailID: req.body.email });
+		var i = userData.saved.indexOf(req.body.id);
+		if (i === -1) {
+			userData.saved.push(req.body.id);
+			userData.save();
+			res.send("Added");
+		} else {
+			userData.saved.splice(i, 1);
+			userData.save();
+			res.send("Removed");
+		}
 	} catch (err) {
 		res.json(err);
 	}

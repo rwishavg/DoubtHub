@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import settings from "../../Assets/Icons/settings.svg";
@@ -9,12 +9,25 @@ import logout from "../../Assets/Icons/logout.svg";
 import { userObjectContext } from "../../Context";
 
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
-
+const inactiveStyle = {
+	transform: "translateY(100%)",
+	opacity: "0",
+};
+const activeStyle = {
+	transform: "translateY(0%)",
+	opacity: "1",
+};
 const Menu = ({ menu, setMenu }) => {
 	const [user, isAuthenticated] = useContext(userObjectContext);
-	console.log(menu);
+	const [menuStyle, setMenuStyle] = useState(inactiveStyle);
+	// console.log(menu);
+	useEffect(() => {
+		if (menu === false) setMenuStyle(inactiveStyle);
+		else setMenuStyle(activeStyle);
+	}, [menu]);
+
 	return (
-		<DevContainer menuStatus={menu}>
+		<div className={`${classes.container}`} style={menuStyle}>
 			<div className={`cardComponent ${classes.userCard}`}>
 				<div className={`${classes.name}`}>
 					{user.firstName} {user.lastName}
@@ -68,35 +81,11 @@ const Menu = ({ menu, setMenu }) => {
 				/>
 				<div className={`${classes.hide}`}>Logout</div>
 			</a>
-		</DevContainer>
+		</div>
 	);
 };
 
 //style for dev container
-const DevContainer = styled.div`
-	position: fixed;
-	z-index: 9;
-	top: 0;
-	right: 0;
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	width: 25rem;
-	height: 100%;
-	background-color: white;
-	box-shadow: 2px 2px 50px rgb(204, 204, 204);
-	user-select: none;
-	overflow: scroll;
-	transform: translateY(${(p) => (p.menuStatus ? "0%" : "100%")});
-	transition: all 0.3s ease;
-	opacity: ${(p) => (p.menuStatus ? "100" : "0")};
-	@media screen and (max-width: 768px) {
-		padding-top: 29vh;
-		height: 100%;
-		box-shadow: none;
-		width: 100%;
-		z-index: 9;
-	}
-`;
+const DevContainer = styled.div``;
 
-export default Menu;
+export default React.memo(Menu);

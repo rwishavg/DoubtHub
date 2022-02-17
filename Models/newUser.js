@@ -46,13 +46,6 @@ const userSchema = new Schema({
 		unique: true,
 		default: nanoid(10),
 	},
-	saved: [
-		{
-			question: {
-				type: mongoose.Schema.Types.ObjectId,
-				ref: "Questions",
-			},
-		},
-	],
+	saved: [mongoose.Schema.Types.ObjectId],
 });
 module.exports = mongoose.model("User", userSchema, "User");
