@@ -1,0 +1,38 @@
+.sidebarLink {
+	display: flex;
+	align-items: center;
+	width: 70%;
+	font-weight: 500;
+	font-size: 2vh;
+	letter-spacing: 0.2vh;
+	margin: 1vh 0;
+}
+
+.userCard {
+	margin-top: 50vh;
+	width: 90%;
+	height: 9vh;
+	position: absolute;
+	display: flex;
+	align-items: center;
+}
+
+.userPhoto {
+	border-radius: 1000%;
+	width: 6vh;
+	height: 6vh;
+	margin: 0 0 0 2vh;
+}
+
+.name {
+	margin: 0 auto;
+	color: #6e7191;
+	font-weight: 600;
+	font-size: 1.8vh;
+	letter-spacing: 0.2vh;
+}
+
+.iconSmaller {
+	width: 2.3vh;
+	margin: 0 2vh 0 2vh;
+}

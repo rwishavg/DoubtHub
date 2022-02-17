@@ -1,12 +1,73 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import settings from "../../Assets/Icons/settings.svg";
+import classes from "../../Styles/component-styles/menu.module.css";
+import home from "../../Assets/Icons/home.svg";
+import question from "../../Assets/Icons/question.svg";
+import logout from "../../Assets/Icons/logout.svg";
+import { userObjectContext } from "../../Context";
 
-const Menu = ({ menu }) => {
+const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
+
+const Menu = ({ menu, setMenu }) => {
+	const [user, isAuthenticated] = useContext(userObjectContext);
 	console.log(menu);
 	return (
 		<DevContainer menuStatus={menu}>
-			<H1>Rwishav Ghosh</H1>
-			<H3>Software Engineer</H3>
+			<div className={`cardComponent ${classes.userCard}`}>
+				<div className={`${classes.name}`}>
+					{user.firstName} {user.lastName}
+				</div>
+			</div>
+			<Link
+				to="/dashboard"
+				className={`${classes.sidebarLink}`}
+				onClick={(e) => setMenu(!menu)}
+			>
+				<img
+					src={home}
+					className={`${classes.iconSmaller}`}
+					alt="icon"
+				/>
+				<div className={`${classes.hide}`}>Dashboard</div>
+			</Link>
+			<Link
+				to="./settings"
+				className={`${classes.sidebarLink}`}
+				onClick={(e) => setMenu(!menu)}
+			>
+				<img
+					src={settings}
+					className={`${classes.iconSmaller} `}
+					alt="icon"
+				/>
+				<div className={`${classes.hide}`}>Settings</div>
+			</Link>
+			<Link
+				to="./myQuestions"
+				className={`${classes.sidebarLink} ${classes.hide}`}
+				onClick={(e) => setMenu(!menu)}
+			>
+				<img
+					src={question}
+					className={`${classes.iconSmaller}`}
+					alt="icon"
+				/>
+				<div className={`${classes.hide}`}>My Questions</div>
+			</Link>
+			<a
+				onClick={(e) => setMenu(!menu)}
+				href={api_endpoint + "/user/logout"}
+				className={`${classes.sidebarLink}`}
+			>
+				<img
+					src={logout}
+					className={`${classes.iconSmaller}`}
+					alt="icon"
+				/>
+				<div className={`${classes.hide}`}>Logout</div>
+			</a>
 		</DevContainer>
 	);
 };
@@ -17,44 +78,25 @@ const DevContainer = styled.div`
 	z-index: 9;
 	top: 0;
 	right: 0;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
 	width: 25rem;
 	height: 100%;
 	background-color: white;
 	box-shadow: 2px 2px 50px rgb(204, 204, 204);
 	user-select: none;
 	overflow: scroll;
-	transform: translateX(${(p) => (p.menuStatus ? "0%" : "100%")});
+	transform: translateY(${(p) => (p.menuStatus ? "0%" : "100%")});
 	transition: all 0.3s ease;
 	opacity: ${(p) => (p.menuStatus ? "100" : "0")};
-
-	scrollbar-width: thin;
-	scrollbar-color: rgba(155, 155, 155, 0.5) tranparent;
-	&::-webkit-scrollbar {
-		width: 5px;
-	}
-	&::-webkit-scrollbar-track {
-		background: transparent;
-	}
 	@media screen and (max-width: 768px) {
+		padding-top: 29vh;
 		height: 100%;
 		box-shadow: none;
 		width: 100%;
 		z-index: 9;
 	}
-`;
-
-//style for dev name
-const H1 = styled.h2`
-	display: flex;
-	justify-content: center;
-	margin-top: 2rem;
-	padding: 1rem;
-`;
-
-//style for dev title
-const H3 = styled.h3`
-	display: flex;
-	justify-content: center;
 `;
 
 export default Menu;
