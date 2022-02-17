@@ -1,6 +1,17 @@
 :root {
 	background-color: #fcfcfc;
+	overflow-x: hidden;
 }
+body::-webkit-scrollbar {
+	overflow-x: hidden;
+	width: 0.5vh;
+}
+
+body::-webkit-scrollbar-thumb {
+	background-color: #7653d4;
+	border-radius: 20px;
+}
+
 .cardComponent {
 	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 	border-radius: 15px;

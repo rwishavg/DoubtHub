@@ -36,7 +36,7 @@ const Dashboard = () => {
 	if (isAuthenticated === true) {
 		return (
 			<div className="container">
-				<Sidebar setMenu={setMenu} menu={menu}/>
+				<Sidebar setMenu={setMenu} menu={menu} />
 				<Searchbar />
 				<Menu menu={menu} setMenu={setMenu}/>
 				<div className="centerContent">
@@ -57,7 +57,7 @@ const Dashboard = () => {
 							element={
 								<MyQuestions
 									data={questionData}
-									getData={getData}
+									getData={setQuestionData}
 								/>
 							}
 						></Route>

@@ -81,7 +81,7 @@ const Question = (props) => {
 			withCredentials: true,
 			url: api_endpoint + "/question/delete",
 		}).then((response) => {
-			props.updateData();
+			props.updateData(response);
 		});
 	};
 
