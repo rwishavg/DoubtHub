@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, {useContext } from "react";
 import Logo from "../../Assets/DoubtHub Logo.png";
 import { Link } from "react-router-dom";
 import home from "../../Assets/Icons/home.svg";
@@ -20,7 +20,7 @@ const Sidebar = (props) => {
 			<div className={`cardComponent ${classes.sidebarComponent}`}>
 				<img src={Logo} alt="" className={`${classes.logo}`} />
 				<div className={`cardComponent ${classes.eventCard}`}></div>
-				<Link to="/dashboard" className={`${classes.sidebarLink}`}>
+				<Link to="/dashboard" className={`${classes.sidebarLink}`} onClick={() => props.setMenu(false)}>
 					<img
 						src={home}
 						className={`${classes.iconSmaller}`}
@@ -31,6 +31,7 @@ const Sidebar = (props) => {
 				<Link
 					to="./myQuestions"
 					className={`${classes.sidebarLink} ${classes.hide}`}
+					onClick={() => props.setMenu(false)}
 				>
 					<img
 						src={question}
@@ -39,7 +40,7 @@ const Sidebar = (props) => {
 					/>
 					<div className={`${classes.hide}`}>My Questions</div>
 				</Link>
-				<Link to="./saved" className={`${classes.sidebarLink}`}>
+				<Link to="./saved" className={`${classes.sidebarLink}`} onClick={() => props.setMenu(false)}>
 					<img
 						src={saved}
 						className={`${classes.iconSmaller}`}
@@ -47,7 +48,7 @@ const Sidebar = (props) => {
 					/>
 					<div className={`${classes.hide}`}>Saved</div>
 				</Link>
-				<Link to="./settings" className={`${classes.sidebarLink}`}>
+				<Link to="./settings" className={`${classes.sidebarLink}`} onClick={() => props.setMenu(false)}>
 					<img
 						src={settings}
 						className={`${classes.iconSmaller} `}
@@ -55,7 +56,7 @@ const Sidebar = (props) => {
 					/>
 					<div className={`${classes.hide}`}>Settings</div>
 				</Link>
-				<Link to="./profile" className={`${classes.sidebarLink}`}>
+				<Link to="./profile" className={`${classes.sidebarLink}`} onClick={() => props.setMenu(false)}>
 					<img
 						src={profile}
 						className={`${classes.iconSmaller}`}

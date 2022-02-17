@@ -38,7 +38,7 @@ const Dashboard = () => {
 			<div className="container">
 				<Sidebar setMenu={setMenu} menu={menu}/>
 				<Searchbar />
-				<Menu menu={menu}/>
+				<Menu menu={menu} setMenu={setMenu}/>
 				<div className="centerContent">
 					<Routes>
 						<Route
