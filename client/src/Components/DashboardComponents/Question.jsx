@@ -81,7 +81,7 @@ const Question = (props) => {
 			withCredentials: true,
 			url: api_endpoint + "/question/delete",
 		}).then((response) => {
-			props.updateData();
+			props.updateData(response);
 		});
 	};
 
@@ -94,9 +94,11 @@ const Question = (props) => {
 			},
 			withCredentials: true,
 			url: api_endpoint + "/question/saveQuestion",
-		}).then((response) => {});
+		}).then((response) => {
+			console.log(response);
+			alert("Question " + response.data + " in bookmarks");
+		});
 	};
-
 	return (
 		<div
 			className={`cardComponent ${classes.questionComponent}`}

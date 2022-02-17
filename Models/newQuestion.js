@@ -14,7 +14,7 @@ const questionSchema = new Schema({
 	},
 	createdAt: {
 		type: Date,
-		default: Date.now(),
+		unique: true,
 	},
 	heading: {
 		type: String,

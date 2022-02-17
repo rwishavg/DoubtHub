@@ -1,13 +1,14 @@
 .container {
 	display: flex;
 	flex-direction: column;
-	width: 99vw;
+	width: 100vw;
 	position: relative;
 	padding-bottom: 4vh;
 }
 
 .centerContent {
-	margin-top: 16vh;
+	padding-top: 4vh;
+	margin-top: 12vh;
 	width: 45vw;
 	min-width: 500px;
 	margin-left: 44vh;
@@ -15,16 +16,22 @@
 }
 
 @media screen and (max-width: 900px) {
+	.container {
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		padding-bottom: 4vh;
+	}
+
 	.centerContent {
 		width: 90vw;
-		margin-left: 5vh;
 		padding-bottom: 6vh;
+		margin-left: 4.5vw;
 	}
 }
 
 @media screen and (max-width: 550px) {
 	.centerContent {
 		min-width: 0;
-		margin-left: 2vh;
 	}
 }
