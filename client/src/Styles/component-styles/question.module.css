@@ -5,6 +5,7 @@
 	max-height: 35vh;
 	padding-bottom: 3vh;
 	overflow-y: hidden;
+	overflow-x: hidden;
 	position: relative;
 }
 

@@ -53,3 +53,4 @@ app.listen(process.env.PORT || 5000, () => {
 	console.log(process.env.PORT);
 	console.log(`Server running at port ${process.env.PORT}`.green.inverse);
 });
+//MONGO="mongodb+srv://raghav:123pass@cluster0.uylba.mongodb.net/DoubtHUB?retryWrites=true&w=majority"
