@@ -6,6 +6,7 @@ import MyQuestions from "../Components/DashboardComponents/MyQuestions";
 import Saved from "../Components/DashboardComponents/Saved";
 import Sidebar from "../Components/DashboardComponents/Sidebar";
 import Searchbar from "../Components/DashboardComponents/Searchbar";
+import Settings from "../Components/DashboardComponents/Settings";
 import "../Styles/page-styles/dashboard.css";
 import Menu from "../Components/DashboardComponents/Menu";
 import { userObjectContext } from "../Context";
@@ -13,7 +14,10 @@ import axios from "axios";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 const Dashboard = () => {
 	// const createQuestion = () => {};
+	const [user, isAuthenticated] = useContext(userObjectContext);
 	const [questionData, setQuestionData] = useState([]);
+	const [myData, setMyData] = useState([]);
+	const [savedData, setSavedData] = useState([]);
 	const [menu, setMenu] = useState(false);
 	const getData = () => {
 		axios
@@ -24,6 +28,19 @@ const Dashboard = () => {
 				// console.log(response);
 				setQuestionData(response.data);
 			});
+	};
+	const myDataFunc = () => {
+		axios({
+			method: "POST",
+			data: {
+				emailID: user.emailID,
+			},
+			withCredentials: true,
+			url: api_endpoint + "/question/myQuestions",
+		}).then((response) => {
+			setMyData(response.data);
+			getData();
+		});
 	};
 	useEffect(() => {
 		getData();
@@ -49,8 +66,6 @@ const Dashboard = () => {
 		result = day + " " + month + " " + year;
 		return result;
 	};
-
-	const isAuthenticated = useContext(userObjectContext)[1];
 	if (isAuthenticated === true) {
 		return (
 			<div className="container">
@@ -74,8 +89,8 @@ const Dashboard = () => {
 							path="/myQuestions"
 							element={
 								<MyQuestions
-									data={questionData}
-									getData={setQuestionData}
+									data={myData}
+									getData={myDataFunc}
 									convertDate={convertDate}
 								/>
 							}
@@ -85,9 +100,10 @@ const Dashboard = () => {
 							path="/saved"
 							element={
 								<Saved
-									data={questionData}
+									data={savedData}
 									getData={getData}
 									convertDate={convertDate}
+									setData={setSavedData}
 								/>
 							}
 						></Route>
@@ -96,6 +112,11 @@ const Dashboard = () => {
 							exact
 							path="/profile"
 							element={<Profile />}
+						></Route>
+						<Route
+							exact
+							path="/settings"
+							element={<Settings />}
 						></Route>
 					</Routes>
 				</div>

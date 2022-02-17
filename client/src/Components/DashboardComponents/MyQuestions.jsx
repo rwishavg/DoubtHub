@@ -3,36 +3,37 @@ import Question from "./Question";
 import { userObjectContext } from "../../Context";
 import axios from "axios";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
-
+const zeroStyle = {
+	margin: "0 auto",
+	width: "100%",
+	// display: "flex",
+	// justifyContent: "center",
+	marginTop: "4vh",
+	marginLeft: "4vh",
+	fontWeight: "300",
+	color: "#666666",
+};
 const AllQuestions = (props) => {
-	const [questionData, setQuestionData] = useState([]);
-	const [user, isAuthenticated] = useContext(userObjectContext);
-	const getData = () => {
-		axios({
-			method: "POST",
-			data: {
-				emailID: user.emailID,
-			},
-			withCredentials: true,
-			url: api_endpoint + "/question/myQuestions",
-		}).then((response) => {
-			setQuestionData(response.data);
-		});
-	};
 	useEffect(() => {
-		getData();
+		props.getData();
 	}, []);
 
 	return (
 		<div>
-			{questionData.map((question) => (
+			{props.data.length === 0 && (
+				<div style={zeroStyle}>
+					Its lonely here. <br />
+					Add some questions...
+				</div>
+			)}
+			{props.data.map((question) => (
 				<Question
 					key={question._id}
 					userid={question.userid}
 					heading={question.heading}
 					description={question.description}
 					id={question._id}
-					updateData={getData}
+					updateData={props.getData}
 					date={props.convertDate(question.createdAt)}
 				/>
 			))}

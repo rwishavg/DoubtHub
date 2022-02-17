@@ -1,7 +1,16 @@
 import React from "react";
 import Question from "./Question";
 import NewQuestion from "./NewQuestion";
-
+const zeroStyle = {
+	margin: "0 auto",
+	width: "100%",
+	// display: "flex",
+	// justifyContent: "center",
+	marginTop: "4vh",
+	marginLeft: "4vh",
+	fontWeight: "300",
+	color: "#666666",
+};
 const AllQuestions = (props) => {
 	let convertDate = (createdAt) => {
 		let result = createdAt.substring(0, 10);
@@ -27,6 +36,12 @@ const AllQuestions = (props) => {
 	return (
 		<div>
 			<NewQuestion updateFunction={props.getData} prevData={props.data} />
+			{props.data.length === 0 && (
+				<div style={zeroStyle}>
+					Its lonely here. <br />
+					Add some questions...
+				</div>
+			)}
 			{props.data.map((question) => (
 				<Question
 					key={question._id}
