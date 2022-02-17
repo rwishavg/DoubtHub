@@ -42,4 +42,4 @@ const AllQuestions = (props) => {
 	);
 };
 
-export default AllQuestions;
+export default React.memo(AllQuestions);

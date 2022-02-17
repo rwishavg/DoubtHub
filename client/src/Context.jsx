@@ -5,7 +5,7 @@ export const userObjectContext = createContext({});
 const Context = (props) => {
 	const [userObject, setUserObject] = useState({});
 	const [isAuthenticated, setIsAuthenticated] = useState(null);
-	useEffect(() => {
+	const updateContext = () => {
 		axios
 			.get(api_endpoint + "/user/data", { withCredentials: true })
 			.then((response) => {
@@ -16,11 +16,14 @@ const Context = (props) => {
 					setIsAuthenticated(false);
 				}
 			});
+	};
+	useEffect(() => {
+		updateContext();
 	}, []);
 
 	return (
 		<userObjectContext.Provider
-			value={[userObject, isAuthenticated, setUserObject]}
+			value={[userObject, isAuthenticated, setUserObject, updateContext]}
 		>
 			{props.children}
 		</userObjectContext.Provider>

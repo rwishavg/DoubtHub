@@ -1,3 +1,32 @@
+.container {
+	background-color: red;
+	position: fixed;
+	z-index: 600;
+	top: 0;
+	right: 0;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	width: 25rem;
+	height: 100%;
+	background-color: white;
+	box-shadow: 2px 2px 50px rgb(204, 204, 204);
+	user-select: none;
+	overflow: scroll;
+
+	transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 900px) {
+	.container {
+		padding-top: 29vh;
+		height: 100%;
+		box-shadow: none;
+		width: 100%;
+		z-index: 9;
+	}
+}
+
 .sidebarLink {
 	display: flex;
 	align-items: center;

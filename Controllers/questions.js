@@ -1,4 +1,5 @@
 const dotenv = require("dotenv");
+const { exists } = require("../Models/newQuestion");
 const QuestionSchema = require("../Models/newQuestion");
 const User = require("../Models/newUser");
 
@@ -52,7 +53,8 @@ exports.getSavedQuestions = async (req, res, next) => {
 					.exec((err, question) => {
 						if (question === null) {
 							resolve({
-								_id: "",
+								exists: false,
+								_id: id,
 								questionID: "",
 								userid: {
 									_id: "",
@@ -66,6 +68,7 @@ exports.getSavedQuestions = async (req, res, next) => {
 								likes: 0,
 								__v: 0,
 							});
+							// console.log(question.exists);
 						} else {
 							resolve(question);
 						}
@@ -75,7 +78,7 @@ exports.getSavedQuestions = async (req, res, next) => {
 		});
 
 		Promise.all(allPromise).then((values) => {
-			console.log(values);
+			// console.log(values);
 			res.send(values);
 		});
 	} catch (err) {

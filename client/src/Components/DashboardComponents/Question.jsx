@@ -81,7 +81,7 @@ const Question = (props) => {
 			withCredentials: true,
 			url: api_endpoint + "/question/delete",
 		}).then((response) => {
-			props.updateData(response);
+			props.updateData();
 		});
 	};
 
@@ -95,84 +95,128 @@ const Question = (props) => {
 			withCredentials: true,
 			url: api_endpoint + "/question/saveQuestion",
 		}).then((response) => {
-			console.log(response);
 			alert("Question " + response.data + " in bookmarks");
+			props.updateData();
 		});
 	};
-	return (
-		<div
-			className={`cardComponent ${classes.questionComponent}`}
-			style={styleState.cardStyle}
-		>
-			<div className={classes["content"]}>
-				<div className={classes["user"]}>
-					<img
-						src={props.userid.profileIMG}
-						alt=""
-						className={`${classes.userPhoto}`}
-					/>
-					<div className={`${classes.name}`}>
-						{props.userid.firstName} {props.userid.lastName}
-						<div className={classes["date"]}>{props.date}</div>
+
+	if (props.exists === false) {
+		return (
+			<div
+				className={`cardComponent ${classes.questionComponent}`}
+				style={styleState.cardStyle}
+			>
+				<div className={classes["content"]}>
+					<div className={classes["questionHeading"]}>
+						This Post Is No Longer Available &#128565;
+					</div>
+					<div
+						className={classes["questionDescription"]}
+						style={styleState.maskStyle}
+					>
+						Please Remove From Saved Questions
 					</div>
 				</div>
+				{/* {props.id} */}
 				<div className={classes["options"]}>
 					<div className={classes["moreOptions"]} style={optionStyle}>
 						<StarSvg
 							style={{ stroke: "black" }}
 							className={classes["blueClass"]}
-							onClick={saveQuestion}
-						/>
-						{props.userid._id === user._id && (
-							<>
-								<EditSvg style={{ stroke: "black" }} />
-								<DelSvg
-									style={{ stroke: "black" }}
-									className={classes["redClass"]}
-									onClick={deleteQuestion}
-								/>
-							</>
-						)}
-						<RepSvg
-							style={{ stroke: "black" }}
-							className={classes["redClass"]}
+							onClick={() => {
+								saveQuestion();
+								props.updateData();
+							}}
 						/>
 					</div>
+
 					<img
 						src={options}
 						alt=""
 						onClick={(e) => setOptionState(!optionState)}
 					/>
 				</div>
-				<div className={classes["questionHeading"]}>
-					{props.heading}
-				</div>
-				<div
-					className={classes["questionDescription"]}
-					style={styleState.maskStyle}
-				>
-					{props.description}
-				</div>
-				<div
-					className={`${classes.filterBg}`}
-					onClick={expandCard}
-					style={styleState.buttonDisplay}
-				>
-					VIEW {styleState.moreText}
-				</div>
+			</div>
+		);
+	} else {
+		return (
+			<div
+				className={`cardComponent ${classes.questionComponent}`}
+				style={styleState.cardStyle}
+			>
+				<div className={classes["content"]}>
+					<div className={classes["user"]}>
+						<img
+							src={props.userid.profileIMG}
+							alt=""
+							className={`${classes.userPhoto}`}
+						/>
+						<div className={`${classes.name}`}>
+							{props.userid.firstName} {props.userid.lastName}
+							<div className={classes["date"]}>{props.date}</div>
+						</div>
+					</div>
+					<div className={classes["options"]}>
+						<div
+							className={classes["moreOptions"]}
+							style={optionStyle}
+						>
+							<StarSvg
+								style={{ stroke: "black" }}
+								className={classes["blueClass"]}
+								onClick={saveQuestion}
+							/>
+							{props.userid._id === user._id && (
+								<>
+									<EditSvg style={{ stroke: "black" }} />
+									<DelSvg
+										style={{ stroke: "black" }}
+										className={classes["redClass"]}
+										onClick={deleteQuestion}
+									/>
+								</>
+							)}
+							<RepSvg
+								style={{ stroke: "black" }}
+								className={classes["redClass"]}
+							/>
+						</div>
+						<img
+							src={options}
+							alt=""
+							onClick={(e) => setOptionState(!optionState)}
+						/>
+					</div>
+					<div className={classes["questionHeading"]}>
+						{props.heading}
+					</div>
+					<div
+						className={classes["questionDescription"]}
+						style={styleState.maskStyle}
+					>
+						{props.description}
+					</div>
+					<div
+						className={`${classes.filterBg}`}
+						onClick={expandCard}
+						style={styleState.buttonDisplay}
+					>
+						VIEW {styleState.moreText}
+					</div>
 
-				<div className={classes["icons"]}>
-					<div>213</div>
-					<img src={like} alt="" />
-					<div></div>
-					<div></div>
-					<div></div>
-					<div>213</div>
-					<img src={comment} alt="" />
+					<div className={classes["icons"]}>
+						<div>213</div>
+						<img src={like} alt="" />
+						<div></div>
+						<div></div>
+						<div></div>
+						<div>213</div>
+						<img src={comment} alt="" />
+					</div>
 				</div>
 			</div>
-		</div>
-	);
+		);
+	}
 };
 
 export default React.memo(Question);
