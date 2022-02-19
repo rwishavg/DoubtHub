@@ -21,6 +21,9 @@ passport.use(
 			}).then((existingUser) => {
 				if (existingUser) {
 					console.log("Exists!!");
+					// if(existingUser.password !== ''){
+
+					// }
 				} else {
 					console.log("Does not Exist");
 					new User({

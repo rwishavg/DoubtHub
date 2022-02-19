@@ -49,7 +49,11 @@ exports.getQuestionPage = async (req, res, next) => {
 		})
 			.populate("userid", "firstName lastName profileIMG")
 			.exec((err, questions) => {
-				res.send(questions);
+				if (questions === null) {
+					res.send({ exists: false });
+				} else {
+					res.send(questions);
+				}
 			});
 	} catch (err) {
 		res.json(err);

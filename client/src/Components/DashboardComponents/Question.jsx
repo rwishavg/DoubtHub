@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import classes from "../../Styles/component-styles/question.module.css";
 import Context, { userObjectContext } from "../../Context";
 import options from "../../Assets/Icons/options.svg";
@@ -28,7 +28,9 @@ const Question = (props) => {
 	const [optionState, setOptionState] = useState(false);
 	const [optionStyle, setOptionStyle] = useState(optionInactiveStyle);
 	const expandCard = () => setCurrentCard(!currentCard);
-
+	const navigate = useNavigate();
+	let defaultOptions = props.remOptions;
+	if (defaultOptions === undefined) defaultOptions = true;
 	useEffect(() => {
 		if (props.description.length > 250)
 			if (currentCard === true) setStyleState(activeStyle);
@@ -52,6 +54,9 @@ const Question = (props) => {
 		}).then((response) => {
 			props.updateData();
 		});
+		if (props.page === "QuesPage") {
+			navigate("../../Dashboard", { replace: true });
+		}
 	};
 
 	const saveQuestion = () => {
@@ -102,7 +107,7 @@ const Question = (props) => {
 								className={classes["blueClass"]}
 								onClick={saveQuestion}
 							/>
-							{props.userid._id === user._id && (
+							{props.userid._id === user._id && defaultOptions && (
 								<>
 									<EditSvg style={{ stroke: "black" }} />
 									<DelSvg

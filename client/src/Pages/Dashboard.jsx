@@ -122,7 +122,12 @@ const Dashboard = () => {
 						<Route
 							exact
 							path="/:id"
-							element={<QuestionPage convertDate={convertDate} />}
+							element={
+								<QuestionPage
+									convertDate={convertDate}
+									getData={getData}
+								/>
+							}
 						></Route>
 					</Routes>
 				</div>

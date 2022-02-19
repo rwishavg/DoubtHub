@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Question from "../DashboardComponents/Question";
+import DeletedQuestion from "../DashboardComponents/DeletedQuestion";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
 const QuestionPage = (props) => {
@@ -17,12 +18,21 @@ const QuestionPage = (props) => {
 			url: api_endpoint + "/question/getQuestionPage",
 		}).then((response) => {
 			setQuestionData(response.data);
+			console.log(response);
 		});
 	}, [id]);
 
 	if (questionData === null) {
 		return <div>Loading</div>;
-	} else
+	} else if (questionData.exists === false) {
+		return (
+			<div>
+				Page Does not Exist
+				<br />
+				Back to Dashboard
+			</div>
+		);
+	} else {
 		return (
 			<div>
 				<Question
@@ -34,9 +44,11 @@ const QuestionPage = (props) => {
 					updateData={props.getData}
 					date={props.convertDate(questionData.createdAt)}
 					questionID={questionData.questionID}
+					page={"QuesPage"}
 				/>
 			</div>
 		);
+	}
 };
 
 export default React.memo(QuestionPage);
