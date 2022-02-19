@@ -7,6 +7,7 @@ import Saved from "../Components/DashboardComponents/Saved";
 import Sidebar from "../Components/DashboardComponents/Sidebar";
 import Searchbar from "../Components/DashboardComponents/Searchbar";
 import Settings from "../Components/DashboardComponents/Settings";
+import QuestionPage from "../Components/QuestionPageComponents/QuestionPage";
 import "../Styles/page-styles/dashboard.css";
 import Menu from "../Components/DashboardComponents/Menu";
 import { userObjectContext } from "../Context";
@@ -117,6 +118,11 @@ const Dashboard = () => {
 							exact
 							path="/settings"
 							element={<Settings />}
+						></Route>
+						<Route
+							exact
+							path="/:id"
+							element={<QuestionPage convertDate={convertDate} />}
 						></Route>
 					</Routes>
 				</div>

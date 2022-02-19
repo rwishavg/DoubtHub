@@ -53,6 +53,7 @@ const Saved = (props) => {
 					exists={question.exists}
 					updateData={getData}
 					date={props.convertDate(question.createdAt)}
+					questionID={question.questionID}
 				/>
 			))}
 		</div>

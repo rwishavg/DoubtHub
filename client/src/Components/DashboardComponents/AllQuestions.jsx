@@ -51,6 +51,7 @@ const AllQuestions = (props) => {
 					id={question._id}
 					updateData={props.getData}
 					date={convertDate(question.createdAt)}
+					questionID={question.questionID}
 				/>
 			))}
 		</div>
