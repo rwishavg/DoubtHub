@@ -2,6 +2,7 @@ const dotenv = require("dotenv");
 const { exists } = require("../Models/newQuestion");
 const QuestionSchema = require("../Models/newQuestion");
 const User = require("../Models/newUser");
+const { nanoid } = require("nanoid");
 
 dotenv.config({
 	path: "./utils/config.env",
@@ -18,6 +19,7 @@ exports.addNewQuestion = async (req, res, next) => {
 			userid: req.body.userid,
 			heading: req.body.questionHeading,
 			description: req.body.description,
+			questionID: nanoid(15),
 			createdAt: Date.now(),
 		}).save((err, result) => {
 			// console.log(result);
@@ -33,6 +35,19 @@ exports.getQuestions = async (req, res, next) => {
 		QuestionSchema.find()
 			.populate("userid", "firstName lastName profileIMG")
 			.sort({ createdAt: -1 })
+			.exec((err, questions) => {
+				res.send(questions);
+			});
+	} catch (err) {
+		res.json(err);
+	}
+};
+exports.getQuestionPage = async (req, res, next) => {
+	try {
+		QuestionSchema.findOne({
+			questionID: req.body.id,
+		})
+			.populate("userid", "firstName lastName profileIMG")
 			.exec((err, questions) => {
 				res.send(questions);
 			});

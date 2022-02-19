@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
-const { nanoid } = require("nanoid");
+
 // const userSchema = require("./newUser");
 const questionSchema = new Schema({
 	questionID: {
 		type: String,
-		default: nanoid(15),
+		unique: true,
 		required: false,
 	},
 	userid: {
