@@ -30,12 +30,12 @@ exports.logout = async (req, res, next) => {
 
 exports.googleAuthenticate = passport.authenticate("google", {
 	scope: ["email", "profile"],
-	failWithError: true,
+	// failWithError: true,
 });
 
 exports.googleCallback = passport.authenticate("google", {
 	successRedirect: host + "/dashboard",
-	failureRedirect: "/login",
+	failureRedirect: host + "/login",
 });
 
 exports.signup = async (req, res, next) => {

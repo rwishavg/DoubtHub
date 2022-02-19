@@ -3,6 +3,11 @@ const GoogleStrategy = require("passport-google-oauth2").Strategy;
 const dotenv = require("dotenv");
 const User = require("../Models/newUser");
 
+let host = "";
+if (process.env.NODE_ENV === "development") {
+	host = "http://localhost:3000";
+}
+
 dotenv.config({
 	path: "./utils/config.env",
 });
@@ -19,11 +24,12 @@ passport.use(
 			User.findOne({
 				emailID: profile.email,
 			}).then((existingUser) => {
+				let flag = 0;
 				if (existingUser) {
 					console.log("Exists!!");
-					// if(existingUser.password !== ''){
-
-					// }
+					if (existingUser.password !== "") {
+						flag = 1;
+					}
 				} else {
 					console.log("Does not Exist");
 					new User({
@@ -35,8 +41,12 @@ passport.use(
 					}).save();
 					console.log("New User Created");
 				}
+				if (flag == 1) {
+					return done("Error: Email does not exist", true);
+				} else {
+					return done(null, profile);
+				}
 			});
-			return done(null, profile);
 		}
 	)
 );
