@@ -39,7 +39,7 @@ const AllQuestions = (props) => {
 			{props.data.length === 0 && (
 				<div style={zeroStyle}>
 					Its lonely here. <br />
-					Add some questions...
+					Add some questions....
 				</div>
 			)}
 			{props.data.map((question) => (
