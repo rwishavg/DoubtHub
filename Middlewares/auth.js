@@ -19,6 +19,7 @@ passport.use(
 			clientSecret: process.env.G_CLIENT_SECRET,
 			callbackURL: "/user/google/callback",
 			passReqToCallback: true,
+			userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
 		},
 		function (request, accessToken, refreshToken, profile, done) {
 			User.findOne({
@@ -42,7 +43,10 @@ passport.use(
 					console.log("New User Created");
 				}
 				if (flag == 1) {
-					return done("Error: Email does not exist", true);
+					return done(
+						"Error: This Email uses different sign in method",
+						true
+					);
 				} else {
 					return done(null, profile);
 				}
