@@ -80,3 +80,18 @@ exports.login = (req, res, next) => {
 		}
 	})(req, res, next);
 };
+
+exports.getUser = async (req, res, next) => {
+	try {
+		User.findOne({ username: req.body.username }).then((userData) => {
+			res.send({
+				firstName: userData.firstName,
+				lastName: userData.lastName,
+				bio: userData.bio,
+				profileIMG: userData.profileIMG,
+			});
+		});
+	} catch (err) {
+		res.json(err);
+	}
+};

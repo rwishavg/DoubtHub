@@ -34,7 +34,7 @@ const AllQuestions = (props) => {
 	};
 
 	return (
-		<div>
+		<div className="fadeIn">
 			<NewQuestion updateFunction={props.getData} prevData={props.data} />
 			{props.data.length === 0 && (
 				<div style={zeroStyle}>

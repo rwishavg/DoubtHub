@@ -39,7 +39,7 @@ const Saved = (props) => {
 	}, []);
 
 	return (
-		<div>
+		<div className="fadeIn">
 			{props.data.length === 0 && (
 				<div style={zeroStyle}>No questions saved for now!</div>
 			)}

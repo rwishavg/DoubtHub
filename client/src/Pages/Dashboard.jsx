@@ -7,7 +7,8 @@ import Saved from "../Components/DashboardComponents/Saved";
 import Sidebar from "../Components/DashboardComponents/Sidebar";
 import Searchbar from "../Components/DashboardComponents/Searchbar";
 import Settings from "../Components/DashboardComponents/Settings";
-import QuestionPage from "../Components/QuestionPageComponents/QuestionPage";
+import UserPage from "../Pages/UserPage";
+import QuestionPage from "./QuestionPage";
 import "../Styles/page-styles/dashboard.css";
 import Menu from "../Components/DashboardComponents/Menu";
 import { userObjectContext } from "../Context";
@@ -128,6 +129,11 @@ const Dashboard = () => {
 									getData={getData}
 								/>
 							}
+						></Route>
+						<Route
+							exact
+							path="/u/:username"
+							element={<UserPage />}
 						></Route>
 					</Routes>
 				</div>

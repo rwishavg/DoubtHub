@@ -36,6 +36,7 @@ const Question = (props) => {
 			if (currentCard === true) setStyleState(activeStyle);
 			else setStyleState(inactiveStyle);
 		else setStyleState(smallDesc);
+		console.log(props);
 	}, [currentCard]);
 
 	useEffect(() => {
@@ -96,6 +97,7 @@ const Question = (props) => {
 						lastName={props.userid.lastName}
 						profileIMG={props.userid.profileIMG}
 						date={props.date}
+						username={props.userid.username}
 					/>
 					<div className={classes["options"]}>
 						<div

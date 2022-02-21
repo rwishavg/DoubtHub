@@ -19,7 +19,7 @@ const AllQuestions = (props) => {
 	}, []);
 
 	return (
-		<div>
+		<div className="fadeIn">
 			{props.data.length === 0 && (
 				<div style={zeroStyle}>
 					Its lonely here. <br />

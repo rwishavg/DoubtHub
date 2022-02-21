@@ -33,7 +33,7 @@ exports.addNewQuestion = async (req, res, next) => {
 exports.getQuestions = async (req, res, next) => {
 	try {
 		QuestionSchema.find()
-			.populate("userid", "firstName lastName profileIMG")
+			.populate("userid", "username firstName lastName profileIMG")
 			.sort({ createdAt: -1 })
 			.exec((err, questions) => {
 				res.send(questions);
@@ -47,7 +47,7 @@ exports.getQuestionPage = async (req, res, next) => {
 		QuestionSchema.findOne({
 			questionID: req.body.id,
 		})
-			.populate("userid", "firstName lastName profileIMG")
+			.populate("userid", "username firstName lastName profileIMG")
 			.exec((err, questions) => {
 				if (questions === null) {
 					res.send({ exists: false });
@@ -68,7 +68,10 @@ exports.getSavedQuestions = async (req, res, next) => {
 				QuestionSchema.findOne({
 					_id: id,
 				})
-					.populate("userid", "firstName lastName profileIMG")
+					.populate(
+						"userid",
+						"username firstName lastName profileIMG"
+					)
 					.exec((err, question) => {
 						if (question === null) {
 							resolve({
@@ -137,7 +140,10 @@ exports.myQuestions = async (req, res, next) => {
 	try {
 		// console.log(req.body.emailID);
 		QuestionSchema.find()
-			.populate("userid", "firstName lastName profileIMG emailID")
+			.populate(
+				"userid",
+				"username firstName lastName profileIMG emailID"
+			)
 			.exec((err, questions) => {
 				const result = questions.filter(
 					(question) => question.userid.emailID === req.body.emailID

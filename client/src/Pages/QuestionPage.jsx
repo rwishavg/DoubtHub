@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Question from "../DashboardComponents/Question";
-import DeletedQuestion from "../DashboardComponents/DeletedQuestion";
+import Question from "../Components/DashboardComponents/Question";
+import DeletedQuestion from "../Components/DashboardComponents/DeletedQuestion";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
 const QuestionPage = (props) => {
@@ -23,10 +23,10 @@ const QuestionPage = (props) => {
 	}, [id]);
 
 	if (questionData === null) {
-		return <div>Loading</div>;
+		return <div></div>;
 	} else if (questionData.exists === false) {
 		return (
-			<div>
+			<div className="fadeIn">
 				Page Does not Exist
 				<br />
 				Back to Dashboard
@@ -34,7 +34,7 @@ const QuestionPage = (props) => {
 		);
 	} else {
 		return (
-			<div>
+			<div className="fadeIn">
 				<Question
 					key={questionData._id}
 					userid={questionData.userid}

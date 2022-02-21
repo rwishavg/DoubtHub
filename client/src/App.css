@@ -78,3 +78,22 @@ textarea {
 	font-weight: 700;
 	letter-spacing: 1px;
 }
+
+.fadeIn {
+	opacity: 0;
+	/* transform: translateY(5%); */
+	animation-name: fadeIn;
+	animation-duration: 0.5s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		/* transform: translateY(5%); */
+	}
+	to {
+		opacity: 1;
+		/* transform: translateY(0%); */
+	}
+}
