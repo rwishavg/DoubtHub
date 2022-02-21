@@ -41,6 +41,7 @@ const Comments = () => {
 					like Aldus PageMaker including versions of Lorem Ipsum.
 				</div>
 			</div>
+			<div class={classes["line"]}></div>
 		</div>
 		// </div>
 	);

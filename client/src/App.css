@@ -30,6 +30,7 @@ body::-webkit-scrollbar-thumb {
 	width: 48%;
 	transition: 0.3s all ease-in-out;
 	cursor: pointer;
+	text-align: center;
 	/* transition: 0.5s background ease-in-out;
 	transition: 0.5s color ease-in-out; */
 }
