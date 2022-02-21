@@ -1,0 +1,45 @@
+.commentCard {
+	display: flex;
+	border: 2px solid #602eea70;
+	transition: border 0.3s ease;
+}
+
+.commentCard:hover {
+	border: 2px solid #602eeab0;
+}
+.content {
+	margin: 4.5vh 5vh;
+}
+
+.topOptions {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1vh;
+}
+
+.topOptions > * {
+	margin-bottom: 0 !important;
+}
+
+.commentDescription {
+	text-align: justify;
+	font-weight: 400;
+	font-size: 1.5vh;
+	letter-spacing: 0.1vh;
+	color: #666666;
+	max-height: 999vh;
+	margin-bottom: 3vh;
+}
+
+.icons {
+	display: flex;
+}
+
+.mar {
+	margin: 0 2vh;
+}
+
+.inverse {
+	transform: rotate(180deg);
+}

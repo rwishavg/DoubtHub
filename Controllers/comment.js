@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === "development") {
 
 exports.addNewComment = async (req, res, next) => {
 	try {
-		new QuestionSchema({  
+		new CommentSchema({
 			body: req.body.body,
 			commentID: nanoid(15),
 			createdAt: Date.now(),
@@ -43,7 +43,7 @@ exports.getComments = async (req, res, next) => {
 
 exports.deleteComment = async (req, res, next) => {
 	try {
-		await QuestionSchema.deleteOne({ _id: req.body.id });
+		await CommentSchema.deleteOne({ _id: req.body.id });
 		res.send("Deleted");
 	} catch (err) {
 		res.json(err);

@@ -1,7 +1,12 @@
 import React from "react";
-
+import Comments from "./Comments";
+import classes from "../../Styles/component-styles/comments.module.css";
 const AllComments = () => {
-	return <div style={{ height: "40vh", margin: "6vh 0" }}>AllComments</div>;
+	return (
+		<div>
+			<Comments />
+		</div>
+	);
 };
 
 export default AllComments;
