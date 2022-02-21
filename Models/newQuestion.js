@@ -30,6 +30,12 @@ const questionSchema = new Schema({
 		unique: false,
 		default: 0,
 	},
+	comments: {
+		comment: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "comment",
+		},
+	},
 });
 
 module.exports = mongoose.model("question", questionSchema, "Questions");
