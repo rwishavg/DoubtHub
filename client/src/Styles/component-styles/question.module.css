@@ -117,12 +117,14 @@
 }
 
 .moreOptions {
-	background: #eff0f6;
+	background: #fff;
 	padding: 1.5vh 1vh;
 	border-radius: 1vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	border: 2px solid #602eea93;
+	box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
 }
 
 .moreOptions svg {
@@ -143,7 +145,7 @@
 }
 
 @media screen and (max-width: 500px) {
-	.lastName{
+	.lastName {
 		display: none;
 	}
 }
