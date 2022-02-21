@@ -141,3 +141,9 @@
 .blueClass:active > * {
 	stroke: rgb(28, 198, 228) !important;
 }
+
+@media screen and (max-width: 500px) {
+	.lastName{
+		display: none;
+	}
+}

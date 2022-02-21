@@ -47,7 +47,7 @@ const QuestionPage = (props) => {
 					questionID={questionData.questionID}
 					page={"QuesPage"}
 				/>
-				<AllComments/>
+				<AllComments />
 			</div>
 		);
 	}

@@ -10,7 +10,10 @@ const QuestionUser = (props) => {
 					style={{ alignItems: "flex-end" }}
 				>
 					<Link to={`/dashboard/u/${props.username}`}>
-						{props.firstName} {props.lastName}
+						{props.firstName}{" "}
+						<span className={classes["lastName"]}>
+							{props.lastName}
+						</span>
 					</Link>
 					<div className={classes["date"]}>{props.date}</div>
 				</div>

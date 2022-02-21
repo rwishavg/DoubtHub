@@ -5,7 +5,7 @@ import uparrow from "../../Assets/Icons/uparrow.svg";
 const Comments = () => {
 	return (
 		// <div className={`cardComponent ${classes["scale"]}`}>
-		<div className={`cardComponent ${classes["commentCard"]}`}>
+		<div>
 			<div className={classes["content"]}>
 				<div className={classes["topOptions"]}>
 					<div className={classes["icons"]}>
@@ -24,7 +24,7 @@ const Comments = () => {
 							"https://lh3.googleusercontent.com/a-/AOh14GgFdXaSCjn3CAobuhukN07MD9nlXDVtOTYj9peCjQ=s96-c"
 						}
 						username={"raghav"}
-						date={"355 Views • 5 Hours ago"}
+						date={"5 Hours ago"}
 						reverse={true}
 					/>
 				</div>
