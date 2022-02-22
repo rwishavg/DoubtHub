@@ -19,9 +19,12 @@ const QuestionPage = (props) => {
 			url: api_endpoint + "/question/getQuestionPage",
 		}).then((response) => {
 			setQuestionData(response.data);
-			console.log(response);
 		});
 	}, [id]);
+
+	// useEffect(() => {
+	// 	console.log(questionData);
+	// }, [questionData]);
 
 	if (questionData === null) {
 		return <div></div>;
@@ -47,7 +50,7 @@ const QuestionPage = (props) => {
 					questionID={questionData.questionID}
 					page={"QuesPage"}
 				/>
-				<AllComments />
+				<AllComments comments={questionData.comments} />
 			</div>
 		);
 	}

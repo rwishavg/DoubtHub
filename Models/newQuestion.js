@@ -30,12 +30,23 @@ const questionSchema = new Schema({
 		unique: false,
 		default: 0,
 	},
-	comments: {
-		comment: {
-			type: mongoose.Schema.Types.ObjectId,
-			ref: "comment",
+	comments: [
+		{
+			userid: {
+				type: mongoose.Schema.Types.ObjectId,
+				ref: "User",
+			},
+			createdAt: {
+				type: Date,
+				unique: true,
+			},
+			body: {
+				type: String,
+				default: "Say Something ...",
+				required: true,
+			},
 		},
-	},
+	],
 });
 
 module.exports = mongoose.model("question", questionSchema, "Questions");

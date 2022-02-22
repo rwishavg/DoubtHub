@@ -102,3 +102,31 @@
 	align-self: flex-end;
 	/* margin-bottom: 2vh; */
 }
+
+.fullwid {
+	width: 100%;
+	display: flex;
+	margin-right: 1vh;
+	margin-bottom: 2vh;
+	flex-direction: row-reverse;
+}
+
+.top {
+	width: 100%;
+	display: flex;
+	margin-right: 1vh;
+	margin-top: -2vh;
+	margin-bottom: 2vh;
+	flex-direction: row-reverse;
+}
+
+.jump {
+	font-weight: 500;
+	font-size: 1.4vh;
+	letter-spacing: 0.2vh;
+	background-color: #7f53f7;
+	padding: 10px 20px;
+	color: #fff;
+	border-radius: 7px;
+	cursor: pointer;
+}
