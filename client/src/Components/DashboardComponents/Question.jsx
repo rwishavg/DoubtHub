@@ -58,6 +58,7 @@ const Question = (props) => {
 		if (props.page === "QuesPage") {
 			navigate("../../Dashboard", { replace: true });
 		}
+		setOptionStyle(optionInactiveStyle)
 	};
 
 	const saveQuestion = () => {
@@ -73,6 +74,7 @@ const Question = (props) => {
 			alert("Question " + response.data + " in bookmarks");
 			props.updateData();
 		});
+		setOptionStyle(optionInactiveStyle)
 	};
 
 	if (props.exists === false) {
@@ -107,7 +109,7 @@ const Question = (props) => {
 							<StarSvg
 								style={{ stroke: "black" }}
 								className={classes["blueClass"]}
-								onClick={saveQuestion}
+								onClick={(e) => saveQuestion()}
 							/>
 							{props.userid._id === user._id && defaultOptions && (
 								<>
