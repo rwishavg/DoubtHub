@@ -3,6 +3,8 @@
 	flex-direction: column;
 	border: 2px solid #602eea70;
 	transition: border 0.3s ease;
+	overflow: hidden;
+	margin-bottom: 4vh;
 }
 
 .commentCard:hover {
@@ -26,7 +28,7 @@
 .commentDescription {
 	text-align: justify;
 	font-weight: 400;
-	font-size: 1.5vh;
+	font-size: 1.45vh;
 	letter-spacing: 0.1vh;
 	color: #666666;
 	max-height: 999vh;
@@ -52,6 +54,79 @@
 	background-color: rgba(102, 102, 102, 0.171);
 }
 
-/* .fixed {
-	position: absolute;
-} */
+.newComment {
+	display: flex;
+	margin-bottom: 4vh;
+}
+
+.heading {
+	margin-bottom: 2vh;
+	font-size: 2.2vh;
+	font-weight: 700;
+}
+
+.textArea {
+	background-color: transparent;
+	outline: none;
+	border: 0;
+	font-family: inherit;
+	font-size: 1.5vh;
+	letter-spacing: 1px;
+	margin: 2vh;
+	height: 90%;
+	width: 100%;
+	resize: none;
+}
+
+.bg {
+	height: 25vh;
+	display: flex;
+	background-color: #eff0f6;
+	border-radius: 6px;
+	width: 100%;
+	margin-bottom: 4vh;
+}
+
+.full {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	margin: 5vh 5vh;
+}
+
+.wid {
+	/* width: 5vw !important; */
+	padding: 10px 0px !important;
+	box-sizing: border-box;
+	width: 30% !important;
+	align-self: flex-end;
+	/* margin-bottom: 2vh; */
+}
+
+.fullwid {
+	width: 100%;
+	display: flex;
+	margin-right: 1vh;
+	margin-bottom: 2vh;
+	flex-direction: row-reverse;
+}
+
+.top {
+	width: 100%;
+	display: flex;
+	margin-right: 1vh;
+	margin-top: -2vh;
+	margin-bottom: 2vh;
+	flex-direction: row-reverse;
+}
+
+.jump {
+	font-weight: 500;
+	font-size: 1.4vh;
+	letter-spacing: 0.2vh;
+	background-color: #7f53f7;
+	padding: 10px 20px;
+	color: #fff;
+	border-radius: 7px;
+	cursor: pointer;
+}

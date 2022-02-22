@@ -1,6 +1,7 @@
 const dotenv = require("dotenv");
 const CommentSchema = require("../Models/newComment");
-const Question = require("../Models/newQuestion");
+const QuestionSchema = require("../Models/newQuestion");
+const User = require("../Models/newUser");
 
 const { nanoid } = require("nanoid");
 
@@ -15,14 +16,26 @@ if (process.env.NODE_ENV === "development") {
 
 exports.addNewComment = async (req, res, next) => {
 	try {
-		new CommentSchema({
+		const update = {
+			userid: req.body.userid,
 			body: req.body.body,
-			commentID: nanoid(15),
 			createdAt: Date.now(),
-		}).save((err, result) => {
-			// console.log(result);
-			res.send(result);
-		});
+		};
+		const query = { questionID: req.body.questionID };
+		// console.log();
+		const result = await QuestionSchema.findOneAndUpdate(
+			query,
+			{ $push: { comments: update } },
+			{ new: true }
+		)
+			.populate("userid", "username firstName lastName profileIMG")
+			.populate(
+				"comments.userid",
+				"username firstName lastName profileIMG"
+			)
+			.exec((err, data) => {
+				res.send(data);
+			});
 	} catch (err) {
 		res.json(err);
 	}

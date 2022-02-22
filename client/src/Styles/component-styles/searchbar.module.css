@@ -33,6 +33,12 @@
 	border: 2px solid #602eea70;
 }
 
+.background:focus-within {
+	background-color: transparent;
+	border: 2px solid #602eeac2;
+	/* transition: border 0.3s ease-in; */
+}
+
 .filterBg {
 	user-select: none;
 	height: 4vh;

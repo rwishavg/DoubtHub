@@ -35,6 +35,7 @@ const NewQuestion = (props) => {
 			withCredentials: true,
 			url: api_endpoint + "/question/addNewQuestion",
 		}).then((response) => {
+			console.log(response);
 			props.updateFunction();
 		});
 		alert("Question Created");

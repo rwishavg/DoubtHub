@@ -22,7 +22,7 @@ exports.addNewQuestion = async (req, res, next) => {
 			questionID: nanoid(15),
 			createdAt: Date.now(),
 		}).save((err, result) => {
-			// console.log(result);
+			console.log(result);
 			res.send(result);
 		});
 	} catch (err) {
@@ -48,6 +48,10 @@ exports.getQuestionPage = async (req, res, next) => {
 			questionID: req.body.id,
 		})
 			.populate("userid", "username firstName lastName profileIMG")
+			.populate(
+				"comments.userid",
+				"username firstName lastName profileIMG"
+			)
 			.exec((err, questions) => {
 				if (questions === null) {
 					res.send({ exists: false });

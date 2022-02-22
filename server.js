@@ -14,6 +14,7 @@ dotenv.config({
 
 const userRoutes = require("./Routes/user");
 const questionRoutes = require("./Routes/questions");
+const commentRoutes = require("./Routes/comments");
 const auth = require("./Middlewares/auth");
 const localauth = require("./Middlewares/localauth");
 const passport = require("passport");
@@ -41,12 +42,14 @@ if (process.env.NODE_ENV === "production") {
 	app.use(express.static("client/build"));
 	app.use("/user", userRoutes);
 	app.use("/question", questionRoutes);
+	app.use("/comment", commentRoutes);
 	app.get("*", (req, res) =>
 		res.sendFile(path.resolve("client", "build", "index.html"))
 	);
 } else {
 	app.use("/user", userRoutes);
 	app.use("/question", questionRoutes);
+	app.use("/comment", commentRoutes);
 }
 
 app.listen(process.env.PORT || 5000, () => {
