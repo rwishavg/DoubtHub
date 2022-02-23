@@ -36,7 +36,7 @@ app.use(session({ secret: "secret" }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect(url).then(() => console.log("Connected to DB"));
+mongoose.connect(url).then(() => console.log(`Connected to DB`.white.inverse));
 
 if (process.env.NODE_ENV === "production") {
 	app.use(express.static("client/build"));
@@ -56,4 +56,3 @@ app.listen(process.env.PORT || 5000, () => {
 	console.log(process.env.PORT);
 	console.log(`Server running at port ${process.env.PORT}`.green.inverse);
 });
-//MONGO="mongodb+srv://raghav:123pass@cluster0.uylba.mongodb.net/DoubtHUB?retryWrites=true&w=majority"
