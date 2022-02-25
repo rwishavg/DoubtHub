@@ -1,7 +1,11 @@
 import React from "react";
 import classes from "../../Styles/component-styles/comments.module.css";
 import QuestionUser from "../QuestionComponents/QuestionUser";
-import uparrow from "../../Assets/Icons/uparrow.svg";
+// import uparrow from "../../Assets/Icons/uparrow.svg";
+
+import { UilAngleUp } from '@iconscout/react-unicons'
+import { UilAngleDown } from '@iconscout/react-unicons'
+
 const Comment = (props) => {
 	let calculateDate = (date) => {
 		let d = Date.parse(date);
@@ -15,19 +19,15 @@ const Comment = (props) => {
 			else return Math.floor(hours) + " hours ago";
 		}
 	};
+	
 	return (
-		// <div className={`cardComponent ${classes["scale"]}`}>
 		<div>
 			<div className={classes["content"]}>
 				<div className={classes["topOptions"]}>
 					<div className={classes["icons"]}>
-						<img src={uparrow} alt="" />
-						<div className={classes["mar"]}> 213 </div>
-						<img
-							src={uparrow}
-							alt=""
-							className={classes["inverse"]}
-						/>
+						<UilAngleUp />
+						100
+						<UilAngleDown />
 					</div>
 					<QuestionUser
 						firstName={props.userid.firstName}
@@ -44,7 +44,6 @@ const Comment = (props) => {
 			</div>
 			<div className={classes["line"]}></div>
 		</div>
-		// </div>
 	);
 };
 

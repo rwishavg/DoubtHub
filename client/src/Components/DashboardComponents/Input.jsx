@@ -1,10 +1,13 @@
 import React from "react";
 import classes from "../../Styles/component-styles/input.module.css";
 
+
+
 const Input = (props) => {
+	console.log(props.children);
 	return (
 		<div className={classes["inputParent"]}>
-			<img src={props.icon} className={classes["icon"]} alt="icon" />
+			{props.children}
 			<div className="inputWidth">
 				<div className={classes["inputHeading"]}>{props.heading}</div>
 				<input

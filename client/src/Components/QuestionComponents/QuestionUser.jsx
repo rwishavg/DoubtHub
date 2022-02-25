@@ -2,7 +2,7 @@ import React from "react";
 import classes from "../../Styles/component-styles/question.module.css";
 import { Link } from "react-router-dom";
 const QuestionUser = (props) => {
-	if (props.reverse == true) {
+	if (props.reverse === true) {
 		return (
 			<div className={classes["user"]}>
 				<div

@@ -1,6 +1,8 @@
 :root {
 	background-color: #fcfcfc;
 	overflow-x: hidden;
+	--color: #7548f0;
+	/* 8e69f1 */
 }
 body::-webkit-scrollbar {
 	overflow-x: hidden;
@@ -19,13 +21,16 @@ body::-webkit-scrollbar-thumb {
 }
 
 .button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	background: #fff;
-	border: 2px solid #5f2eea;
+	border: 2px solid var(--color);
 	font-weight: 500;
 	font-family: inherit;
 	border-radius: 10px;
 	padding: 15px 10px;
-	color: #5f2eea;
+	color: var(--color);
 	font-size: 14px;
 	width: 48%;
 	transition: 0.3s all ease-in-out;
@@ -36,7 +41,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .button:hover {
-	background: #5f2eea;
+	background: var(--color);
 	color: #fff;
 	cursor: pointer;
 }

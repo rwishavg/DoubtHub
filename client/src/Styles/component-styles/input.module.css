@@ -47,7 +47,8 @@
 	border: none;
 }
 
-.icon {
+svg{
+	color:#A0A3BD;
 	height: 3vh;
 	margin: 0 20px;
 }

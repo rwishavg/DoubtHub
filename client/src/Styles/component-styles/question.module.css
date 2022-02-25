@@ -117,11 +117,7 @@
 }
 
 .moreOptions {
-<<<<<<< HEAD
-	background: #fff;
-=======
-	background: #e7e7eb98;
->>>>>>> f6135e32a33eafe0cec55429c87ead1f48f153b7
+	background-color: #fff;
 	padding: 1.5vh 1vh;
 	border-radius: 1vh;
 	display: flex;

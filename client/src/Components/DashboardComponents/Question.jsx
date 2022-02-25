@@ -2,14 +2,16 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import classes from "../../Styles/component-styles/question.module.css";
 import Context, { userObjectContext } from "../../Context";
-import options from "../../Assets/Icons/options.svg";
-import like from "../../Assets/Icons/like.svg";
-import comment from "../../Assets/Icons/comment.svg";
 import QuestionUser from "../QuestionComponents/QuestionUser";
-import { ReactComponent as EditSvg } from "../../Assets/Icons/edit.svg";
-import { ReactComponent as DelSvg } from "../../Assets/Icons/delete.svg";
-import { ReactComponent as RepSvg } from "../../Assets/Icons/report.svg";
-import { ReactComponent as StarSvg } from "../../Assets/Icons/star.svg";
+
+import { UilThumbsUp } from '@iconscout/react-unicons'
+import { UilCommentAltLines } from '@iconscout/react-unicons'
+import { UilPen } from '@iconscout/react-unicons'
+import { UilFavorite } from '@iconscout/react-unicons'
+import { UilBan } from '@iconscout/react-unicons'
+import { UilTrashAlt } from '@iconscout/react-unicons'
+import { UilEllipsisV } from '@iconscout/react-unicons'
+
 import DeletedQuestion from "./DeletedQuestion";
 import axios from "axios";
 import {
@@ -106,31 +108,16 @@ const Question = (props) => {
 							className={classes["moreOptions"]}
 							style={optionStyle}
 						>
-							<StarSvg
-								style={{ stroke: "black" }}
-								className={classes["blueClass"]}
-								onClick={(e) => saveQuestion()}
-							/>
+							<UilFavorite onClick={(e) => saveQuestion()} className={classes["blueClass"]}/>
 							{props.userid._id === user._id && defaultOptions && (
 								<>
-									<EditSvg style={{ stroke: "black" }} />
-									<DelSvg
-										style={{ stroke: "black" }}
-										className={classes["redClass"]}
-										onClick={deleteQuestion}
-									/>
+									<UilPen/>
+									<UilTrashAlt onClick={deleteQuestion} className={classes["redClass"]}/>
 								</>
 							)}
-							<RepSvg
-								style={{ stroke: "black" }}
-								className={classes["redClass"]}
-							/>
+							<UilBan className={classes["redClass"]}/>
 						</div>
-						<img
-							src={options}
-							alt=""
-							onClick={(e) => setOptionState(!optionState)}
-						/>
+						<UilEllipsisV onClick={(e) => setOptionState(!optionState)}/>
 					</div>
 					<div className={classes["questionHeading"]}>
 						{props.heading}
@@ -151,13 +138,13 @@ const Question = (props) => {
 
 					<div className={classes["icons"]}>
 						<div>213</div>
-						<img src={like} alt="" />
+						<UilThumbsUp/>
 						<div></div>
 						<div></div>
 						<div></div>
 						<div>213</div>
 						<Link to={`/dashboard/${props.questionID}`}>
-							<img src={comment} alt="" />
+							<UilCommentAltLines/>
 						</Link>
 					</div>
 				</div>

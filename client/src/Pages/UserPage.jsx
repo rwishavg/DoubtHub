@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Rings } from "react-loader-spinner";
+// import { Rings } from "react-loader-spinner";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 const UserPage = () => {
 	let { username } = useParams();

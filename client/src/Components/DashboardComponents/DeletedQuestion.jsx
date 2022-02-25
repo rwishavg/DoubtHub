@@ -1,7 +1,9 @@
 import React from "react";
 import classes from "../../Styles/component-styles/question.module.css";
-import options from "../../Assets/Icons/options.svg";
-import { ReactComponent as StarSvg } from "../../Assets/Icons/star.svg";
+
+import { UilFavorite } from "@iconscout/react-unicons";
+import { UilEllipsisV } from "@iconscout/react-unicons";
+
 const DeletedQuestion = (props) => {
 	return (
 		<div
@@ -16,25 +18,20 @@ const DeletedQuestion = (props) => {
 					Please Remove From Saved Questions
 				</div>
 			</div>
-			{/* {props.id} */}
 			<div className={classes["options"]}>
 				<div
 					className={classes["moreOptions"]}
 					style={props.optionStyle}
 				>
-					<StarSvg
-						style={{ stroke: "black" }}
-						className={classes["blueClass"]}
+					<UilFavorite
 						onClick={() => {
 							props.saveQuestion();
 							props.updateData();
 						}}
+						className={classes["blueClass"]}
 					/>
 				</div>
-
-				<img
-					src={options}
-					alt=""
+				<UilEllipsisV
 					onClick={(e) => props.setOptionState(!props.optionState)}
 				/>
 			</div>
