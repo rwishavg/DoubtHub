@@ -21,7 +21,6 @@ const Searchbar = () => {
 		<div className={classes["container"]}>
 			<div className={`cardComponent ${classes.searchComponent}`}>
 				<div className={`${classes.background}`}>
-					{/* Name: */}
 					<div className={classes["searchTag"]}>
 						<img
 							src={search}

@@ -117,6 +117,7 @@
 }
 
 .moreOptions {
+	background-color: #fff;
 	padding: 1.5vh 1vh;
 	border-radius: 1vh;
 	display: flex;

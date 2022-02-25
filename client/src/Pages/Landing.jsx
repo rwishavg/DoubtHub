@@ -26,7 +26,7 @@ const Landing = () => {
 								}}
 								className="hText"
 							>
-								Doubt&nbsp;
+								A Doubt&nbsp;
 							</motion.div>
 							<motion.div
 								animate={{
@@ -82,23 +82,7 @@ const Landing = () => {
 									delay: 3,
 								}}
 							>
-								Lorem ipsum dolor sit amet consectetur
-								adipisicing elit
-							</motion.div>
-						</div>
-						<div className="subheadingFull">
-							<motion.div
-								animate={{
-									translateY: ["75px", "0px"],
-								}}
-								transition={{
-									duration: 0.7,
-									ease: "easeOut",
-									delay: 3.3,
-								}}
-							>
-								sed do eiusmod tempor incididunt ut labore et
-								dolore
+								A Safe Place for your Curiosity and Growth
 							</motion.div>
 						</div>
 					</div>
