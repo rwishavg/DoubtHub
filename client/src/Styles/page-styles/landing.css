@@ -4,22 +4,86 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	flex-direction: column;
 	position: relative;
 }
-.logoLanding {
-	width: 40vw;
+/* 
+.loginSign a {
+	margin: 0 2vh;
+} */
+
+.landingLeft {
+	width: 50vw;
+	height: 100%;
+	position: relative;
 }
 
-.logoLanding img {
-	width: 100%;
-	user-select: none;
+.borderLeftSide {
+	top: 0;
+	width: 50px;
+	height: 100vh;
+	right: -20px;
+	background: #fcfcfc;
+	position: absolute;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+	z-index: 1;
+}
+.landingRight {
+	width: 50vw;
+	height: 100vh;
+	position: relative;
+	display: flex;
+	justify-content: flex-start;
+}
+
+.animateWid {
+	/* position: relative; */
+	width: 50vw;
+	height: 100vh;
+	background-color: #fcfcfc;
+	position: absolute;
+	transform: translateX(0);
+}
+
+.rightInside {
+	width: 50vw;
+	height: 100vh;
+	background-size: cover !important;
+	background-repeat: none !important;
+	/* border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px; */
+}
+
+.landingContent {
+	position: relative;
+	z-index: 2;
+	margin: 0 80px 0 120px;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.landingHeading {
+	font-weight: 700;
+	font-size: 50px;
+	/* letter-spacing: 1px; */
+	text-transform: capitalize;
+	color: #333;
+	/* text-align: center; */
+}
+
+.landingSubhead {
+	font-weight: 400;
+	font-size: 13px;
+	letter-spacing: 1px;
+	text-transform: capitalize;
+	/* text-align: center; */
+	color: #333;
+	margin-bottom: 2vh;
 }
 
 .loginSign {
-	position: absolute;
-	top: 4vh;
-	right: 2vw;
 	width: 30vh;
 	display: flex;
 	align-items: center;
@@ -27,6 +91,50 @@
 	cursor: pointer;
 }
 
-.loginSign a {
-	margin: 0 2vh;
+.landingButton {
+	margin: 0 20px 0 0;
+	font-size: 13px !important;
+}
+
+.logoLanding img {
+	width: 100%;
+	user-select: none;
+}
+
+.logoLanding {
+	position: absolute;
+	top: 5vh;
+	right: 5vh;
+	margin-left: 120px;
+	width: 12vw;
+	z-index: 50;
+	display: none;
+}
+
+.headingFull {
+	position: relative;
+	overflow-y: hidden;
+	height: 75px;
+	display: flex;
+	z-index: 5;
+}
+.subheadingFull {
+	position: relative;
+	overflow-y: hidden;
+	height: 25px;
+	display: flex;
+	z-index: 5;
+}
+.linkFull {
+	position: relative;
+	overflow-y: hidden;
+	height: 75px;
+	display: flex;
+	z-index: 5;
+}
+
+.hText {
+	/* background-color: red; */
+	/* position: absolute; */
+	/* transform: translateY(100px); */
 }
