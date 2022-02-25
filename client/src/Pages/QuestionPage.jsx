@@ -22,10 +22,6 @@ const QuestionPage = (props) => {
 		});
 	}, [id]);
 
-	// useEffect(() => {
-	// 	console.log(questionData);
-	// }, [questionData]);
-
 	if (questionData === null) {
 		return <div></div>;
 	} else if (questionData.exists === false) {

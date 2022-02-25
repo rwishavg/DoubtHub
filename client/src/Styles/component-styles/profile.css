@@ -68,7 +68,9 @@
 	font-weight: 600;
 	color: #6e7191;
 }
+
 .bioIcon {
+	align-self: center;
 	width: 25px;
 	margin: 0 20px;
 }

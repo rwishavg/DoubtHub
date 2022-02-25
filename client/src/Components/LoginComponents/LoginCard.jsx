@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import Input from "../DashboardComponents/Input";
 import LoginButtons from "./LoginButtons";
 import "../../Styles/page-styles/login.css";
-import mailIcon from "../../Assets/Icons/mail.svg";
-import eye from "../../Assets/Icons/eye.svg";
 import axios from "axios";
 import validator from "validator";
+
+import { UilEnvelope } from '@iconscout/react-unicons'
+import { UilEyeSlash } from '@iconscout/react-unicons'
 
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
@@ -81,31 +82,35 @@ const LoginCard = (props) => {
 					<span className="errorMessage">{errorMessage}</span>
 				</div>
 				<Input
-					icon={mailIcon}
 					heading="Email"
 					type="email"
 					placeholder="Enter Email"
 					update={setEmail}
-				/>
+				>
+					<UilEnvelope />
+				</Input>
+
 				<Input
-					icon={eye}
 					heading="Password"
 					type="password"
 					placeholder="Enter Password"
 					update={setPassword}
-				/>
+				>
+					<UilEyeSlash/>
+				</Input>
 
 				{props.page === "login" ? (
 					<LoginButtons submit={submitLogin} />
 				) : (
 					<div className="centerSignUp">
 						<Input
-							icon={eye}
 							heading="Re-enter Password"
 							type="password"
 							placeholder="Re-enter Password"
 							update={setRePassword}
-						/>
+						>
+							<UilEyeSlash/>		
+						</Input>
 
 						<button
 							type="button"

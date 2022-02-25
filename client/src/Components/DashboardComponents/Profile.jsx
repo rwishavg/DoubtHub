@@ -2,12 +2,11 @@ import React, { useContext, useState } from "react";
 import Input from "./Input";
 import axios from "axios";
 import { userObjectContext } from "../../Context";
-
 import "../../Styles/component-styles/profile.css";
-import atsign from "../../Assets/Icons/atsigncolor.svg";
 
-import bio from "../../Assets/Icons/bio.svg";
-import profile from "../../Assets/Icons/profilecolor.svg";
+import { UilAt } from '@iconscout/react-unicons'
+import { UilFileEditAlt } from '@iconscout/react-unicons'
+import { UilUser } from '@iconscout/react-unicons'
 
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
@@ -44,21 +43,23 @@ const Profile = () => {
 				<div className="profileName">
 					<div className="nameSize">
 						<Input
-							icon={profile}
 							heading="First Name"
 							type="text"
 							placeholder="Enter First Name"
 							update={setFirstName}
 							value={firstName}
-						/>
+						>
+							<UilUser/>
+						</Input>
 						<Input
-							icon={profile}
 							heading="Last Name"
 							type="text"
 							placeholder="Enter Last Name"
 							update={setLastName}
 							value={lastName}
-						/>
+						>
+							<UilUser/>
+						</Input>
 					</div>
 					<div className="profilePic">
 						<div className="circleCard">
@@ -67,15 +68,16 @@ const Profile = () => {
 					</div>
 				</div>
 				<Input
-					icon={atsign}
 					heading="Username"
 					type="text"
 					placeholder="Enter Username"
 					update={setUsername}
 					value={username}
-				/>
+				>
+					<UilAt />
+					</Input>
 				<div className="bioBg">
-					<img src={bio} className="bioIcon" alt="icon" />
+					<UilFileEditAlt className="bioIcon"/>
 					<div>
 						<div className="bioHeading">Bio</div>
 						<textarea

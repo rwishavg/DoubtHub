@@ -1,16 +1,17 @@
 import React, { useContext } from "react";
 import Logo from "../../Assets/DoubtHub Logo.png";
 import { Link } from "react-router-dom";
-import home from "../../Assets/Icons/home.svg";
-import settings from "../../Assets/Icons/settings.svg";
-import saved from "../../Assets/Icons/saved.svg";
-import question from "../../Assets/Icons/question.svg";
-import logout from "../../Assets/Icons/logout.svg";
-import profile from "../../Assets/Icons/profile.svg";
-import menuIcon from "../../Assets/Icons/menu.svg";
 import classes from "../../Styles/component-styles/sidebar.module.css";
-import { Home } from "../../Assets/Icons/Icons";
 import { userObjectContext } from "../../Context";
+
+//icons
+import { UilEstate } from "@iconscout/react-unicons";
+import { UilFileBookmarkAlt } from "@iconscout/react-unicons";
+import { UilBookmark } from "@iconscout/react-unicons";
+import { UilSetting } from "@iconscout/react-unicons";
+import { UilUser } from "@iconscout/react-unicons";
+import { UilSignout } from '@iconscout/react-unicons'
+import { UilApps } from '@iconscout/react-unicons'
 
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
@@ -26,12 +27,7 @@ const Sidebar = (props) => {
 					className={`${classes.sidebarLink}`}
 					onClick={() => props.setMenu(false)}
 				>
-					<img
-						src={home}
-						className={`${classes.iconSmaller}`}
-						alt="icon"
-					/>
-					{/* <Home className={`${classes.iconSmaller}`} /> */}
+					<UilEstate className={`${classes.iconSmaller}`} />
 					<div className={`${classes.hide}`}>Dashboard</div>
 				</Link>
 				<Link
@@ -39,11 +35,7 @@ const Sidebar = (props) => {
 					className={`${classes.sidebarLink} ${classes.hide}`}
 					onClick={() => props.setMenu(false)}
 				>
-					<img
-						src={question}
-						className={`${classes.iconSmaller}`}
-						alt="icon"
-					/>
+					<UilFileBookmarkAlt className={`${classes.iconSmaller}`} />
 					<div className={`${classes.hide}`}>My Questions</div>
 				</Link>
 				<Link
@@ -51,11 +43,7 @@ const Sidebar = (props) => {
 					className={`${classes.sidebarLink}`}
 					onClick={() => props.setMenu(false)}
 				>
-					<img
-						src={saved}
-						className={`${classes.iconSmaller}`}
-						alt="icon"
-					/>
+					<UilBookmark className={`${classes.iconSmaller}`} />
 					<div className={`${classes.hide}`}>Saved</div>
 				</Link>
 				<Link
@@ -63,11 +51,7 @@ const Sidebar = (props) => {
 					className={`${classes.sidebarLink}`}
 					onClick={() => props.setMenu(false)}
 				>
-					<img
-						src={settings}
-						className={`${classes.iconSmaller} `}
-						alt="icon"
-					/>
+					<UilSetting className={`${classes.iconSmaller}`} />
 					<div className={`${classes.hide}`}>Settings</div>
 				</Link>
 				<Link
@@ -75,30 +59,17 @@ const Sidebar = (props) => {
 					className={`${classes.sidebarLink}`}
 					onClick={() => props.setMenu(false)}
 				>
-					<img
-						src={profile}
-						className={`${classes.iconSmaller}`}
-						alt="icon"
-					/>
+					<UilUser className={`${classes.iconSmaller}`} />
 					<div className={`${classes.hide}`}>Profile</div>
 				</Link>
 				<a
 					href={api_endpoint + "/user/logout"}
 					className={`${classes.sidebarLink}`}
 				>
-					<img
-						src={logout}
-						className={`${classes.iconSmaller} ${classes.hide}`}
-						alt="icon"
-					/>
+					<UilSignout className={`${classes.iconSmaller} ${classes.hide}`} />
 					<div className={`${classes.hide}`}>Logout</div>
 				</a>
-				<img
-					onClick={() => props.setMenu(!props.menu)}
-					src={menuIcon}
-					className={`${classes.iconSmaller} ${classes.unhide}`}
-					alt="icon"
-				/>
+				<UilApps onClick={() => props.setMenu(!props.menu)} className={`${classes.iconSmaller} ${classes.unhide}`} />
 				<div className={`cardComponent ${classes.userCard}`}>
 					<img
 						src={user.profileIMG}

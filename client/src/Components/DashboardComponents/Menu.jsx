@@ -1,11 +1,13 @@
 import React, { useContext, useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import settings from "../../Assets/Icons/settings.svg";
 import classes from "../../Styles/component-styles/menu.module.css";
-import home from "../../Assets/Icons/home.svg";
-import question from "../../Assets/Icons/question.svg";
-import logout from "../../Assets/Icons/logout.svg";
+
+import { UilEstate } from "@iconscout/react-unicons";
+import { UilSetting } from "@iconscout/react-unicons";
+import { UilSignout } from '@iconscout/react-unicons'
+import { UilFileBookmarkAlt } from "@iconscout/react-unicons";
+
 import { userObjectContext } from "../../Context";
 
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
@@ -20,7 +22,6 @@ const activeStyle = {
 const Menu = ({ menu, setMenu }) => {
 	const [user, isAuthenticated] = useContext(userObjectContext);
 	const [menuStyle, setMenuStyle] = useState(inactiveStyle);
-	// console.log(menu);
 	useEffect(() => {
 		if (menu === false) setMenuStyle(inactiveStyle);
 		else setMenuStyle(activeStyle);
@@ -38,11 +39,7 @@ const Menu = ({ menu, setMenu }) => {
 				className={`${classes.sidebarLink}`}
 				onClick={(e) => setMenu(!menu)}
 			>
-				<img
-					src={home}
-					className={`${classes.iconSmaller}`}
-					alt="icon"
-				/>
+				<UilEstate className={`${classes.iconSmaller}`}/>
 				<div className={`${classes.hide}`}>Dashboard</div>
 			</Link>
 			<Link
@@ -50,11 +47,7 @@ const Menu = ({ menu, setMenu }) => {
 				className={`${classes.sidebarLink}`}
 				onClick={(e) => setMenu(!menu)}
 			>
-				<img
-					src={settings}
-					className={`${classes.iconSmaller} `}
-					alt="icon"
-				/>
+				<UilSetting className={`${classes.iconSmaller}`}/>
 				<div className={`${classes.hide}`}>Settings</div>
 			</Link>
 			<Link
@@ -62,11 +55,7 @@ const Menu = ({ menu, setMenu }) => {
 				className={`${classes.sidebarLink} ${classes.hide}`}
 				onClick={(e) => setMenu(!menu)}
 			>
-				<img
-					src={question}
-					className={`${classes.iconSmaller}`}
-					alt="icon"
-				/>
+			<UilFileBookmarkAlt className={`${classes.iconSmaller}`}/>
 				<div className={`${classes.hide}`}>My Questions</div>
 			</Link>
 			<a
@@ -74,11 +63,7 @@ const Menu = ({ menu, setMenu }) => {
 				href={api_endpoint + "/user/logout"}
 				className={`${classes.sidebarLink}`}
 			>
-				<img
-					src={logout}
-					className={`${classes.iconSmaller}`}
-					alt="icon"
-				/>
+				<UilSignout className={`${classes.iconSmaller}`}/>
 				<div className={`${classes.hide}`}>Logout</div>
 			</a>
 		</div>
