@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "../Assets/DoubtHub Logo.png";
-import bg from "../Assets/background.jpg";
+import bg from "../Assets/background.svg";
 import "../Styles/page-styles/landing.css";
 import { motion } from "framer-motion";
 
@@ -26,7 +26,7 @@ const Landing = () => {
 								}}
 								className="hText"
 							>
-								A Doubt&nbsp;
+								Doubt&nbsp;
 							</motion.div>
 							<motion.div
 								animate={{

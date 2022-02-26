@@ -48,7 +48,7 @@
 .rightInside {
 	width: 50vw;
 	height: 100vh;
-	background-size: cover !important;
+	background-size: 110%;
 	background-repeat: none !important;
 	/* border-top-left-radius: 20px;
 	border-bottom-left-radius: 20px; */
