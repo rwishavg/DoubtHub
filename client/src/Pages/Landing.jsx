@@ -1,18 +1,31 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../Assets/DoubtHub Logo.png";
 import bg from "../Assets/background.svg";
 import "../Styles/page-styles/landing.css";
 import { motion } from "framer-motion";
 
+const variants = {
+	open: { translateX: ["-49vw", "0vw"] },
+	closed: { translateX: ["0", "-49vw"] },
+};
 const Landing = () => {
+	const [isOpen, setIsOpen] = useState(false);
+	const [opacity, setOpacity] = useState(1);
+	const navigate = useNavigate();
 	return (
 		<div className="landingContainer">
 			<div className="logoLanding">
 				<img src={Logo} alt="" />
 			</div>
 			<div className="landingLeft">
-				<div className="landingContent">
+				<div
+					className="landingContent"
+					style={{
+						opacity: `${opacity}`,
+						// transition: "opacity 0.5s ease",
+					}}
+				>
 					<div className="landingHeading">
 						<div className="headingFull">
 							<motion.div
@@ -22,7 +35,7 @@ const Landing = () => {
 								transition={{
 									duration: 0.7,
 									ease: "easeOut",
-									delay: 1.5,
+									delay: 1,
 								}}
 								className="hText"
 							>
@@ -35,7 +48,7 @@ const Landing = () => {
 								transition={{
 									duration: 0.7,
 									ease: "easeOut",
-									delay: 1.8,
+									delay: 1.2,
 								}}
 								className="hText"
 							>
@@ -48,7 +61,7 @@ const Landing = () => {
 								transition={{
 									duration: 0.7,
 									ease: "easeOut",
-									delay: 2.1,
+									delay: 1.5,
 								}}
 								className="hText"
 							>
@@ -63,7 +76,7 @@ const Landing = () => {
 								transition={{
 									duration: 0.7,
 									ease: "easeOut",
-									delay: 2.7,
+									delay: 1.8,
 								}}
 							>
 								Built For You.
@@ -79,7 +92,7 @@ const Landing = () => {
 								transition={{
 									duration: 0.7,
 									ease: "easeOut",
-									delay: 3,
+									delay: 2.1,
 								}}
 							>
 								A Safe Place for your Curiosity and Growth
@@ -94,22 +107,39 @@ const Landing = () => {
 							transition={{
 								duration: 0.7,
 								ease: "easeOut",
-								delay: 3.3,
+								delay: 2.4,
 							}}
 						>
 							<div className="loginSign">
-								<Link
-									to="/login"
+								<div
 									className="button landingButton"
+									onClick={() => {
+										setIsOpen((isOpen) => !isOpen);
+										setOpacity(0);
+										setTimeout(() => {
+											navigate("/login", {
+												replace: true,
+											});
+										}, 1000);
+									}}
 								>
 									Login
-								</Link>
-								<Link
+								</div>
+								<div
 									to="/register"
 									className="button landingButton"
+									onClick={() => {
+										setIsOpen((isOpen) => !isOpen);
+										setOpacity(0);
+										setTimeout(() => {
+											navigate("/registerui", {
+												replace: true,
+											});
+										}, 1000);
+									}}
 								>
 									Sign Up
-								</Link>
+								</div>
 							</div>
 						</motion.div>
 					</div>
@@ -123,8 +153,9 @@ const Landing = () => {
 				></div>
 				<motion.div
 					className="animateWid"
-					animate={{ translateX: ["0", "50vw"] }}
-					transition={{ duration: 1, ease: "easeInOut" }}
+					animate={isOpen ? "open" : "closed"}
+					variants={variants}
+					transition={{ duration: 1.5, ease: [0.66, 0.44, 0, 0.98] }}
 				></motion.div>
 			</div>
 		</div>

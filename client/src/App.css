@@ -4,6 +4,11 @@
 	--color: #7548f0;
 	/* 8e69f1 */
 }
+
+::selection {
+	color: #fff;
+	background: #4400ff80;
+}
 body::-webkit-scrollbar {
 	overflow-x: hidden;
 	width: 0.5vh;
@@ -35,6 +40,7 @@ body::-webkit-scrollbar-thumb {
 	width: 48%;
 	transition: 0.3s all ease-in-out;
 	cursor: pointer;
+	user-select: none;
 	text-align: center;
 	/* transition: 0.5s background ease-in-out;
 	transition: 0.5s color ease-in-out; */
@@ -89,7 +95,7 @@ textarea {
 	opacity: 0;
 	/* transform: translateY(5%); */
 	animation-name: fadeIn;
-	animation-duration: 0.5s;
+	animation-duration: 0.7s;
 	animation-fill-mode: forwards;
 }
 
@@ -102,4 +108,8 @@ textarea {
 		opacity: 1;
 		/* transform: translateY(0%); */
 	}
+}
+
+img {
+	user-select: none;
 }

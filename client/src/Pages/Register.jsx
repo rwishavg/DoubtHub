@@ -4,7 +4,7 @@ import "../Styles/page-styles/login.css";
 
 const Register = () => {
 	return (
-		<div className="loginContainer">
+		<div className="loginContainer fadeIn">
 			<LoginCard page="register" heading="Register" />
 		</div>
 	);

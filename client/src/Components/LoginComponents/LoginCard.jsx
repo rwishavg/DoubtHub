@@ -5,8 +5,8 @@ import "../../Styles/page-styles/login.css";
 import axios from "axios";
 import validator from "validator";
 
-import { UilEnvelope } from '@iconscout/react-unicons'
-import { UilEyeSlash } from '@iconscout/react-unicons'
+import { UilEnvelope } from "@iconscout/react-unicons";
+import { UilEyeSlash } from "@iconscout/react-unicons";
 
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
@@ -87,7 +87,7 @@ const LoginCard = (props) => {
 					placeholder="Enter Email"
 					update={setEmail}
 				>
-					<UilEnvelope />
+					<UilEnvelope color="#A0A3BD" />
 				</Input>
 
 				<Input
@@ -96,7 +96,7 @@ const LoginCard = (props) => {
 					placeholder="Enter Password"
 					update={setPassword}
 				>
-					<UilEyeSlash/>
+					<UilEyeSlash color="#A0A3BD" />
 				</Input>
 
 				{props.page === "login" ? (
@@ -109,7 +109,7 @@ const LoginCard = (props) => {
 							placeholder="Re-enter Password"
 							update={setRePassword}
 						>
-							<UilEyeSlash/>		
+							<UilEyeSlash color="#A0A3BD" />
 						</Input>
 
 						<button

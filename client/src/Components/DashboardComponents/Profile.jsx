@@ -4,9 +4,9 @@ import axios from "axios";
 import { userObjectContext } from "../../Context";
 import "../../Styles/component-styles/profile.css";
 
-import { UilAt } from '@iconscout/react-unicons'
-import { UilFileEditAlt } from '@iconscout/react-unicons'
-import { UilUser } from '@iconscout/react-unicons'
+import { UilAt } from "@iconscout/react-unicons";
+import { UilFileEditAlt } from "@iconscout/react-unicons";
+import { UilUser } from "@iconscout/react-unicons";
 
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
@@ -49,7 +49,7 @@ const Profile = () => {
 							update={setFirstName}
 							value={firstName}
 						>
-							<UilUser/>
+							<UilUser color="#A0A3BD" />
 						</Input>
 						<Input
 							heading="Last Name"
@@ -58,7 +58,7 @@ const Profile = () => {
 							update={setLastName}
 							value={lastName}
 						>
-							<UilUser/>
+							<UilUser color="#A0A3BD" />
 						</Input>
 					</div>
 					<div className="profilePic">
@@ -74,10 +74,10 @@ const Profile = () => {
 					update={setUsername}
 					value={username}
 				>
-					<UilAt />
-					</Input>
+					<UilAt color="#A0A3BD" />
+				</Input>
 				<div className="bioBg">
-					<UilFileEditAlt className="bioIcon"/>
+					<UilFileEditAlt className="bioIcon" color="#A0A3BD" />
 					<div>
 						<div className="bioHeading">Bio</div>
 						<textarea

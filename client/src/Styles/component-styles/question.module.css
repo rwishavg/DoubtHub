@@ -110,10 +110,7 @@
 
 .icons * {
 	margin-left: 1vh;
-}
-
-.icons img {
-	width: 2.5vh;
+	height: 3vh;
 }
 
 .moreOptions {
@@ -132,16 +129,16 @@
 	margin: 0 1vh;
 }
 .moreOptions svg > * {
-	stroke: inherit;
+	color: inherit;
 }
 .moreOptions svg:hover > * {
-	stroke: #5f2eea;
+	color: #5f2eea;
 }
 .redClass:active > * {
-	stroke: rgb(226, 104, 104) !important;
+	color: rgb(226, 104, 104) !important;
 }
 .blueClass:active > * {
-	stroke: rgb(28, 198, 228) !important;
+	color: rgb(28, 198, 228) !important;
 }
 
 @media screen and (max-width: 500px) {

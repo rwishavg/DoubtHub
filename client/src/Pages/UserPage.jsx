@@ -22,15 +22,18 @@ const UserPage = () => {
 	if (userData === null) return <div></div>;
 	else
 		return (
-			<div>
-				<img
-					src={userData.profileIMG}
-					alt=""
-					style={{ width: "70px" }}
-				/>
-				<br />
-				{userData.firstName} {userData.lastName} <br />
-				{userData.bio}
+			<div className="cardComponent">
+				<div className="content">
+					{" "}
+					<img
+						src={userData.profileIMG}
+						alt=""
+						style={{ width: "70px" }}
+					/>
+					<br />
+					{userData.firstName} {userData.lastName} <br />
+					{userData.bio}
+				</div>
 			</div>
 		);
 };

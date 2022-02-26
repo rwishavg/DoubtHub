@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
-import { UilGoogle } from '@iconscout/react-unicons';
+import { UilGoogle } from "@iconscout/react-unicons";
 
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
@@ -28,7 +28,8 @@ const LoginButtons = (props) => {
 			<a
 				href={api_endpoint + "/user/auth/google"}
 				className="button button-full"
-			><UilGoogle size={24} color="#7548f0"/>
+			>
+				<UilGoogle size={24} color="#7548f0" />
 				&nbsp; Sign In With google
 			</a>
 		</div>

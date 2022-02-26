@@ -13,6 +13,10 @@
 	transition: 0.3s border ease;
 	/* transition: border 0.5s ease; */
 }
+
+.inputParent svg {
+	margin: 0 20px;
+}
 .inputParent:hover {
 	border: 2px solid #602eea70;
 }
@@ -47,10 +51,8 @@
 	border: none;
 }
 
-svg{
-	color:#A0A3BD;
-	height: 3vh;
-	margin: 0 20px;
+svg {
+	color: #333;
 }
 
 .inputHeading {

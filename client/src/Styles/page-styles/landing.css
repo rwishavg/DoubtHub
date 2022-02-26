@@ -16,7 +16,7 @@
 	height: 100%;
 	position: relative;
 }
-
+/* 
 .borderLeftSide {
 	top: 0;
 	width: 50px;
@@ -27,7 +27,7 @@
 	border-top-right-radius: 20px;
 	border-bottom-right-radius: 20px;
 	z-index: 1;
-}
+} */
 .landingRight {
 	width: 50vw;
 	height: 100vh;
@@ -38,11 +38,14 @@
 
 .animateWid {
 	/* position: relative; */
-	width: 50vw;
+	width: 52vw;
 	height: 100vh;
 	background-color: #fcfcfc;
 	position: absolute;
 	transform: translateX(0);
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+	transition: all 1.5 cubic-bezier(0.66, 0.44, 0, 0.98);
 }
 
 .rightInside {
@@ -62,6 +65,8 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	transition: all 0.5s ease;
+	transition-delay: 0.5s;
 }
 
 .landingHeading {

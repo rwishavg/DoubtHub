@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import classes from "../../Styles/component-styles/searchbar.module.css";
 
-import { UilSlidersVAlt } from '@iconscout/react-unicons'
-import { UilSearch } from '@iconscout/react-unicons'
+import { UilSlidersVAlt } from "@iconscout/react-unicons";
+import { UilSearch } from "@iconscout/react-unicons";
 
 const tagNames = ["ALL", "TAG", "USERNAME", "NAME", "QUESTION"];
 
@@ -23,7 +23,10 @@ const Searchbar = () => {
 			<div className={`cardComponent ${classes.searchComponent}`}>
 				<div className={`${classes.background}`}>
 					<div className={classes["searchTag"]}>
-						<UilSearch className={classes["searchIcon"]}/>
+						<UilSearch
+							className={classes["searchIcon"]}
+							color="#fff	"
+						/>
 						{filterState}
 					</div>
 
@@ -34,8 +37,10 @@ const Searchbar = () => {
 					/>
 				</div>
 				<div className={`${classes.filterBg}`} onClick={changeTag}>
-						<UilSlidersVAlt className={classes["searchIcon"]}/>
-
+					<UilSlidersVAlt
+						className={classes["filterIcon"]}
+						color="#602eeac2"
+					/>
 				</div>
 			</div>
 		</div>

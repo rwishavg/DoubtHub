@@ -4,13 +4,13 @@ import classes from "../../Styles/component-styles/question.module.css";
 import Context, { userObjectContext } from "../../Context";
 import QuestionUser from "../QuestionComponents/QuestionUser";
 
-import { UilThumbsUp } from '@iconscout/react-unicons'
-import { UilCommentAltLines } from '@iconscout/react-unicons'
-import { UilPen } from '@iconscout/react-unicons'
-import { UilFavorite } from '@iconscout/react-unicons'
-import { UilBan } from '@iconscout/react-unicons'
-import { UilTrashAlt } from '@iconscout/react-unicons'
-import { UilEllipsisV } from '@iconscout/react-unicons'
+import { UilThumbsUp } from "@iconscout/react-unicons";
+import { UilCommentAltLines } from "@iconscout/react-unicons";
+import { UilPen } from "@iconscout/react-unicons";
+import { UilFavorite } from "@iconscout/react-unicons";
+import { UilBan } from "@iconscout/react-unicons";
+import { UilTrashAlt } from "@iconscout/react-unicons";
+import { UilEllipsisV } from "@iconscout/react-unicons";
 
 import DeletedQuestion from "./DeletedQuestion";
 import axios from "axios";
@@ -60,7 +60,7 @@ const Question = (props) => {
 		if (props.page === "QuesPage") {
 			navigate("../../Dashboard", { replace: true });
 		}
-		setOptionStyle(optionInactiveStyle)
+		setOptionStyle(optionInactiveStyle);
 	};
 
 	const saveQuestion = () => {
@@ -76,7 +76,7 @@ const Question = (props) => {
 			alert("Question " + response.data + " in bookmarks");
 			props.updateData();
 		});
-		setOptionStyle(optionInactiveStyle)
+		setOptionStyle(optionInactiveStyle);
 	};
 
 	if (props.exists === false) {
@@ -108,16 +108,24 @@ const Question = (props) => {
 							className={classes["moreOptions"]}
 							style={optionStyle}
 						>
-							<UilFavorite onClick={(e) => saveQuestion()} className={classes["blueClass"]}/>
+							<UilFavorite
+								onClick={(e) => saveQuestion()}
+								className={classes["blueClass"]}
+							/>
 							{props.userid._id === user._id && defaultOptions && (
 								<>
-									<UilPen/>
-									<UilTrashAlt onClick={deleteQuestion} className={classes["redClass"]}/>
+									<UilPen />
+									<UilTrashAlt
+										onClick={deleteQuestion}
+										className={classes["redClass"]}
+									/>
 								</>
 							)}
-							<UilBan className={classes["redClass"]}/>
+							<UilBan className={classes["redClass"]} />
 						</div>
-						<UilEllipsisV onClick={(e) => setOptionState(!optionState)}/>
+						<UilEllipsisV
+							onClick={(e) => setOptionState(!optionState)}
+						/>
 					</div>
 					<div className={classes["questionHeading"]}>
 						{props.heading}
@@ -138,13 +146,16 @@ const Question = (props) => {
 
 					<div className={classes["icons"]}>
 						<div>213</div>
-						<UilThumbsUp/>
+						<UilThumbsUp />
 						<div></div>
 						<div></div>
 						<div></div>
 						<div>213</div>
-						<Link to={`/dashboard/${props.questionID}`}>
-							<UilCommentAltLines/>
+						<Link
+							to={`/dashboard/${props.questionID}`}
+							className="removeWid"
+						>
+							<UilCommentAltLines />
 						</Link>
 					</div>
 				</div>

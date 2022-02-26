@@ -41,7 +41,7 @@
 
 .filterBg {
 	user-select: none;
-	height: 4vh;
+	height: 4.1vh;
 	width: 5vh;
 	background: transparent;
 	border: 1px solid #eff0f6;
@@ -60,7 +60,8 @@
 }
 
 .filterIcon {
-	width: 2vh;
+	width: 1.7vh;
+	transform: rotate(90deg);
 }
 .searchIcon {
 	width: 1.4vh;
@@ -80,7 +81,7 @@
 	font-size: 1.4vh;
 	background-color: rgba(255, 255, 255, 0.856);
 	border-radius: 7px;
-	padding: 0.4vh 0.8vh 0.4vh 0.8vh;
+	padding: 0 0.8vh 0 0.8vh;
 	margin: 0 0.7vh;
 	background-color: #7f53f7;
 	color: white;
