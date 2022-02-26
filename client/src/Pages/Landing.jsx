@@ -132,7 +132,7 @@ const Landing = () => {
 										setIsOpen((isOpen) => !isOpen);
 										setOpacity(0);
 										setTimeout(() => {
-											navigate("/registerui", {
+											navigate("/register", {
 												replace: true,
 											});
 										}, 1000);
