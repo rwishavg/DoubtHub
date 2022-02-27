@@ -27,11 +27,10 @@ const Dashboard = () => {
 				withCredentials: true,
 			})
 			.then((response) => {
-				// console.log(response);
 				setQuestionData(response.data);
 			});
 	};
-	const myDataFunc = () => {
+	const myDataFunc = async () => {
 		axios({
 			method: "POST",
 			data: {

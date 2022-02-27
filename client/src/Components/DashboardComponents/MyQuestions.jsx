@@ -17,29 +17,30 @@ const AllQuestions = (props) => {
 	useEffect(() => {
 		props.getData();
 	}, []);
-
-	return (
-		<div className="fadeIn">
-			{props.data.length === 0 && (
-				<div style={zeroStyle}>
-					Its lonely here. <br />
-					Add some questions...
-				</div>
-			)}
-			{props.data.map((question) => (
-				<Question
-					key={question._id}
-					userid={question.userid}
-					heading={question.heading}
-					description={question.description}
-					id={question._id}
-					updateData={props.getData}
-					date={props.convertDate(question.createdAt)}
-					questionID={question.questionID}
-				/>
-			))}
-		</div>
-	);
+	if (props.data.length === 0) {
+		return (
+			<div style={zeroStyle}>
+				Its lonely here. <br />
+				Add some questions...
+			</div>
+		);
+	} else
+		return (
+			<div className="fadeIn">
+				{props.data.map((question) => (
+					<Question
+						key={question._id}
+						userid={question.userid}
+						heading={question.heading}
+						description={question.description}
+						id={question._id}
+						updateData={props.getData}
+						date={props.convertDate(question.createdAt)}
+						questionID={question.questionID}
+					/>
+				))}
+			</div>
+		);
 };
 
 export default AllQuestions;
