@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
@@ -8,6 +8,7 @@ import "./App.css";
 function App() {
 	return (
 		<BrowserRouter>
+			<wc-toast position="top-right"></wc-toast>
 			<Routes>
 				<Route path="/" element={<Landing />}></Route>
 				<Route path="/dashboard/*" element={<Dashboard />}></Route>

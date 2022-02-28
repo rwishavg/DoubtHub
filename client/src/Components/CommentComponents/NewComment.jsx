@@ -3,6 +3,7 @@ import React, { useState, useContext } from "react";
 import { userObjectContext } from "../../Context";
 import { useParams } from "react-router-dom";
 import classes from "../../Styles/component-styles/comments.module.css";
+import { toast } from "https://cdn.skypack.dev/wc-toast";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 const NewComment = (props) => {
 	const [description, setDescription] = useState("");
@@ -22,7 +23,7 @@ const NewComment = (props) => {
 			// console.log(response.data.comments);
 			props.setComments(response.data.comments);
 		});
-		alert("Response Posted");
+		toast.success("Response Added");
 	};
 	return (
 		<div className={`cardComponent ${classes.newComment}`}>

@@ -4,15 +4,6 @@ const QuestionSchema = require("../Models/newQuestion");
 const User = require("../Models/newUser");
 const { nanoid } = require("nanoid");
 
-dotenv.config({
-	path: "./utils/config.env",
-});
-
-let host = "";
-if (process.env.NODE_ENV === "development") {
-	host = "http://localhost:3000";
-}
-
 exports.addNewQuestion = async (req, res, next) => {
 	try {
 		let result = await new QuestionSchema({
@@ -35,7 +26,6 @@ exports.getQuestions = async (req, res, next) => {
 		let questions = await QuestionSchema.find()
 			.populate("userid", "username firstName lastName profileIMG")
 			.sort({ createdAt: -1 });
-
 		res.status(200).send(questions);
 	} catch (err) {
 		res.json(err);

@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState, useContext } from "react";
 import classes from "../../Styles/component-styles/newQuestion.module.css";
 import { userObjectContext } from "../../Context";
+import { toast } from "https://cdn.skypack.dev/wc-toast";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 const activeStyle = {
 	cardStyle: { height: "60vh", width: "100%" },
@@ -35,10 +36,9 @@ const NewQuestion = (props) => {
 			withCredentials: true,
 			url: api_endpoint + "/question/addNewQuestion",
 		}).then((response) => {
-			console.log(response);
 			props.updateFunction();
 		});
-		alert("Question Created");
+		toast.success("Question Added");
 		setCardState(false);
 		setDescription("");
 		setQuestionText("");

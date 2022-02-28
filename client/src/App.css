@@ -2,9 +2,9 @@
 	background-color: #fcfcfc;
 	overflow-x: hidden;
 	--color: #7548f0;
+
 	/* 8e69f1 */
 }
-
 ::selection {
 	color: #fff;
 	background: #4400ff80;
@@ -16,7 +16,6 @@ body::-webkit-scrollbar {
 
 body::-webkit-scrollbar-thumb {
 	background-color: #7653d4;
-	border-radius: 20px;
 }
 
 .cardComponent {
@@ -112,4 +111,8 @@ textarea {
 
 img {
 	user-select: none;
+}
+
+wc-toast style :host {
+	--wc-toast-background: brown !important;
 }
