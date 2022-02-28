@@ -5,15 +5,6 @@ const User = require("../Models/newUser");
 
 const { nanoid } = require("nanoid");
 
-dotenv.config({
-	path: "./utils/config.env",
-});
-
-let host = "";
-if (process.env.NODE_ENV === "development") {
-	host = "http://localhost:3000";
-}
-
 exports.addNewComment = async (req, res, next) => {
 	try {
 		const update = {
@@ -32,10 +23,8 @@ exports.addNewComment = async (req, res, next) => {
 			.populate(
 				"comments.userid",
 				"username firstName lastName profileIMG"
-			)
-			.exec((err, data) => {
-				res.send(data);
-			});
+			);
+		res.status(200).send(result);
 	} catch (err) {
 		res.json(err);
 	}
@@ -43,12 +32,11 @@ exports.addNewComment = async (req, res, next) => {
 
 exports.getComments = async (req, res, next) => {
 	try {
-		CommentSchema.find()
+		let questions = await CommentSchema.find()
 			.populate("userid", "username firstName lastName profileIMG")
-			.sort({ createdAt: -1 })
-			.exec((err, questions) => {
-				res.send(questions);
-			});
+			.sort({ createdAt: -1 });
+
+		res.status(200).send(questions);
 	} catch (err) {
 		res.json(err);
 	}
@@ -57,7 +45,7 @@ exports.getComments = async (req, res, next) => {
 exports.deleteComment = async (req, res, next) => {
 	try {
 		await CommentSchema.deleteOne({ _id: req.body.id });
-		res.send("Deleted");
+		res.status(200).send("Deleted");
 	} catch (err) {
 		res.json(err);
 	}

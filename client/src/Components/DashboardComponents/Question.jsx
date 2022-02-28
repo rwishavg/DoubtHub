@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import classes from "../../Styles/component-styles/question.module.css";
+
+import { Link, useNavigate } from "react-router-dom";
 import Context, { userObjectContext } from "../../Context";
+
 import QuestionUser from "../QuestionComponents/QuestionUser";
 
 import { UilThumbsUp } from "@iconscout/react-unicons";
@@ -11,6 +13,7 @@ import { UilFavorite } from "@iconscout/react-unicons";
 import { UilBan } from "@iconscout/react-unicons";
 import { UilTrashAlt } from "@iconscout/react-unicons";
 import { UilEllipsisV } from "@iconscout/react-unicons";
+import { toast } from "https://cdn.skypack.dev/wc-toast";
 
 import DeletedQuestion from "./DeletedQuestion";
 import axios from "axios";
@@ -29,6 +32,7 @@ const Question = (props) => {
 	const [styleState, setStyleState] = useState(inactiveStyle);
 	const [optionState, setOptionState] = useState(false);
 	const [optionStyle, setOptionStyle] = useState(optionInactiveStyle);
+
 	const expandCard = () => setCurrentCard(!currentCard);
 	const navigate = useNavigate();
 	let defaultOptions = props.remOptions;
@@ -55,6 +59,7 @@ const Question = (props) => {
 			withCredentials: true,
 			url: api_endpoint + "/question/delete",
 		}).then((response) => {
+			toast.success("Question Deleted");
 			props.updateData();
 		});
 		if (props.page === "QuesPage") {
@@ -73,9 +78,12 @@ const Question = (props) => {
 			withCredentials: true,
 			url: api_endpoint + "/question/saveQuestion",
 		}).then((response) => {
-			alert("Question " + response.data + " in bookmarks");
+			if (response.data === "Added")
+				toast.success("Question " + response.data + " to bookmarks");
+			else toast.success("Question " + response.data + " from bookmarks");
 			props.updateData();
 		});
+
 		setOptionStyle(optionInactiveStyle);
 	};
 

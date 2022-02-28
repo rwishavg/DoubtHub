@@ -7,6 +7,7 @@ import Saved from "../Components/DashboardComponents/Saved";
 import Sidebar from "../Components/DashboardComponents/Sidebar";
 import Searchbar from "../Components/DashboardComponents/Searchbar";
 import Settings from "../Components/DashboardComponents/Settings";
+
 import UserPage from "../Pages/UserPage";
 import QuestionPage from "./QuestionPage";
 import "../Styles/page-styles/dashboard.css";
@@ -27,11 +28,10 @@ const Dashboard = () => {
 				withCredentials: true,
 			})
 			.then((response) => {
-				// console.log(response);
 				setQuestionData(response.data);
 			});
 	};
-	const myDataFunc = () => {
+	const myDataFunc = async () => {
 		axios({
 			method: "POST",
 			data: {

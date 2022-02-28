@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === "development") {
 
 exports.data = async (req, res, next) => {
 	try {
-		res.send(req.user);
+		res.status(200).send(req.user);
 	} catch (err) {
 		res.json(err);
 	}
@@ -83,13 +83,12 @@ exports.login = (req, res, next) => {
 
 exports.getUser = async (req, res, next) => {
 	try {
-		User.findOne({ username: req.body.username }).then((userData) => {
-			res.send({
-				firstName: userData.firstName,
-				lastName: userData.lastName,
-				bio: userData.bio,
-				profileIMG: userData.profileIMG,
-			});
+		let userData = await User.findOne({ username: req.body.username });
+		res.status(200).send({
+			firstName: userData.firstName,
+			lastName: userData.lastName,
+			bio: userData.bio,
+			profileIMG: userData.profileIMG,
 		});
 	} catch (err) {
 		res.json(err);

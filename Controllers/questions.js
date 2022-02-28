@@ -4,27 +4,18 @@ const QuestionSchema = require("../Models/newQuestion");
 const User = require("../Models/newUser");
 const { nanoid } = require("nanoid");
 
-dotenv.config({
-	path: "./utils/config.env",
-});
-
-let host = "";
-if (process.env.NODE_ENV === "development") {
-	host = "http://localhost:3000";
-}
-
 exports.addNewQuestion = async (req, res, next) => {
 	try {
-		new QuestionSchema({
+		let result = await new QuestionSchema({
 			userid: req.body.userid,
 			heading: req.body.questionHeading,
 			description: req.body.description,
 			questionID: nanoid(15),
 			createdAt: Date.now(),
-		}).save((err, result) => {
-			console.log(result);
-			res.send(result);
-		});
+		}).save();
+
+		console.log(result);
+		res.status(200).send(result);
 	} catch (err) {
 		res.json(err);
 	}
@@ -32,33 +23,26 @@ exports.addNewQuestion = async (req, res, next) => {
 
 exports.getQuestions = async (req, res, next) => {
 	try {
-		QuestionSchema.find()
+		let questions = await QuestionSchema.find()
 			.populate("userid", "username firstName lastName profileIMG")
-			.sort({ createdAt: -1 })
-			.exec((err, questions) => {
-				res.send(questions);
-			});
+			.sort({ createdAt: -1 });
+		res.status(200).send(questions);
 	} catch (err) {
 		res.json(err);
 	}
 };
 exports.getQuestionPage = async (req, res, next) => {
 	try {
-		QuestionSchema.findOne({
-			questionID: req.body.id,
-		})
+		let query = { questionID: req.body.id };
+		let questions = await QuestionSchema.findOne(query)
 			.populate("userid", "username firstName lastName profileIMG")
 			.populate(
 				"comments.userid",
 				"username firstName lastName profileIMG"
-			)
-			.exec((err, questions) => {
-				if (questions === null) {
-					res.send({ exists: false });
-				} else {
-					res.send(questions);
-				}
-			});
+			);
+
+		if (questions === null) res.status(200).send({ exists: false });
+		else res.status(200).send(questions);
 	} catch (err) {
 		res.json(err);
 	}
@@ -143,17 +127,14 @@ exports.saveQuestion = async (req, res, next) => {
 exports.myQuestions = async (req, res, next) => {
 	try {
 		// console.log(req.body.emailID);
-		QuestionSchema.find()
-			.populate(
-				"userid",
-				"username firstName lastName profileIMG emailID"
-			)
-			.exec((err, questions) => {
-				const result = questions.filter(
-					(question) => question.userid.emailID === req.body.emailID
-				);
-				res.send(result);
-			});
+		let questions = await QuestionSchema.find().populate(
+			"userid",
+			"username firstName lastName profileIMG emailID"
+		);
+		const result = questions.filter(
+			(question) => question.userid.emailID === req.body.emailID
+		);
+		res.send(result);
 	} catch (err) {
 		res.json(err);
 	}
