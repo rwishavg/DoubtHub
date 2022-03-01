@@ -29,6 +29,7 @@ const Dashboard = () => {
 			})
 			.then((response) => {
 				setQuestionData(response.data);
+				console.log("data", response.data);
 			});
 	};
 	const myDataFunc = () => {

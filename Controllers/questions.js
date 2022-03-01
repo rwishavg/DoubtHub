@@ -28,6 +28,7 @@ exports.getQuestions = async (req, res, next) => {
 		res.json(err);
 	}
 };
+
 exports.getQuestionPage = async (req, res, next) => {
 	try {
 		let query = { questionID: req.body.id };
@@ -75,7 +76,7 @@ exports.getSavedQuestions = async (req, res, next) => {
 								likes: 0,
 								__v: 0,
 							});
-							// console.log(question.exists);
+		
 						} else {
 							resolve(question);
 						}
@@ -85,7 +86,7 @@ exports.getSavedQuestions = async (req, res, next) => {
 		});
 
 		Promise.all(allPromise).then((values) => {
-			// console.log(values);
+
 			res.send(values);
 		});
 	} catch (err) {

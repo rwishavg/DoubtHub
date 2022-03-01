@@ -32,6 +32,7 @@ const QuestionPage = (props) => {
 			</div>
 		);
 	} else {
+		console.log("comments",questionData.comments)
 		return (
 			<div className="fadeIn">
 				<Question

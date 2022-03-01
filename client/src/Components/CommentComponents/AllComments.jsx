@@ -3,9 +3,11 @@ import Comment from "./Comment";
 import classes from "../../Styles/component-styles/comments.module.css";
 import NewComment from "./NewComment";
 const AllComments = (props) => {
+	console.log("allcomments",props)
 	const commentEndRef = useRef(null);
 	const commentStartRef = useRef(null);
 	const [comments, setComments] = useState(props.comments);
+
 	const scrollToBottom = () => {
 		commentEndRef.current?.scrollIntoView({ behavior: "smooth" });
 	};
@@ -23,7 +25,7 @@ const AllComments = (props) => {
 					Respond
 				</div>
 			</div>
-			<div className={`cardComponent ${classes["commentCard"]}`}>
+			{/* <div className={`cardComponent ${classes["commentCard"]}`}>
 				{comments.map((comment) => (
 					<Comment
 						key={comment._id}
@@ -32,7 +34,7 @@ const AllComments = (props) => {
 						date={comment.createdAt}
 					/>
 				))}
-			</div>
+			</div> */}
 
 			<NewComment setComments={setComments} />
 			<div className={classes["top"]} ref={commentEndRef}>

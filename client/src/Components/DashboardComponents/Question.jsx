@@ -33,10 +33,7 @@ const Question = (props) => {
 	const [optionState, setOptionState] = useState(false);
 	const [optionStyle, setOptionStyle] = useState(optionInactiveStyle);
 	const [likeCount, setLikeCount] = useState(props.question.likes.length);
-	const [commentCount, setCommentCount] = useState(
-		props.question.comments.length
-	);
-
+	
 	const expandCard = () => setCurrentCard(!currentCard);
 	const navigate = useNavigate();
 	let defaultOptions = props.remOptions;
@@ -177,11 +174,11 @@ const Question = (props) => {
 
 					<div className={classes["icons"]}>
 						<div>{likeCount}</div>
-						<UilThumbsUp onClick={likeQuestion} />
+						<UilThumbsUp onClick={likeQuestion} style={{cursor:"pointer"}}/>
 						<div></div>
 						<div></div>
 						<div></div>
-						<div>{commentCount}</div>
+						<div>10</div>
 						<Link
 							to={`/dashboard/${props.question.questionID}`}
 							className="removeWid"

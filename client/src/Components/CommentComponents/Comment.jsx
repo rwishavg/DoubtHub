@@ -1,11 +1,12 @@
-import React from "react";
+import React,{useState} from "react";
 import classes from "../../Styles/component-styles/comments.module.css";
 import QuestionUser from "../QuestionComponents/QuestionUser";
 
 import { UilAngleUp } from "@iconscout/react-unicons";
-import { UilAngleDown } from "@iconscout/react-unicons";
 
 const Comment = (props) => {
+	console.log(props)
+	const [upvote, setUpvote] = useState(0);
 	let calculateDate = (date) => {
 		let d = Date.parse(date);
 		let val = Date.now() - d;
@@ -25,8 +26,7 @@ const Comment = (props) => {
 				<div className={classes["topOptions"]}>
 					<div className={classes["icons"]}>
 						<UilAngleUp />
-						100
-						<UilAngleDown />
+						{upvote}
 					</div>
 					<QuestionUser
 						firstName={props.userid.firstName}
