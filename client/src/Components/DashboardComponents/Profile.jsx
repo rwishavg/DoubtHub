@@ -7,7 +7,7 @@ import "../../Styles/component-styles/profile.css";
 import { UilAt } from "@iconscout/react-unicons";
 import { UilFileEditAlt } from "@iconscout/react-unicons";
 import { UilUser } from "@iconscout/react-unicons";
-import { toast } from "https://cdn.skypack.dev/wc-toast";
+import { toast } from "wc-toast";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
 const Profile = () => {
