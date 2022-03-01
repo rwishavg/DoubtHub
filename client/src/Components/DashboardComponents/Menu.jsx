@@ -5,7 +5,7 @@ import classes from "../../Styles/component-styles/menu.module.css";
 
 import { UilEstate } from "@iconscout/react-unicons";
 import { UilSetting } from "@iconscout/react-unicons";
-import { UilSignout } from '@iconscout/react-unicons'
+import { UilSignout } from "@iconscout/react-unicons";
 import { UilFileBookmarkAlt } from "@iconscout/react-unicons";
 
 import { userObjectContext } from "../../Context";
@@ -39,7 +39,7 @@ const Menu = ({ menu, setMenu }) => {
 				className={`${classes.sidebarLink}`}
 				onClick={(e) => setMenu(!menu)}
 			>
-				<UilEstate className={`${classes.iconSmaller}`}/>
+				<UilEstate className={`${classes.iconSmaller}`} />
 				<div className={`${classes.hide}`}>Dashboard</div>
 			</Link>
 			<Link
@@ -47,7 +47,7 @@ const Menu = ({ menu, setMenu }) => {
 				className={`${classes.sidebarLink}`}
 				onClick={(e) => setMenu(!menu)}
 			>
-				<UilSetting className={`${classes.iconSmaller}`}/>
+				<UilSetting className={`${classes.iconSmaller}`} />
 				<div className={`${classes.hide}`}>Settings</div>
 			</Link>
 			<Link
@@ -55,7 +55,7 @@ const Menu = ({ menu, setMenu }) => {
 				className={`${classes.sidebarLink} ${classes.hide}`}
 				onClick={(e) => setMenu(!menu)}
 			>
-			<UilFileBookmarkAlt className={`${classes.iconSmaller}`}/>
+				<UilFileBookmarkAlt className={`${classes.iconSmaller}`} />
 				<div className={`${classes.hide}`}>My Questions</div>
 			</Link>
 			<a
@@ -63,7 +63,7 @@ const Menu = ({ menu, setMenu }) => {
 				href={api_endpoint + "/user/logout"}
 				className={`${classes.sidebarLink}`}
 			>
-				<UilSignout className={`${classes.iconSmaller}`}/>
+				<UilSignout className={`${classes.iconSmaller}`} />
 				<div className={`${classes.hide}`}>Logout</div>
 			</a>
 		</div>

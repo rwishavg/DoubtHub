@@ -33,6 +33,9 @@ const Question = (props) => {
 	const [optionState, setOptionState] = useState(false);
 	const [optionStyle, setOptionStyle] = useState(optionInactiveStyle);
 	const [likeCount, setLikeCount] = useState(props.question.likes.length);
+	const [commentCount, setCommentCount] = useState(
+		props.question.comments.length
+	);
 
 	const expandCard = () => setCurrentCard(!currentCard);
 	const navigate = useNavigate();
@@ -105,7 +108,7 @@ const Question = (props) => {
 			props.updateData();
 		});
 	};
-	
+
 	if (props.exists === false) {
 		return (
 			<DeletedQuestion
@@ -139,15 +142,16 @@ const Question = (props) => {
 								onClick={(e) => saveQuestion()}
 								className={classes["blueClass"]}
 							/>
-							{props.question.userid._id === user._id && defaultOptions && (
-								<>
-									<UilPen />
-									<UilTrashAlt
-										onClick={deleteQuestion}
-										className={classes["redClass"]}
-									/>
-								</>
-							)}
+							{props.question.userid._id === user._id &&
+								defaultOptions && (
+									<>
+										<UilPen />
+										<UilTrashAlt
+											onClick={deleteQuestion}
+											className={classes["redClass"]}
+										/>
+									</>
+								)}
 							<UilBan className={classes["redClass"]} />
 						</div>
 						<UilEllipsisV
@@ -173,11 +177,11 @@ const Question = (props) => {
 
 					<div className={classes["icons"]}>
 						<div>{likeCount}</div>
-						<UilThumbsUp onClick={likeQuestion}/>
+						<UilThumbsUp onClick={likeQuestion} />
 						<div></div>
 						<div></div>
 						<div></div>
-						<div>213</div>
+						<div>{commentCount}</div>
 						<Link
 							to={`/dashboard/${props.question.questionID}`}
 							className="removeWid"

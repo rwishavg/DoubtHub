@@ -1,4 +1,4 @@
-import React, {useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import Comment from "./Comment";
 import classes from "../../Styles/component-styles/comments.module.css";
 import NewComment from "./NewComment";

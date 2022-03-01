@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import classes from "../../Styles/component-styles/comments.module.css";
 import { toast } from "https://cdn.skypack.dev/wc-toast";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
+
 const NewComment = (props) => {
 	const [description, setDescription] = useState("");
 	const user = useContext(userObjectContext)[0];

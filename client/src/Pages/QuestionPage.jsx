@@ -39,7 +39,7 @@ const QuestionPage = (props) => {
 					updateData={props.getData}
 					date={props.convertDate(questionData.createdAt)}
 					page={"QuesPage"}
-					question={questionData}					
+					question={questionData}
 				/>
 				<AllComments comments={questionData.comments} />
 			</div>
