@@ -1,5 +1,3 @@
-const dotenv = require("dotenv");
-const { exists } = require("../Models/newQuestion");
 const QuestionSchema = require("../Models/newQuestion");
 const User = require("../Models/newUser");
 const { nanoid } = require("nanoid");
@@ -13,10 +11,9 @@ exports.addNewQuestion = async (req, res, next) => {
 			questionID: nanoid(15),
 			createdAt: Date.now(),
 		}).save();
-
-		console.log(result);
 		res.status(200).send(result);
 	} catch (err) {
+		console.log(err);
 		res.json(err);
 	}
 };
@@ -129,8 +126,6 @@ exports.likeQuestion = async (req, res, next) => {
 		const questionData = await QuestionSchema.findOne({
 			_id: req.body.questionID,
 		});
-		console.log(req.body.userID);
-		console.log(req.body.questionID);
 		var i = questionData.likes.indexOf(req.body.userID);
 		if (i === -1) {
 			questionData.likes.push(req.body.userID);

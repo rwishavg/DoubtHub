@@ -13,7 +13,6 @@ const questionSchema = new Schema({
 	},
 	createdAt: {
 		type: Date,
-		unique: true,
 	},
 	heading: {
 		type: String,
@@ -33,12 +32,10 @@ const questionSchema = new Schema({
 			},
 			createdAt: {
 				type: Date,
-				unique: true,
 			},
 			body: {
 				type: String,
 				default: "Say Something ...",
-				required: true,
 			},
 		},
 	],

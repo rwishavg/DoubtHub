@@ -1,6 +1,8 @@
 const passport = require("passport");
 const dotenv = require("dotenv");
 const User = require("../Models/newUser");
+const QuestionSchema = require("../Models/newQuestion");
+const { nanoid } = require("nanoid");
 const bcrypt = require("bcrypt");
 dotenv.config({
 	path: "./utils/config.env",
@@ -55,6 +57,7 @@ exports.signup = async (req, res, next) => {
 					new User({
 						emailID: req.body.username,
 						password: hashedPassword,
+						username: nanoid(10),
 					}).save();
 					console.log("new user created!");
 					res.send("New User Created");
@@ -84,11 +87,20 @@ exports.login = (req, res, next) => {
 exports.getUser = async (req, res, next) => {
 	try {
 		let userData = await User.findOne({ username: req.body.username });
+		let questions = await QuestionSchema.find().populate(
+			"userid",
+			"username firstName lastName profileIMG emailID"
+		);
+
+		const result = questions.filter(
+			(question) => question.userid.username === req.body.username
+		);
 		res.status(200).send({
 			firstName: userData.firstName,
 			lastName: userData.lastName,
 			bio: userData.bio,
 			profileIMG: userData.profileIMG,
+			questions: result,
 		});
 	} catch (err) {
 		res.json(err);

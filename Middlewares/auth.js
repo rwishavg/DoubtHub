@@ -2,16 +2,7 @@ const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth2").Strategy;
 const dotenv = require("dotenv");
 const User = require("../Models/newUser");
-
-let host = "";
-if (process.env.NODE_ENV === "development") {
-	host = "http://localhost:3000";
-}
-
-dotenv.config({
-	path: "./utils/config.env",
-});
-
+const { nanoid } = require("nanoid");
 passport.use(
 	new GoogleStrategy(
 		{
@@ -39,6 +30,7 @@ passport.use(
 						lastName: profile.family_name,
 						emailID: profile.email,
 						profileIMG: profile._json.picture,
+						username: nanoid(10),
 					}).save();
 					console.log("New User Created");
 				}

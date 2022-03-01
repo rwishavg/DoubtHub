@@ -1,0 +1,51 @@
+.userComponent {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 4vh;
+	/* width: 100%; */
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 60px;
+}
+
+.userImg {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 19vh;
+	height: 19vh;
+	border-radius: 100%;
+	border: 2px solid #602eea9d;
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+	transition: all 0.3s ease;
+	transform: scale(1);
+}
+
+.userImg img {
+	transition: all 0.3s ease;
+	transform: scale(1);
+	width: 14vh;
+	border-radius: 100%;
+}
+
+.userImg img:hover .userImg {
+	transform: scale(0.95);
+}
+.userImg img:hover {
+	transform: scale(1.1);
+}
+
+.info {
+	font-weight: 600;
+	font-size: 20px;
+	text-align: center;
+}
+
+.bio {
+	font-weight: 400;
+	font-size: 15px;
+}
