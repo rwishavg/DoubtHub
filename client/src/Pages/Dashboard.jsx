@@ -28,7 +28,9 @@ const Dashboard = () => {
 				withCredentials: true,
 			})
 			.then((response) => {
+				console.log(response);
 				setQuestionData(response.data);
+				console.log("data", response.data);
 			});
 	};
 	const myDataFunc = () => {

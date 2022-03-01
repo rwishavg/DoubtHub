@@ -1,5 +1,6 @@
 const QuestionSchema = require("../Models/newQuestion");
 const User = require("../Models/newUser");
+const Comment = require("../Models/newComment");
 const { nanoid } = require("nanoid");
 
 exports.addNewQuestion = async (req, res, next) => {
@@ -11,6 +12,7 @@ exports.addNewQuestion = async (req, res, next) => {
 			questionID: nanoid(15),
 			createdAt: Date.now(),
 		}).save();
+		// console.log(result);
 		res.status(200).send(result);
 	} catch (err) {
 		console.log(err);
@@ -22,21 +24,35 @@ exports.getQuestions = async (req, res, next) => {
 	try {
 		let questions = await QuestionSchema.find()
 			.populate("userid", "username firstName lastName profileIMG")
+			.populate("comments", "body createdAt userid")
+			.populate({
+				path: "comments",
+				populate: {
+					path: "userid",
+					select: "username firstName lastName profileIMG",
+				},
+			})
 			.sort({ createdAt: -1 });
+		// console.log(questions);
 		res.status(200).send(questions);
 	} catch (err) {
 		res.json(err);
 	}
 };
+
 exports.getQuestionPage = async (req, res, next) => {
 	try {
 		let query = { questionID: req.body.id };
 		let questions = await QuestionSchema.findOne(query)
 			.populate("userid", "username firstName lastName profileIMG")
-			.populate(
-				"comments.userid",
-				"username firstName lastName profileIMG"
-			);
+			.populate("comments", "body createdAt userid")
+			.populate({
+				path: "comments",
+				populate: {
+					path: "userid",
+					select: "username firstName lastName profileIMG",
+				},
+			});
 
 		if (questions === null) res.status(200).send({ exists: false });
 		else res.status(200).send(questions);
@@ -75,7 +91,6 @@ exports.getSavedQuestions = async (req, res, next) => {
 								likes: 0,
 								__v: 0,
 							});
-							// console.log(question.exists);
 						} else {
 							resolve(question);
 						}
@@ -85,7 +100,6 @@ exports.getSavedQuestions = async (req, res, next) => {
 		});
 
 		Promise.all(allPromise).then((values) => {
-			// console.log(values);
 			res.send(values);
 		});
 	} catch (err) {

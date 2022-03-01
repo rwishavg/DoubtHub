@@ -24,28 +24,15 @@ const questionSchema = new Schema({
 		default: "THIS IS A QUESTION DESCRIPTION",
 	},
 	likes: [mongoose.Schema.Types.ObjectId],
-	comments: [
-		{
-			userid: {
+	comments: {
+		// default: undefined,
+		type: [
+			{
 				type: mongoose.Schema.Types.ObjectId,
-				ref: "User",
+				ref: "Comment",
 			},
-			createdAt: {
-				type: Date,
-			},
-			body: {
-				type: String,
-				default: "Say Something ...",
-			},
-		},
-	],
+		],
+	},
 });
 
 module.exports = mongoose.model("question", questionSchema, "Questions");
-
-/*
-	{
-		username: "raghav";
-		currentState: true;
-	}
-*/

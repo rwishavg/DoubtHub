@@ -10,8 +10,8 @@ import { UilFileBookmarkAlt } from "@iconscout/react-unicons";
 import { UilBookmark } from "@iconscout/react-unicons";
 import { UilSetting } from "@iconscout/react-unicons";
 import { UilUser } from "@iconscout/react-unicons";
-import { UilSignout } from '@iconscout/react-unicons'
-import { UilApps } from '@iconscout/react-unicons'
+import { UilSignout } from "@iconscout/react-unicons";
+import { UilApps } from "@iconscout/react-unicons";
 
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
@@ -66,10 +66,15 @@ const Sidebar = (props) => {
 					href={api_endpoint + "/user/logout"}
 					className={`${classes.sidebarLink}`}
 				>
-					<UilSignout className={`${classes.iconSmaller} ${classes.hide}`} />
+					<UilSignout
+						className={`${classes.iconSmaller} ${classes.hide}`}
+					/>
 					<div className={`${classes.hide}`}>Logout</div>
 				</a>
-				<UilApps onClick={() => props.setMenu(!props.menu)} className={`${classes.iconSmaller} ${classes.unhide}`} />
+				<UilApps
+					onClick={() => props.setMenu(!props.menu)}
+					className={`${classes.iconSmaller} ${classes.unhide}`}
+				/>
 				<div className={`cardComponent ${classes.userCard}`}>
 					<img
 						src={user.profileIMG}

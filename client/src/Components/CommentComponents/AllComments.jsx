@@ -1,11 +1,13 @@
-import React, {useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import Comment from "./Comment";
 import classes from "../../Styles/component-styles/comments.module.css";
 import NewComment from "./NewComment";
 const AllComments = (props) => {
+	console.log("allcomments", props);
 	const commentEndRef = useRef(null);
 	const commentStartRef = useRef(null);
 	const [comments, setComments] = useState(props.comments);
+
 	const scrollToBottom = () => {
 		commentEndRef.current?.scrollIntoView({ behavior: "smooth" });
 	};
