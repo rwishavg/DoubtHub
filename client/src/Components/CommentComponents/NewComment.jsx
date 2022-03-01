@@ -3,7 +3,7 @@ import React, { useState, useContext } from "react";
 import { userObjectContext } from "../../Context";
 import { useParams } from "react-router-dom";
 import classes from "../../Styles/component-styles/comments.module.css";
-import { toast } from "https://cdn.skypack.dev/wc-toast";
+import { toast } from "wc-toast";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
 const NewComment = (props) => {

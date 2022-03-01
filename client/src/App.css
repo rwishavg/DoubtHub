@@ -112,7 +112,3 @@ textarea {
 img {
 	user-select: none;
 }
-
-wc-toast style :host {
-	--wc-toast-background: brown !important;
-}

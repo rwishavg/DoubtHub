@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState, useContext } from "react";
 import classes from "../../Styles/component-styles/newQuestion.module.css";
 import { userObjectContext } from "../../Context";
-import { toast } from "https://cdn.skypack.dev/wc-toast";
+import { toast } from "wc-toast";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 const activeStyle = {
 	cardStyle: { height: "60vh", width: "100%" },

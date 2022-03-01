@@ -13,7 +13,7 @@ import { UilFavorite } from "@iconscout/react-unicons";
 import { UilBan } from "@iconscout/react-unicons";
 import { UilTrashAlt } from "@iconscout/react-unicons";
 import { UilEllipsisV } from "@iconscout/react-unicons";
-import { toast } from "https://cdn.skypack.dev/wc-toast";
+import { toast } from "wc-toast";
 
 import DeletedQuestion from "./DeletedQuestion";
 import axios from "axios";
