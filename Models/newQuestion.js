@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-// const userSchema = require("./newUser");
 const questionSchema = new Schema({
 	questionID: {
 		type: String,
@@ -25,11 +24,7 @@ const questionSchema = new Schema({
 		type: String,
 		default: "THIS IS A QUESTION DESCRIPTION",
 	},
-	likes: {
-		type: Number,
-		unique: false,
-		default: 0,
-	},
+	likes: [mongoose.Schema.Types.ObjectId],
 	comments: [
 		{
 			userid: {

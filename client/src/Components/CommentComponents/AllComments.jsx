@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, {useState, useRef } from "react";
 import Comment from "./Comment";
 import classes from "../../Styles/component-styles/comments.module.css";
 import NewComment from "./NewComment";
@@ -10,8 +10,6 @@ const AllComments = (props) => {
 		commentEndRef.current?.scrollIntoView({ behavior: "smooth" });
 	};
 	const scrollToTop = () => {
-		// console.log(commentStartRef.current);
-
 		commentStartRef.current?.scrollIntoView({ behavior: "smooth" });
 	};
 	return (

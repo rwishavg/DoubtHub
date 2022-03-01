@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import classes from "../../Styles/component-styles/question.module.css";
 
 import { Link, useNavigate } from "react-router-dom";
-import Context, { userObjectContext } from "../../Context";
+import { userObjectContext } from "../../Context";
 
 import QuestionUser from "../QuestionComponents/QuestionUser";
 
@@ -32,13 +32,14 @@ const Question = (props) => {
 	const [styleState, setStyleState] = useState(inactiveStyle);
 	const [optionState, setOptionState] = useState(false);
 	const [optionStyle, setOptionStyle] = useState(optionInactiveStyle);
+	const [likeCount, setLikeCount] = useState(props.question.likes.length);
 
 	const expandCard = () => setCurrentCard(!currentCard);
 	const navigate = useNavigate();
 	let defaultOptions = props.remOptions;
 	if (defaultOptions === undefined) defaultOptions = true;
 	useEffect(() => {
-		if (props.description.length > 250)
+		if (props.question.description.length > 250)
 			if (currentCard === true) setStyleState(activeStyle);
 			else setStyleState(inactiveStyle);
 		else setStyleState(smallDesc);
@@ -54,7 +55,7 @@ const Question = (props) => {
 		axios({
 			method: "POST",
 			data: {
-				id: props.id,
+				id: props.question._id,
 			},
 			withCredentials: true,
 			url: api_endpoint + "/question/delete",
@@ -73,7 +74,7 @@ const Question = (props) => {
 			method: "POST",
 			data: {
 				email: user.emailID,
-				id: props.id,
+				id: props.question._id,
 			},
 			withCredentials: true,
 			url: api_endpoint + "/question/saveQuestion",
@@ -87,6 +88,24 @@ const Question = (props) => {
 		setOptionStyle(optionInactiveStyle);
 	};
 
+	const likeQuestion = () => {
+		axios({
+			method: "POST",
+			data: {
+				userID: user._id,
+				questionID: props.question._id,
+			},
+			withCredentials: true,
+			url: api_endpoint + "/question/likeQuestion",
+		}).then((response) => {
+			setLikeCount(response.data.count);
+			if (response.data.message === "Liked")
+				toast.success("Question " + response.data.message);
+			else toast.success("Question " + response.data.message);
+			props.updateData();
+		});
+	};
+	
 	if (props.exists === false) {
 		return (
 			<DeletedQuestion
@@ -105,11 +124,11 @@ const Question = (props) => {
 			>
 				<div className={classes["content"]}>
 					<QuestionUser
-						firstName={props.userid.firstName}
-						lastName={props.userid.lastName}
-						profileIMG={props.userid.profileIMG}
+						firstName={props.question.userid.firstName}
+						lastName={props.question.userid.lastName}
+						profileIMG={props.question.userid.profileIMG}
 						date={props.date}
-						username={props.userid.username}
+						username={props.question.userid.username}
 					/>
 					<div className={classes["options"]}>
 						<div
@@ -120,7 +139,7 @@ const Question = (props) => {
 								onClick={(e) => saveQuestion()}
 								className={classes["blueClass"]}
 							/>
-							{props.userid._id === user._id && defaultOptions && (
+							{props.question.userid._id === user._id && defaultOptions && (
 								<>
 									<UilPen />
 									<UilTrashAlt
@@ -136,13 +155,13 @@ const Question = (props) => {
 						/>
 					</div>
 					<div className={classes["questionHeading"]}>
-						{props.heading}
+						{props.question.heading}
 					</div>
 					<div
 						className={classes["questionDescription"]}
 						style={styleState.maskStyle}
 					>
-						{props.description}
+						{props.question.description}
 					</div>
 					<div
 						className={`${classes.filterBg}`}
@@ -153,14 +172,14 @@ const Question = (props) => {
 					</div>
 
 					<div className={classes["icons"]}>
-						<div>213</div>
-						<UilThumbsUp />
+						<div>{likeCount}</div>
+						<UilThumbsUp onClick={likeQuestion}/>
 						<div></div>
 						<div></div>
 						<div></div>
 						<div>213</div>
 						<Link
-							to={`/dashboard/${props.questionID}`}
+							to={`/dashboard/${props.question.questionID}`}
 							className="removeWid"
 						>
 							<UilCommentAltLines />
