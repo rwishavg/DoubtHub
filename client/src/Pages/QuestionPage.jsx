@@ -36,14 +36,10 @@ const QuestionPage = (props) => {
 			<div className="fadeIn">
 				<Question
 					key={questionData._id}
-					userid={questionData.userid}
-					heading={questionData.heading}
-					description={questionData.description}
-					id={questionData._id}
 					updateData={props.getData}
 					date={props.convertDate(questionData.createdAt)}
-					questionID={questionData.questionID}
 					page={"QuesPage"}
+					question={questionData}					
 				/>
 				<AllComments comments={questionData.comments} />
 			</div>

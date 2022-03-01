@@ -45,15 +45,11 @@ const Saved = (props) => {
 			)}
 			{props.data.map((question) => (
 				<Question
-					key={question._id}
-					userid={question.userid}
-					heading={question.heading}
-					description={question.description}
-					id={question._id}
 					exists={question.exists}
 					updateData={getData}
+					key={question._id}
+					question={question}
 					date={props.convertDate(question.createdAt)}
-					questionID={question.questionID}
 				/>
 			))}
 		</div>

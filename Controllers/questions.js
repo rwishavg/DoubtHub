@@ -124,9 +124,36 @@ exports.saveQuestion = async (req, res, next) => {
 	}
 };
 
+exports.likeQuestion = async (req, res, next) => {
+	try {
+		const questionData = await QuestionSchema.findOne({
+			_id: req.body.questionID,
+		});
+		console.log(req.body.userID);
+		console.log(req.body.questionID);
+		var i = questionData.likes.indexOf(req.body.userID);
+		if (i === -1) {
+			questionData.likes.push(req.body.userID);
+			questionData.save();
+			res.status(200).send({
+				message: "Liked",
+				count: questionData.likes.length,
+			});
+		} else {
+			questionData.likes.splice(i, 1);
+			questionData.save();
+			res.status(200).send({
+				message: "Unliked",
+				count: questionData.likes.length,
+			});
+		}
+	} catch (err) {
+		res.json(err);
+	}
+};
+
 exports.myQuestions = async (req, res, next) => {
 	try {
-		// console.log(req.body.emailID);
 		let questions = await QuestionSchema.find().populate(
 			"userid",
 			"username firstName lastName profileIMG emailID"

@@ -45,13 +45,9 @@ const AllQuestions = (props) => {
 			{props.data.map((question) => (
 				<Question
 					key={question._id}
-					userid={question.userid}
-					heading={question.heading}
-					description={question.description}
-					id={question._id}
 					updateData={props.getData}
+					question={question}
 					date={convertDate(question.createdAt)}
-					questionID={question.questionID}
 				/>
 			))}
 		</div>

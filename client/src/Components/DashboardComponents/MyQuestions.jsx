@@ -29,14 +29,11 @@ const AllQuestions = (props) => {
 			<div className="fadeIn">
 				{props.data.map((question) => (
 					<Question
-						key={question._id}
-						userid={question.userid}
-						heading={question.heading}
-						description={question.description}
-						id={question._id}
-						updateData={props.getData}
-						date={props.convertDate(question.createdAt)}
 						questionID={question.questionID}
+						key={question._id}
+						updateData={props.getData}
+						question={question}
+						date={props.convertDate(question.createdAt)}
 					/>
 				))}
 			</div>
