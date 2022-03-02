@@ -63,10 +63,13 @@ exports.upvoteComment = async (req, res, next) => {
 		} else if (i === -1 && j !== -1) {
 			commentData.downvote.splice(j, 1);
 			commentData.upvote.push(req.body.userID);
+		} else if (i !== -1) {
+			commentData.upvote.splice(i, 1);
+			message = "Upvote Removed";
 		} else {
-			message = "Already liked";
+			message = "Error";
 		}
-		message = "UpVoted";
+		message = "Up Voted";
 		var count = commentData.upvote.length - commentData.downvote.length;
 		commentData.save();
 		console.log("Backend", count, message);
@@ -93,8 +96,12 @@ exports.downvoteComment = async (req, res, next) => {
 		} else if (j === -1 && i !== -1) {
 			commentData.upvote.splice(i, 1);
 			commentData.downvote.push(req.body.userID);
-		} else {
-			message = "Already Disliked";
+		} else if (j !== -1) {
+			commentData.downvote.splice(j, 1);
+			message = "Downvote Removed";
+		}
+		else {
+			message = "Error";
 		}
 		message = "Down Voted";
 		var count = commentData.upvote.length - commentData.downvote.length;
