@@ -45,7 +45,6 @@ const LoginCard = (props) => {
 						password: password,
 					})
 					.then((response) => setLocalSignUp(response.data));
-				console.log("axios");
 			} else {
 				setErrorMessage("Password Mismatch!");
 			}

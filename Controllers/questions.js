@@ -12,7 +12,6 @@ exports.addNewQuestion = async (req, res, next) => {
 			questionID: nanoid(15),
 			createdAt: Date.now(),
 		}).save();
-		// console.log(result);
 		res.status(200).send(result);
 	} catch (err) {
 		console.log(err);
@@ -33,7 +32,6 @@ exports.getQuestions = async (req, res, next) => {
 				},
 			})
 			.sort({ createdAt: -1 });
-		// console.log(questions);
 		res.status(200).send(questions);
 	} catch (err) {
 		res.json(err);
@@ -111,7 +109,6 @@ exports.deleteQuestion = async (req, res, next) => {
 	try {
 		await QuestionSchema.deleteOne({ _id: req.body.id });
 		res.send("Deleted");
-		// console.log(req.body);
 	} catch (err) {
 		res.json(err);
 	}
