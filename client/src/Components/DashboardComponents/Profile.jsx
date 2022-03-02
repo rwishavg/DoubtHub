@@ -31,7 +31,6 @@ const Profile = () => {
 			withCredentials: true,
 			url: api_endpoint + "/user/profile/edit",
 		}).then((response) => {
-			console.log(response);
 			toast.success("Profile Updated");
 			updateUser(response.data);
 		});

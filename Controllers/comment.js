@@ -19,7 +19,7 @@ exports.addNewComment = async (req, res, next) => {
 			{ new: true }
 		)
 			.populate("userid", "username firstName lastName profileIMG")
-			.populate("comments", "body createdAt userid")
+			.populate("comments")
 			.populate({
 				path: "comments",
 				populate: {
@@ -50,28 +50,62 @@ exports.deleteComment = async (req, res, next) => {
 	}
 };
 
-// exports.likeComment = async (req, res, next) => {
-// 	try {
-// 		const questionData = await QuestionSchema.findOne({
-// 			_id: req.body.questionID,
-// 		});
-// 		var i = questionData.likes.indexOf(req.body.userID);
-// 		if (i === -1) {
-// 			questionData.likes.push(req.body.userID);
-// 			questionData.save();
-// 			res.status(200).send({
-// 				message: "Liked",
-// 				count: questionData.likes.length,
-// 			});
-// 		} else {
-// 			questionData.likes.splice(i, 1);
-// 			questionData.save();
-// 			res.status(200).send({
-// 				message: "Unliked",
-// 				count: questionData.likes.length,
-// 			});
-// 		}
-// 	} catch (err) {
-// 		res.json(err);
-// 	}
-// };
+exports.upvoteComment = async (req, res, next) => {
+	try {
+		const commentData = await Comment.findOne({
+			_id: req.body.commentID,
+		});
+		var i = commentData.upvote.indexOf(req.body.userID);
+		var j = commentData.downvote.indexOf(req.body.userID);
+		var message = "";
+		if (i === -1 && j === -1) {
+			commentData.upvote.push(req.body.userID);
+		} else if (i === -1 && j !== -1) {
+			commentData.downvote.splice(j, 1);
+			commentData.upvote.push(req.body.userID);
+		} else {
+			message = "Already liked";
+		}
+		message = "UpVoted";
+		var count = commentData.upvote.length - commentData.downvote.length;
+		commentData.save();
+		console.log("Backend", count, message);
+		res.status(200).send({
+			message: message,
+			count: count,
+		});
+	} catch (err) {
+		console.log(err);
+		res.json(err);
+	}
+};
+
+exports.downvoteComment = async (req, res, next) => {
+	try {
+		const commentData = await Comment.findOne({
+			_id: req.body.commentID,
+		});
+		var i = commentData.upvote.indexOf(req.body.userID);
+		var j = commentData.downvote.indexOf(req.body.userID);
+		var message = "";
+		if (j === -1 && i === -1) {
+			commentData.downvote.push(req.body.userID);
+		} else if (j === -1 && i !== -1) {
+			commentData.upvote.splice(i, 1);
+			commentData.downvote.push(req.body.userID);
+		} else {
+			message = "Already Disliked";
+		}
+		message = "Down Voted";
+		var count = commentData.upvote.length - commentData.downvote.length;
+		commentData.save();
+		console.log("Backend", count, message);
+		res.status(200).send({
+			message: message,
+			count: count,
+		});
+	} catch (err) {
+		console.log(err);
+		res.json(err);
+	}
+};

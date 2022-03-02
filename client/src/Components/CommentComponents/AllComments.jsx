@@ -3,7 +3,6 @@ import Comment from "./Comment";
 import classes from "../../Styles/component-styles/comments.module.css";
 import NewComment from "./NewComment";
 const AllComments = (props) => {
-	console.log("allcomments", props);
 	const commentEndRef = useRef(null);
 	const commentStartRef = useRef(null);
 	const [comments, setComments] = useState(props.comments);
@@ -29,9 +28,8 @@ const AllComments = (props) => {
 				{comments.map((comment) => (
 					<Comment
 						key={comment._id}
-						userid={comment.userid}
-						body={comment.body}
-						date={comment.createdAt}
+						comment={comment}
+						updateData={comment.updateData}
 					/>
 				))}
 			</div>

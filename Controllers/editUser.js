@@ -12,7 +12,6 @@ if (process.env.NODE_ENV === "development") {
 
 exports.editProfile = async (req, res, next) => {
 	try {
-		// console.log(req.body);
 		const update = {
 			firstName: req.body.firstName,
 			lastName: req.body.lastName,

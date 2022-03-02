@@ -46,7 +46,6 @@ const Question = (props) => {
 			if (currentCard === true) setStyleState(activeStyle);
 			else setStyleState(inactiveStyle);
 		else setStyleState(smallDesc);
-		// console.log(props);
 	}, [currentCard]);
 
 	useEffect(() => {

@@ -21,7 +21,6 @@ const NewComment = (props) => {
 			withCredentials: true,
 			url: api_endpoint + "/comment/addNewComment",
 		}).then((response) => {
-			// console.log(response.data.comments);
 			props.setComments(response.data.comments);
 		});
 		toast.success("Response Added");
