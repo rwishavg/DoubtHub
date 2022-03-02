@@ -3,8 +3,9 @@ import React, { useState, useContext } from "react";
 import { userObjectContext } from "../../Context";
 import { useParams } from "react-router-dom";
 import classes from "../../Styles/component-styles/comments.module.css";
-import { toast } from "https://cdn.skypack.dev/wc-toast";
+import { toast } from "wc-toast";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
+
 const NewComment = (props) => {
 	const [description, setDescription] = useState("");
 	const user = useContext(userObjectContext)[0];
@@ -20,7 +21,6 @@ const NewComment = (props) => {
 			withCredentials: true,
 			url: api_endpoint + "/comment/addNewComment",
 		}).then((response) => {
-			// console.log(response.data.comments);
 			props.setComments(response.data.comments);
 		});
 		toast.success("Response Added");

@@ -13,7 +13,7 @@ import { UilFavorite } from "@iconscout/react-unicons";
 import { UilBan } from "@iconscout/react-unicons";
 import { UilTrashAlt } from "@iconscout/react-unicons";
 import { UilEllipsisV } from "@iconscout/react-unicons";
-import { toast } from "https://cdn.skypack.dev/wc-toast";
+import { toast } from "wc-toast";
 
 import DeletedQuestion from "./DeletedQuestion";
 import axios from "axios";
@@ -33,6 +33,9 @@ const Question = (props) => {
 	const [optionState, setOptionState] = useState(false);
 	const [optionStyle, setOptionStyle] = useState(optionInactiveStyle);
 	const [likeCount, setLikeCount] = useState(props.question.likes.length);
+	const [commentCount, setCommentCount] = useState(
+		props.question.comments.length
+	);
 
 	const expandCard = () => setCurrentCard(!currentCard);
 	const navigate = useNavigate();
@@ -43,7 +46,6 @@ const Question = (props) => {
 			if (currentCard === true) setStyleState(activeStyle);
 			else setStyleState(inactiveStyle);
 		else setStyleState(smallDesc);
-		// console.log(props);
 	}, [currentCard]);
 
 	useEffect(() => {
@@ -105,7 +107,7 @@ const Question = (props) => {
 			props.updateData();
 		});
 	};
-	
+
 	if (props.exists === false) {
 		return (
 			<DeletedQuestion
@@ -139,15 +141,16 @@ const Question = (props) => {
 								onClick={(e) => saveQuestion()}
 								className={classes["blueClass"]}
 							/>
-							{props.question.userid._id === user._id && defaultOptions && (
-								<>
-									<UilPen />
-									<UilTrashAlt
-										onClick={deleteQuestion}
-										className={classes["redClass"]}
-									/>
-								</>
-							)}
+							{props.question.userid._id === user._id &&
+								defaultOptions && (
+									<>
+										<UilPen />
+										<UilTrashAlt
+											onClick={deleteQuestion}
+											className={classes["redClass"]}
+										/>
+									</>
+								)}
 							<UilBan className={classes["redClass"]} />
 						</div>
 						<UilEllipsisV
@@ -173,11 +176,14 @@ const Question = (props) => {
 
 					<div className={classes["icons"]}>
 						<div>{likeCount}</div>
-						<UilThumbsUp onClick={likeQuestion}/>
+						<UilThumbsUp
+							onClick={likeQuestion}
+							style={{ cursor: "pointer" }}
+						/>
 						<div></div>
 						<div></div>
 						<div></div>
-						<div>213</div>
+						<div>{commentCount}</div>
 						<Link
 							to={`/dashboard/${props.question.questionID}`}
 							className="removeWid"

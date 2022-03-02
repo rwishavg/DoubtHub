@@ -13,7 +13,6 @@ const questionSchema = new Schema({
 	},
 	createdAt: {
 		type: Date,
-		unique: true,
 	},
 	heading: {
 		type: String,
@@ -25,30 +24,15 @@ const questionSchema = new Schema({
 		default: "THIS IS A QUESTION DESCRIPTION",
 	},
 	likes: [mongoose.Schema.Types.ObjectId],
-	comments: [
-		{
-			userid: {
+	comments: {
+		// default: undefined,
+		type: [
+			{
 				type: mongoose.Schema.Types.ObjectId,
-				ref: "User",
+				ref: "Comment",
 			},
-			createdAt: {
-				type: Date,
-				unique: true,
-			},
-			body: {
-				type: String,
-				default: "Say Something ...",
-				required: true,
-			},
-		},
-	],
+		],
+	},
 });
 
 module.exports = mongoose.model("question", questionSchema, "Questions");
-
-/*
-	{
-		username: "raghav";
-		currentState: true;
-	}
-*/

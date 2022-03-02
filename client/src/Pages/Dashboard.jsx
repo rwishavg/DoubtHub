@@ -28,10 +28,12 @@ const Dashboard = () => {
 				withCredentials: true,
 			})
 			.then((response) => {
+				console.log(response);
 				setQuestionData(response.data);
+				console.log("data", response.data);
 			});
 	};
-	const myDataFunc = async () => {
+	const myDataFunc = () => {
 		axios({
 			method: "POST",
 			data: {
@@ -133,7 +135,12 @@ const Dashboard = () => {
 						<Route
 							exact
 							path="/u/:username"
-							element={<UserPage />}
+							element={
+								<UserPage
+									getData={getData}
+									convertDate={convertDate}
+								/>
+							}
 						></Route>
 					</Routes>
 				</div>

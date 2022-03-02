@@ -44,7 +44,6 @@ const userSchema = new Schema({
 		type: String,
 		required: true,
 		unique: true,
-		default: nanoid(10),
 	},
 	saved: [mongoose.Schema.Types.ObjectId],
 });

@@ -1,10 +1,7 @@
 import React from "react";
 import classes from "../../Styles/component-styles/input.module.css";
 
-
-
 const Input = (props) => {
-	console.log(props.children);
 	return (
 		<div className={classes["inputParent"]}>
 			{props.children}
