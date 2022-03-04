@@ -20,7 +20,7 @@ const Profile = () => {
 
 	const submit = () => {
 		axios({
-			method: "POST",
+			method: "PUT",
 			data: {
 				username: username,
 				firstName: firstName,

@@ -6,14 +6,14 @@ const {
 	getComments,
 	deleteComment,
 	upvoteComment,
-	downvoteComment
+	downvoteComment,
 } = require("../Controllers/comment");
 
 router.route("/addNewComment").post(addNewComment);
-router.route("/upvoteComment").post(upvoteComment);
-router.route("/downvoteComment").post(downvoteComment);
-router.route("/delete").post(deleteComment);
-router.route("/getComments").get(getComments);
+router.route("/upvoteComment").put(upvoteComment);
+router.route("/downvoteComment").put(downvoteComment);
+router.route("/delete").delete(deleteComment);
+
 router.route("/getComments").get(getComments);
 
 module.exports = router;
