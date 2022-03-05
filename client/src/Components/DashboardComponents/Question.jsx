@@ -71,6 +71,22 @@ const Question = (props) => {
 		setOptionStyle(optionInactiveStyle);
 	};
 
+	const banQuestion = () => {
+		axios({
+			method: "PUT",
+			data: {
+				questionId: props.question._id,
+				userId: user.emailID,
+			},
+			withCredentials: true,
+			url: api_endpoint + "/question/banQuestion",
+		}).then((response) => {
+			toast.success("Reported");
+			props.updateData();
+		});
+		setOptionStyle(optionInactiveStyle);
+	};
+
 	const saveQuestion = () => {
 		axios({
 			method: "PUT",
@@ -156,7 +172,7 @@ const Question = (props) => {
 										/>
 									</>
 								)}
-							<UilBan className={classes["redClass"]} />
+							<UilBan className={classes["redClass"]} onClick={banQuestion}/>
 						</div>
 						<UilEllipsisV
 							onClick={(e) => setOptionState(!optionState)}
