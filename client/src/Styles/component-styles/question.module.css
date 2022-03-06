@@ -150,3 +150,9 @@
 .wc-toast-bar {
 	border: 2px solid red !important;
 }
+
+.removeWid {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

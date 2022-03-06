@@ -146,7 +146,7 @@ const Question = (props) => {
 									<>
 										<Link
 											to={`/dashboard/edit/${props.question.questionID}`}
-											className="removeWid"
+											className={classes["removeWid"]}
 										>
 											<UilPen />
 										</Link>

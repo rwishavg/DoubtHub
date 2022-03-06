@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Question from "../Components/DashboardComponents/Question";
+import Input from "../Components/DashboardComponents/Input";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 const EditPage = (props) => {
 	let { id } = useParams();
@@ -29,6 +30,7 @@ const EditPage = (props) => {
 		console.log("comments", questionData.comments);
 		return (
 			<div className="fadeIn">
+				<Input value={questionData.heading}></Input>
 				<Question
 					key={questionData._id}
 					updateData={props.getData}
