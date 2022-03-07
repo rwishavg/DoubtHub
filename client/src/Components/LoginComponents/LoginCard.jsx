@@ -54,7 +54,6 @@ const LoginCard = (props) => {
 	};
 
 	useEffect(() => {
-		console.log(localSignUp);
 		if (localSignUp === "New User Created") {
 			window.open("/login", "_self");
 		} else if (localSignUp === "User Already Exists") {

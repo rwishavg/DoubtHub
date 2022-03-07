@@ -11,7 +11,6 @@ import { toast } from "wc-toast";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
 const Comment = (props) => {
-	console.log("props", props);
 	const [upvote, setUpvote] = useState(
 		props.comment.upvote.length - props.comment.downvote.length
 	);
@@ -24,15 +23,11 @@ const Comment = (props) => {
 		let minutes = (val / (1000 * 60)).toFixed(1);
 		if (hours < 1) {
 			return Math.floor(minutes) + " minutes ago";
-		}
-		else if (hours > 24) { 
+		} else if (hours > 24) {
 			let day = Math.floor(hours / 24);
-			if (day > 1)
-				return day + " days ago";
-			else
-				return day + " day ago";
-		}
-		else {
+			if (day > 1) return day + " days ago";
+			else return day + " day ago";
+		} else {
 			if (hours < 2) return Math.floor(hours) + " hour ago";
 			else return Math.floor(hours) + " hours ago";
 		}

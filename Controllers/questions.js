@@ -14,13 +14,14 @@ exports.addNewQuestion = async (req, res, next) => {
 		}).save();
 		res.status(200).send(result);
 	} catch (err) {
-		console.log(err);
 		res.json(err);
 	}
 };
 
 exports.getQuestions = async (req, res, next) => {
 	try {
+		let skip = (parseInt(req.params.pages) - 1) * 10;
+		// console.log(req.params);
 		let questions = await QuestionSchema.find()
 			.populate("userid", "username firstName lastName profileIMG")
 			.populate("comments", "body createdAt userid")
@@ -31,6 +32,8 @@ exports.getQuestions = async (req, res, next) => {
 					select: "username firstName lastName profileIMG",
 				},
 			})
+			.limit(10)
+			.skip(skip)
 			.sort({ createdAt: -1 });
 		res.status(200).send(questions);
 	} catch (err) {
@@ -117,9 +120,11 @@ exports.banQuestion = async (req, res, next) => {
 			if (question.ban.length > 3) {
 				const update = {
 					heading: "Question is Unavailable",
-					description: "This question was reported by 3 different users and has been removed for being inappropriate",
-				}
-				await QuestionSchema.findOneAndUpdate(query,
+					description:
+						"This question was reported by 3 different users and has been removed for being inappropriate",
+				};
+				await QuestionSchema.findOneAndUpdate(
+					query,
 					{ $set: update },
 					{ new: true }
 				);
@@ -175,6 +180,23 @@ exports.likeQuestion = async (req, res, next) => {
 	}
 };
 
+exports.updateQuestion = async (req, res, next) => {
+	try {
+		const update = {
+			heading: req.body.heading,
+			body: req.body.body,
+			createdAt: Date.now(),
+		};
+		const query = { questionID: req.body.questionID };
+		const result = await QuestionSchema.findOneAndUpdate(query, update, {
+			new: true,
+		});
+		res.send(result);
+	} catch (err) {
+		res.json(err);
+	}
+};
+
 exports.myQuestions = async (req, res, next) => {
 	try {
 		let questions = await QuestionSchema.find().populate(
@@ -186,7 +208,6 @@ exports.myQuestions = async (req, res, next) => {
 				JSON.stringify(question.userid._id) ===
 				JSON.stringify(req.params.id)
 		);
-		console.log(result);
 		res.send(result);
 	} catch (err) {
 		res.json(err);

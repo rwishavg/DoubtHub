@@ -172,7 +172,10 @@ const Question = (props) => {
 										/>
 									</>
 								)}
-							<UilBan className={classes["redClass"]} onClick={banQuestion}/>
+							<UilBan
+								className={classes["redClass"]}
+								onClick={banQuestion}
+							/>
 						</div>
 						<UilEllipsisV
 							onClick={(e) => setOptionState(!optionState)}
@@ -206,7 +209,7 @@ const Question = (props) => {
 						<div></div>
 						<div>{commentCount}</div>
 						<Link
-							to={`/dashboard/${props.question.questionID}`}
+							to={`/dashboard/q/${props.question.questionID}`}
 							className="removeWid"
 						>
 							<UilCommentAltLines />

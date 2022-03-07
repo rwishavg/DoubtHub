@@ -20,7 +20,6 @@ const UserPage = (props) => {
 		}).then((response) => {
 			if (Object.keys(response.data).length !== 0) {
 				setUserData(response.data);
-				console.log(response.data.questions);
 			} else {
 				setUserData(null);
 			}
