@@ -7,8 +7,9 @@ import Saved from "../Components/DashboardComponents/Saved";
 import Sidebar from "../Components/DashboardComponents/Sidebar";
 import Searchbar from "../Components/DashboardComponents/Searchbar";
 import Settings from "../Components/DashboardComponents/Settings";
-
 import UserPage from "../Pages/UserPage";
+import EditPage from "./EditPage";
+
 import QuestionPage from "./QuestionPage";
 import "../Styles/page-styles/dashboard.css";
 import Menu from "../Components/DashboardComponents/Menu";
@@ -22,35 +23,31 @@ const Dashboard = () => {
 	const [myData, setMyData] = useState([]);
 	const [savedData, setSavedData] = useState([]);
 	const [menu, setMenu] = useState(false);
-	const getData = () => {
-		axios
-			.get(api_endpoint + "/question/getQuestions", {
+	const getData = async () => {
+		let response = await axios.get(
+			api_endpoint + "/question/getQuestions",
+			{
 				withCredentials: true,
-			})
-			.then((response) => {
-				console.log(response);
-				setQuestionData(response.data);
-				console.log("data", response.data);
-			});
+			}
+		);
+		setQuestionData(response.data);
 	};
-	const myDataFunc = () => {
-		axios({
-			method: "POST",
-			data: {
-				emailID: user.emailID,
-			},
-			withCredentials: true,
-			url: api_endpoint + "/question/myQuestions",
-		}).then((response) => {
-			setMyData(response.data);
-			getData();
-		});
+	const myDataFunc = async () => {
+		let response = await axios.get(
+			api_endpoint + `/question/myQuestions/${user._id}`,
+			{
+				withCredentials: true,
+			}
+		);
+		setMyData(response.data);
+		getData();
 	};
 	useEffect(() => {
 		getData();
 	}, []);
 
 	let convertDate = (createdAt) => {
+		if (createdAt === undefined) return "";
 		let result = createdAt.substring(0, 10);
 		let day = result.substring(8, 10);
 		let month = result.substring(5, 7);
@@ -127,6 +124,16 @@ const Dashboard = () => {
 							path="/:id"
 							element={
 								<QuestionPage
+									convertDate={convertDate}
+									getData={getData}
+								/>
+							}
+						></Route>
+						<Route
+							exact
+							path="/edit/:id"
+							element={
+								<EditPage
 									convertDate={convertDate}
 									getData={getData}
 								/>

@@ -1,4 +1,4 @@
-import React,{useContext, useState} from "react";
+import React, { useContext, useState } from "react";
 import classes from "../../Styles/component-styles/comments.module.css";
 import QuestionUser from "../QuestionComponents/QuestionUser";
 import { UilAngleUp } from "@iconscout/react-unicons";
@@ -12,7 +12,9 @@ const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
 const Comment = (props) => {
 	console.log("props", props);
-	const [upvote, setUpvote] = useState(props.comment.upvote.length - props.comment.downvote.length);
+	const [upvote, setUpvote] = useState(
+		props.comment.upvote.length - props.comment.downvote.length
+	);
 	const user = useContext(userObjectContext)[0];
 
 	let calculateDate = (date) => {
@@ -30,7 +32,7 @@ const Comment = (props) => {
 
 	const upvoteComment = () => {
 		axios({
-			method: "POST",
+			method: "PUT",
 			data: {
 				userID: user._id,
 				commentID: props.comment._id,
@@ -47,9 +49,9 @@ const Comment = (props) => {
 
 	const downvoteComment = () => {
 		axios({
-			method: "POST",
+			method: "PUT",
 			data: {
-				type : "downvote",
+				type: "downvote",
 				userID: user._id,
 				commentID: props.comment._id,
 			},
@@ -68,9 +70,15 @@ const Comment = (props) => {
 			<div className={classes["content"]}>
 				<div className={classes["topOptions"]}>
 					<div className={classes["icons"]}>
-						<UilAngleUp style={{cursor:"pointer"}} onClick={upvoteComment}/>
+						<UilAngleUp
+							style={{ cursor: "pointer" }}
+							onClick={upvoteComment}
+						/>
 						{upvote}
-						<UilAngleDown style={{cursor:"pointer"}} onClick={downvoteComment}/>
+						<UilAngleDown
+							style={{ cursor: "pointer" }}
+							onClick={downvoteComment}
+						/>
 					</div>
 					<QuestionUser
 						firstName={props.comment.userid.firstName}

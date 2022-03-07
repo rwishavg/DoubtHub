@@ -38,9 +38,9 @@ exports.getQuestions = async (req, res, next) => {
 	}
 };
 
-exports.getQuestionPage = async (req, res, next) => {
+exports.getQuestionPages = async (req, res, next) => {
 	try {
-		let query = { questionID: req.body.id };
+		let query = { questionID: req.params.id };
 		let questions = await QuestionSchema.findOne(query)
 			.populate("userid", "username firstName lastName profileIMG")
 			.populate("comments", "body createdAt userid")
@@ -61,45 +61,37 @@ exports.getQuestionPage = async (req, res, next) => {
 
 exports.getSavedQuestions = async (req, res, next) => {
 	try {
-		let allPromise = [];
-		req.body.saved.map((id) => {
-			let promise = new Promise(function (resolve, reject) {
-				QuestionSchema.findOne({
-					_id: id,
-				})
-					.populate(
-						"userid",
-						"username firstName lastName profileIMG"
-					)
-					.exec((err, question) => {
-						if (question === null) {
-							resolve({
-								exists: false,
-								_id: id,
-								questionID: "",
-								userid: {
-									_id: "",
-									firstName: "",
-									lastName: "",
-									profileIMG: "",
-								},
-								createdAt: "",
-								heading: "",
-								description: "",
-								likes: 0,
-								__v: 0,
-							});
-						} else {
-							resolve(question);
-						}
-					});
+		let query = { _id: req.params.id };
+		let questions = await QuestionSchema.findOne(query)
+			.populate("userid", "username firstName lastName profileIMG")
+			.populate("comments", "body createdAt userid")
+			.populate({
+				path: "comments",
+				populate: {
+					path: "userid",
+					select: "username firstName lastName profileIMG",
+				},
 			});
-			allPromise.push(promise);
-		});
 
-		Promise.all(allPromise).then((values) => {
-			res.send(values);
-		});
+		if (questions === null)
+			res.status(200).send({
+				exists: false,
+				_id: req.params.id,
+				questionID: "",
+				userid: {
+					_id: "",
+					firstName: "",
+					lastName: "",
+					profileIMG: "",
+				},
+				createdAt: "",
+				heading: "",
+				description: "",
+				comments: [],
+				likes: 0,
+				__v: 0,
+			});
+		else res.status(200).send(questions);
 	} catch (err) {
 		res.json(err);
 	}
@@ -165,8 +157,11 @@ exports.myQuestions = async (req, res, next) => {
 			"username firstName lastName profileIMG emailID"
 		);
 		const result = questions.filter(
-			(question) => question.userid.emailID === req.body.emailID
+			(question) =>
+				JSON.stringify(question.userid._id) ===
+				JSON.stringify(req.params.id)
 		);
+		console.log(result);
 		res.send(result);
 	} catch (err) {
 		res.json(err);

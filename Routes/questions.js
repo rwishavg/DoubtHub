@@ -8,17 +8,18 @@ const {
 	saveQuestion,
 	myQuestions,
 	getSavedQuestions,
-	getQuestionPage,
-	likeQuestion
+	getQuestionPages,
+	likeQuestion,
 } = require("../Controllers/questions");
 
-router.route("/addNewQuestion").post(addNewQuestion);
-router.route("/delete").post(deleteQuestion);
 router.route("/getQuestions").get(getQuestions);
-router.route("/getQuestionPage").post(getQuestionPage);
-router.route("/saveQuestion").post(saveQuestion);
-router.route("/likeQuestion").post(likeQuestion);
-router.route("/myQuestions").post(myQuestions);
-router.route("/getSavedQuestions").post(getSavedQuestions);
+router.route("/getQuestionPages/:id").get(getQuestionPages);
+router.route("/myQuestions/:id").get(myQuestions);
+router.route("/getSavedQuestions/:id").get(getSavedQuestions);
+
+router.route("/addNewQuestion").post(addNewQuestion);
+router.route("/delete").delete(deleteQuestion);
+router.route("/saveQuestion").put(saveQuestion);
+router.route("/likeQuestion").put(likeQuestion);
 
 module.exports = router;

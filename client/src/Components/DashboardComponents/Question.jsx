@@ -46,7 +46,7 @@ const Question = (props) => {
 			if (currentCard === true) setStyleState(activeStyle);
 			else setStyleState(inactiveStyle);
 		else setStyleState(smallDesc);
-	}, [currentCard]);
+	}, [currentCard, props.question.description]);
 
 	useEffect(() => {
 		if (optionState === true) setOptionStyle(optionActiveStyle);
@@ -55,7 +55,7 @@ const Question = (props) => {
 
 	const deleteQuestion = () => {
 		axios({
-			method: "POST",
+			method: "DELETE",
 			data: {
 				id: props.question._id,
 			},
@@ -73,7 +73,7 @@ const Question = (props) => {
 
 	const saveQuestion = () => {
 		axios({
-			method: "POST",
+			method: "PUT",
 			data: {
 				email: user.emailID,
 				id: props.question._id,
@@ -92,7 +92,7 @@ const Question = (props) => {
 
 	const likeQuestion = () => {
 		axios({
-			method: "POST",
+			method: "PUT",
 			data: {
 				userID: user._id,
 				questionID: props.question._id,
@@ -144,7 +144,12 @@ const Question = (props) => {
 							{props.question.userid._id === user._id &&
 								defaultOptions && (
 									<>
-										<UilPen />
+										<Link
+											to={`/dashboard/edit/${props.question.questionID}`}
+											className={classes["removeWid"]}
+										>
+											<UilPen />
+										</Link>
 										<UilTrashAlt
 											onClick={deleteQuestion}
 											className={classes["redClass"]}

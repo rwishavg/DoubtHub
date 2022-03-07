@@ -93,9 +93,9 @@ textarea {
 .fadeIn {
 	opacity: 1;
 	/* transform: translateY(5%); */
-	/* animation-name: fadeIn;
+	animation-name: fadeIn;
 	animation-duration: 0.7s;
-	animation-fill-mode: forwards; */
+	animation-fill-mode: forwards;
 }
 
 @keyframes fadeIn {
