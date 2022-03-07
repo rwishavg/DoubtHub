@@ -23,7 +23,7 @@ const Sidebar = (props) => {
 				<img src={Logo} alt="" className={`${classes.logo}`} />
 				<div className={`cardComponent ${classes.eventCard}`}></div>
 				<Link
-					to="/dashboard"
+					to="/dashboard/1"
 					className={`${classes.sidebarLink}`}
 					onClick={() => props.setMenu(false)}
 				>

@@ -14,7 +14,7 @@ const {
 	updateQuestion,
 } = require("../Controllers/questions");
 
-router.route("/getQuestions").get(getQuestions);
+router.route("/getQuestions/:pages").get(getQuestions);
 router.route("/getQuestionPages/:id").get(getQuestionPages);
 router.route("/myQuestions/:id").get(myQuestions);
 router.route("/getSavedQuestions/:id").get(getSavedQuestions);

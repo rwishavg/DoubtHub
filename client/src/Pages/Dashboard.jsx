@@ -18,7 +18,7 @@ import axios from "axios";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 const Dashboard = () => {
 	// const createQuestion = () => {};
-	let { page } = useParams();
+	let a = useParams();
 	const [user, isAuthenticated] = useContext(userObjectContext);
 	const [questionData, setQuestionData] = useState([]);
 	const [myData, setMyData] = useState([]);
@@ -27,7 +27,7 @@ const Dashboard = () => {
 
 	const getData = async () => {
 		let response = await axios.get(
-			api_endpoint + `/question/getQuestions`,
+			api_endpoint + `/question/getQuestions/${a["*"]}`,
 			{
 				withCredentials: true,
 			}
@@ -78,7 +78,7 @@ const Dashboard = () => {
 				<div className="centerContent">
 					<Routes>
 						<Route
-							path="/"
+							path="/:id"
 							element={
 								<AllQuestions
 									data={questionData}
@@ -122,7 +122,7 @@ const Dashboard = () => {
 						></Route>
 						<Route
 							exact
-							path="/:id"
+							path="/q/:id"
 							element={
 								<QuestionPage
 									convertDate={convertDate}

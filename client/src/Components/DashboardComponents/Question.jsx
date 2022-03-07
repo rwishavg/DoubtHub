@@ -209,7 +209,7 @@ const Question = (props) => {
 						<div></div>
 						<div>{commentCount}</div>
 						<Link
-							to={`/dashboard/${props.question.questionID}`}
+							to={`/dashboard/q/${props.question.questionID}`}
 							className="removeWid"
 						>
 							<UilCommentAltLines />

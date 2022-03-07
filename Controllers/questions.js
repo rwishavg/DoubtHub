@@ -20,7 +20,7 @@ exports.addNewQuestion = async (req, res, next) => {
 
 exports.getQuestions = async (req, res, next) => {
 	try {
-		// let skip = req.params.pages * 1;
+		let skip = (parseInt(req.params.pages) - 1) * 10;
 		// console.log(req.params);
 		let questions = await QuestionSchema.find()
 			.populate("userid", "username firstName lastName profileIMG")
@@ -32,8 +32,8 @@ exports.getQuestions = async (req, res, next) => {
 					select: "username firstName lastName profileIMG",
 				},
 			})
-			// .limit(1)
-			// .skip(skip)
+			.limit(10)
+			.skip(skip)
 			.sort({ createdAt: -1 });
 		res.status(200).send(questions);
 	} catch (err) {
