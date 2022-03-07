@@ -8,7 +8,6 @@ const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 const UserPage = (props) => {
 	let { username } = useParams();
 	const [userData, setUserData] = useState(null);
-	const [questionData, setQuestionData] = useState([]);
 	useEffect(() => {
 		axios({
 			method: "POST",

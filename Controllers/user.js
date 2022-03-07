@@ -36,7 +36,7 @@ exports.googleAuthenticate = passport.authenticate("google", {
 });
 
 exports.googleCallback = passport.authenticate("google", {
-	successRedirect: host + "/dashboard",
+	successRedirect: host + "/dashboard/1",
 	failureRedirect: host + "/login",
 });
 

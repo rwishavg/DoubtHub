@@ -81,7 +81,7 @@ const Question = (props) => {
 			withCredentials: true,
 			url: api_endpoint + "/question/banQuestion",
 		}).then((response) => {
-			toast.success("Reported");
+			toast.success(response.data);
 			props.updateData();
 		});
 		setOptionStyle(optionInactiveStyle);
