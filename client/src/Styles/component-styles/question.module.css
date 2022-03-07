@@ -30,6 +30,7 @@
 .user {
 	display: flex;
 	margin-bottom: 2vh;
+	transition: color 0.2s ease;
 }
 
 .userPhoto {
@@ -155,4 +156,13 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.name > a {
+	color: black;
+	transition: color 0.2s ease;
+}
+
+.name:hover > a {
+	color: #7f53f7;
 }

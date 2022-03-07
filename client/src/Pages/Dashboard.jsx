@@ -50,6 +50,7 @@ const Dashboard = () => {
 	useEffect(() => {
 		getData();
 	}, [a]);
+
 	console.log(a);
 	let convertDate = (createdAt) => {
 		if (createdAt === undefined) return "";
@@ -88,6 +89,7 @@ const Dashboard = () => {
 									<PaginationComponent
 										page="dashboard"
 										number={number}
+										size={questionData.length}
 									/>
 									<AllQuestions
 										data={questionData}
