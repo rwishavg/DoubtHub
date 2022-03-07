@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Routes, Route, Navigate, useParams } from "react-router-dom";
+import { Routes, Route, Navigate, useParams, Link } from "react-router-dom";
 import Profile from "../Components/DashboardComponents/Profile";
 import AllQuestions from "../Components/DashboardComponents/AllQuestions";
+import NewQuestion from "../Components/DashboardComponents/NewQuestion";
 import MyQuestions from "../Components/DashboardComponents/MyQuestions";
 import Saved from "../Components/DashboardComponents/Saved";
 import Sidebar from "../Components/DashboardComponents/Sidebar";
@@ -9,7 +10,7 @@ import Searchbar from "../Components/DashboardComponents/Searchbar";
 import Settings from "../Components/DashboardComponents/Settings";
 import UserPage from "../Pages/UserPage";
 import EditPage from "./EditPage";
-
+import PaginationComponent from "../Components/DashboardComponents/PaginationComponent";
 import QuestionPage from "./QuestionPage";
 import "../Styles/page-styles/dashboard.css";
 import Menu from "../Components/DashboardComponents/Menu";
@@ -19,6 +20,8 @@ const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 const Dashboard = () => {
 	// const createQuestion = () => {};
 	let a = useParams();
+	let number = parseInt(a["*"]);
+	if (number <= 1) number = 1;
 	const [user, isAuthenticated] = useContext(userObjectContext);
 	const [questionData, setQuestionData] = useState([]);
 	const [myData, setMyData] = useState([]);
@@ -27,7 +30,7 @@ const Dashboard = () => {
 
 	const getData = async () => {
 		let response = await axios.get(
-			api_endpoint + `/question/getQuestions/${a["*"]}`,
+			api_endpoint + `/question/getQuestions/${number}`,
 			{
 				withCredentials: true,
 			}
@@ -46,8 +49,8 @@ const Dashboard = () => {
 	};
 	useEffect(() => {
 		getData();
-	}, []);
-
+	}, [a]);
+	console.log(a);
 	let convertDate = (createdAt) => {
 		if (createdAt === undefined) return "";
 		let result = createdAt.substring(0, 10);
@@ -80,10 +83,17 @@ const Dashboard = () => {
 						<Route
 							path="/:id"
 							element={
-								<AllQuestions
-									data={questionData}
-									getData={getData}
-								/>
+								<>
+									<NewQuestion updateFunction={getData} />
+									<PaginationComponent
+										page="dashboard"
+										number={number}
+									/>
+									<AllQuestions
+										data={questionData}
+										getData={getData}
+									/>
+								</>
 							}
 						></Route>
 						<Route

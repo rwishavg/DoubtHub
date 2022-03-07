@@ -64,7 +64,7 @@ const LoginCard = (props) => {
 
 	useEffect(() => {
 		if (localAuth === true) {
-			window.open("/dashboard", "_self");
+			window.open("/dashboard/1", "_self");
 		} else if (localAuth === false) {
 			setErrorMessage("Incorrect Credentials");
 			setPassword("");
