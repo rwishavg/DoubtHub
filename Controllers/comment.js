@@ -28,7 +28,6 @@ exports.addNewComment = async (req, res, next) => {
 				},
 			});
 		res.status(200).send(result);
-		console.log(result);
 	} catch (err) {
 		res.json(err);
 	}
@@ -72,13 +71,11 @@ exports.upvoteComment = async (req, res, next) => {
 		message = "Up Voted";
 		var count = commentData.upvote.length - commentData.downvote.length;
 		commentData.save();
-		console.log("Backend", count, message);
 		res.status(200).send({
 			message: message,
 			count: count,
 		});
 	} catch (err) {
-		console.log(err);
 		res.json(err);
 	}
 };
@@ -99,20 +96,17 @@ exports.downvoteComment = async (req, res, next) => {
 		} else if (j !== -1) {
 			commentData.downvote.splice(j, 1);
 			message = "Downvote Removed";
-		}
-		else {
+		} else {
 			message = "Error";
 		}
 		message = "Down Voted";
 		var count = commentData.upvote.length - commentData.downvote.length;
 		commentData.save();
-		console.log("Backend", count, message);
 		res.status(200).send({
 			message: message,
 			count: count,
 		});
 	} catch (err) {
-		console.log(err);
 		res.json(err);
 	}
 };

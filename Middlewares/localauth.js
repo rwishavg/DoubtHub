@@ -16,10 +16,8 @@ passport.use(
 			bcrypt.compare(password, user.password, (err, result) => {
 				if (err) throw err;
 				if (result === true) {
-					console.log("Right Pass");
 					return done(null, user);
 				} else {
-					console.log("Wrong Pass");
 					return done(null, false);
 				}
 			});

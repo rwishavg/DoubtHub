@@ -1,0 +1,15 @@
+.editComponent {
+	display: flex;
+	margin-bottom: 4vh;
+	/* width: 100%; */
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	margin: 60px;
+}
+
+.space {
+	margin: 0 2vh;
+}

@@ -172,7 +172,10 @@ const Question = (props) => {
 										/>
 									</>
 								)}
-							<UilBan className={classes["redClass"]} onClick={banQuestion}/>
+							<UilBan
+								className={classes["redClass"]}
+								onClick={banQuestion}
+							/>
 						</div>
 						<UilEllipsisV
 							onClick={(e) => setOptionState(!optionState)}

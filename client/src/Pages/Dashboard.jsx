@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useParams } from "react-router-dom";
 import Profile from "../Components/DashboardComponents/Profile";
 import AllQuestions from "../Components/DashboardComponents/AllQuestions";
 import MyQuestions from "../Components/DashboardComponents/MyQuestions";
@@ -18,14 +18,16 @@ import axios from "axios";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 const Dashboard = () => {
 	// const createQuestion = () => {};
+	let { page } = useParams();
 	const [user, isAuthenticated] = useContext(userObjectContext);
 	const [questionData, setQuestionData] = useState([]);
 	const [myData, setMyData] = useState([]);
 	const [savedData, setSavedData] = useState([]);
 	const [menu, setMenu] = useState(false);
+
 	const getData = async () => {
 		let response = await axios.get(
-			api_endpoint + "/question/getQuestions",
+			api_endpoint + `/question/getQuestions`,
 			{
 				withCredentials: true,
 			}
@@ -76,7 +78,6 @@ const Dashboard = () => {
 				<div className="centerContent">
 					<Routes>
 						<Route
-							exact
 							path="/"
 							element={
 								<AllQuestions
