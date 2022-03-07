@@ -1,6 +1,6 @@
 import React from "react";
 import Question from "./Question";
-import NewQuestion from "./NewQuestion";
+
 const zeroStyle = {
 	margin: "0 auto",
 	width: "100%",
@@ -35,7 +35,6 @@ const AllQuestions = (props) => {
 
 	return (
 		<div className="fadeIn">
-			<NewQuestion updateFunction={props.getData} prevData={props.data} />
 			{props.data.length === 0 && (
 				<div style={zeroStyle}>
 					Its lonely here. <br />

@@ -13,7 +13,7 @@ const Login = () => {
 			</div>
 		);
 	} else if (isAuthenticated === true) {
-		return <Navigate to="/dashboard" />;
+		return <Navigate to="/dashboard/1" />;
 	} else {
 		return null;
 	}
