@@ -10,6 +10,7 @@ const Searchbar = () => {
 	const [counter, setCounter] = useState(0);
 	const [filterState, setFilterState] = useState(["TAG"]);
 	const [searchText, setSearchText] = useState("");
+	
 	const changeTag = () => {
 		setCounter((counter + 1) % tagNames.length);
 	};

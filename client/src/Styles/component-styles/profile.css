@@ -1,5 +1,4 @@
 .profileCard {
-	/* max-height: 92vh; */
 	display: flex;
 }
 
@@ -14,7 +13,6 @@
 	border-radius: 15px;
 	height: 15vh;
 	display: flex;
-	/* justify-content: space-between; */
 	transition: 0.3s all ease;
 	border: 2px solid transparent;
 	margin-bottom: 18px;
@@ -26,7 +24,6 @@
 .bioBg:focus-within {
 	background-color: transparent;
 	border: 2px solid #5f2eea;
-	/* transition: border 0.3s ease-in; */
 }
 .bioBg > div {
 	width: 100%;
@@ -40,11 +37,6 @@
 .nameSize {
 	width: 55%;
 	margin-bottom: -18px;
-}
-
-.nameSize > div {
-	/* margin: 0;
-	margin-bottom: 18px; */
 }
 
 .bio {
@@ -76,7 +68,6 @@
 }
 
 .profilePic {
-	/* aspect-ratio: 1/1; */
 	flex-grow: 1;
 	display: flex;
 	align-items: center;

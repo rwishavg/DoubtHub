@@ -49,4 +49,4 @@ const NewComment = (props) => {
 	);
 };
 
-export default NewComment;
+export default React.memo(NewComment);

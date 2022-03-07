@@ -20,9 +20,7 @@ exports.addNewQuestion = async (req, res, next) => {
 
 exports.getQuestions = async (req, res, next) => {
 	try {
-		// if(req.params.pages === Nan)
 		let skip = (parseInt(req.params.pages) - 1) * 10;
-		// console.log(req.params);
 		let questions = await QuestionSchema.find()
 			.populate("userid", "username firstName lastName profileIMG")
 			.populate("comments", "body createdAt userid")

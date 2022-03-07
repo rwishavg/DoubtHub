@@ -12,7 +12,6 @@
 	width: 45vw;
 	min-width: 500px;
 	margin-left: 44vh;
-	/* overflow-x: hidden; */
 }
 
 @media screen and (max-width: 900px) {

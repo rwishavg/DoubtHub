@@ -1,22 +1,21 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect} from "react";
 import Question from "./Question";
-import { userObjectContext } from "../../Context";
-import axios from "axios";
-const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
+
 const zeroStyle = {
 	margin: "0 auto",
 	width: "100%",
-	// display: "flex",
-	// justifyContent: "center",
 	marginTop: "4vh",
 	marginLeft: "4vh",
 	fontWeight: "300",
 	color: "#666666",
 };
+
 const AllQuestions = (props) => {
+	
 	useEffect(() => {
 		props.getData();
 	}, []);
+
 	if (props.data.length === 0) {
 		return (
 			<div style={zeroStyle}>

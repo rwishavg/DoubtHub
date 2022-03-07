@@ -37,8 +37,8 @@ const Question = (props) => {
 		props.question.comments.length
 	);
 
-	const expandCard = () => setCurrentCard(!currentCard);
 	const navigate = useNavigate();
+	const expandCard = () => setCurrentCard(!currentCard);
 	let defaultOptions = props.remOptions;
 	if (defaultOptions === undefined) defaultOptions = true;
 	useEffect(() => {

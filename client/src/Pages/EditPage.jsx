@@ -1,9 +1,10 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Question from "../Components/DashboardComponents/Question";
 import classes from "../Styles/component-styles/newQuestion.module.css";
 import { toast } from "wc-toast";
+
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
 const style = {
@@ -12,6 +13,7 @@ const style = {
 	descriptionStyle: {},
 	collapse: { opacity: "1", zIndex: "1" },
 };
+
 const EditPage = (props) => {
 	const [cardState, setCardState] = useState(false);
 	const [questionData, setQuestionData] = useState(null);
@@ -59,7 +61,6 @@ const EditPage = (props) => {
 					updateData={props.getData}
 					question={questionData}
 					remOptions={false}
-					// date={convertDate(questionData.createdAt)}
 				/>
 				<div
 					className={`cardComponent ${classes.newQuestion}`}
@@ -115,4 +116,4 @@ const EditPage = (props) => {
 	}
 };
 
-export default EditPage;
+export default React.memo(EditPage);

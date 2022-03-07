@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import Comment from "./Comment";
 import classes from "../../Styles/component-styles/comments.module.css";
 import NewComment from "./NewComment";
+
 const AllComments = (props) => {
 	const commentEndRef = useRef(null);
 	const commentStartRef = useRef(null);
@@ -10,9 +11,11 @@ const AllComments = (props) => {
 	const scrollToBottom = () => {
 		commentEndRef.current?.scrollIntoView({ behavior: "smooth" });
 	};
+
 	const scrollToTop = () => {
 		commentStartRef.current?.scrollIntoView({ behavior: "smooth" });
 	};
+
 	return (
 		<>
 			<div
@@ -33,7 +36,6 @@ const AllComments = (props) => {
 					/>
 				))}
 			</div>
-
 			<NewComment setComments={setComments} />
 			<div className={classes["top"]} ref={commentEndRef}>
 				<div className={classes["jump"]} onClick={scrollToTop}>
@@ -44,4 +46,4 @@ const AllComments = (props) => {
 	);
 };
 
-export default AllComments;
+export default React.memo(AllComments);

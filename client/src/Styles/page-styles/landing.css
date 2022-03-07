@@ -6,28 +6,13 @@
 	justify-content: center;
 	position: relative;
 }
-/* 
-.loginSign a {
-	margin: 0 2vh;
-} */
 
 .landingLeft {
 	width: 50vw;
 	height: 100%;
 	position: relative;
 }
-/* 
-.borderLeftSide {
-	top: 0;
-	width: 50px;
-	height: 100vh;
-	right: -20px;
-	background: #fcfcfc;
-	position: absolute;
-	border-top-right-radius: 20px;
-	border-bottom-right-radius: 20px;
-	z-index: 1;
-} */
+
 .landingRight {
 	width: 50vw;
 	height: 100vh;
@@ -37,7 +22,6 @@
 }
 
 .animateWid {
-	/* position: relative; */
 	width: 52vw;
 	height: 100vh;
 	background-color: #fcfcfc;
@@ -53,8 +37,6 @@
 	height: 100vh;
 	background-size: 110%;
 	background-repeat: none !important;
-	/* border-top-left-radius: 20px;
-	border-bottom-left-radius: 20px; */
 }
 
 .landingContent {
@@ -72,10 +54,8 @@
 .landingHeading {
 	font-weight: 700;
 	font-size: 50px;
-	/* letter-spacing: 1px; */
 	text-transform: capitalize;
 	color: #333;
-	/* text-align: center; */
 }
 
 .landingSubhead {
@@ -83,7 +63,6 @@
 	font-size: 13px;
 	letter-spacing: 1px;
 	text-transform: capitalize;
-	/* text-align: center; */
 	color: #333;
 	margin-bottom: 2vh;
 }
@@ -136,10 +115,4 @@
 	height: 75px;
 	display: flex;
 	z-index: 5;
-}
-
-.hText {
-	/* background-color: red; */
-	/* position: absolute; */
-	/* transform: translateY(100px); */
 }

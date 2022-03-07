@@ -1,10 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+
 import classes from "../Styles/page-styles/userPage.module.css";
-// import { Rings } from "react-loader-spinner";
 import Question from "../Components/DashboardComponents/Question";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
+
 const UserPage = (props) => {
 	let { username } = useParams();
 	const [userData, setUserData] = useState(null);
@@ -52,4 +53,4 @@ const UserPage = (props) => {
 		);
 };
 
-export default UserPage;
+export default React.memo(UserPage);

@@ -1,18 +1,17 @@
 import React, { useEffect } from "react";
 import Question from "./Question";
-// import { userObjectContext } from "../../Context";
 import axios from "axios";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
+
 const zeroStyle = {
 	margin: "0 auto",
 	width: "100%",
-	// display: "flex",
-	// justifyContent: "center",
 	marginTop: "4vh",
 	marginLeft: "4vh",
 	fontWeight: "300",
 	color: "#666666",
 };
+
 const Saved = (props) => {
 	let getData = async () => {
 		let response = await axios.get(api_endpoint + "/user/data", {
@@ -30,9 +29,11 @@ const Saved = (props) => {
 		props.setData(qArr);
 		props.getData();
 	};
+
 	useEffect(() => {
 		getData();
 	}, []);
+
 	if (props.data.length === 0) {
 		return <div style={zeroStyle}>No questions saved for now!</div>;
 	} else {
@@ -52,4 +53,4 @@ const Saved = (props) => {
 	}
 };
 
-export default Saved;
+export default React.memo(Saved);

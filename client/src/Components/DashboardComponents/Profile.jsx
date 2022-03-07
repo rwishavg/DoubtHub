@@ -8,6 +8,7 @@ import { UilAt } from "@iconscout/react-unicons";
 import { UilFileEditAlt } from "@iconscout/react-unicons";
 import { UilUser } from "@iconscout/react-unicons";
 import { toast } from "wc-toast";
+
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
 const Profile = () => {
@@ -101,4 +102,4 @@ const Profile = () => {
 	);
 };
 
-export default Profile;
+export default React.memo(Profile);

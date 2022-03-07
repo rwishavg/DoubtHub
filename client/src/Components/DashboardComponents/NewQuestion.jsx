@@ -4,6 +4,7 @@ import classes from "../../Styles/component-styles/newQuestion.module.css";
 import { userObjectContext } from "../../Context";
 import { toast } from "wc-toast";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
+
 const activeStyle = {
 	cardStyle: { height: "60vh", width: "100%" },
 	body: { height: "35vh", width: "100%" },
@@ -25,6 +26,7 @@ const NewQuestion = (props) => {
 	const [description, setDescription] = useState("");
 	const [questionText, setQuestionText] = useState("");
 	const user = useContext(userObjectContext)[0];
+
 	const postQuestion = () => {
 		axios({
 			method: "POST",
@@ -53,6 +55,7 @@ const NewQuestion = (props) => {
 			setTitle("Have a Question?");
 		}
 	}, [cardState]);
+
 	return (
 		<div
 			className={`cardComponent ${classes.newQuestion}`}
@@ -103,4 +106,4 @@ const NewQuestion = (props) => {
 	);
 };
 
-export default NewQuestion;
+export default React.memo(NewQuestion);

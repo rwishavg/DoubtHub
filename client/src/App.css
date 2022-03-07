@@ -41,8 +41,6 @@ body::-webkit-scrollbar-thumb {
 	cursor: pointer;
 	user-select: none;
 	text-align: center;
-	/* transition: 0.5s background ease-in-out;
-	transition: 0.5s color ease-in-out; */
 }
 
 .button:hover {
@@ -92,7 +90,6 @@ textarea {
 
 .fadeIn {
 	opacity: 1;
-	/* transform: translateY(5%); */
 	animation-name: fadeIn;
 	animation-duration: 0.7s;
 	animation-fill-mode: forwards;
@@ -101,11 +98,9 @@ textarea {
 @keyframes fadeIn {
 	from {
 		opacity: 0;
-		/* transform: translateY(5%); */
 	}
 	to {
 		opacity: 1;
-		/* transform: translateY(0%); */
 	}
 }
 
