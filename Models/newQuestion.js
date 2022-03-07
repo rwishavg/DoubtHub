@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { string } = require("prop-types");
 const { Schema } = mongoose;
 
 const questionSchema = new Schema({
@@ -19,6 +20,7 @@ const questionSchema = new Schema({
 		required: true,
 		default: "THIS IS A QUESTION",
 	},
+	ban: [String],
 	description: {
 		type: String,
 		default: "THIS IS A QUESTION DESCRIPTION",

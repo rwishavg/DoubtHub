@@ -106,6 +106,31 @@ exports.deleteQuestion = async (req, res, next) => {
 	}
 };
 
+exports.banQuestion = async (req, res, next) => {
+	try {
+		let query = { _id: req.body.questionId };
+		let question = await QuestionSchema.findOne(query);
+		var i = question.ban.indexOf(req.body.userId);
+		if (i === -1) {
+			question.ban.push(req.body.userId);
+			question.save();
+			if (question.ban.length > 3) {
+				const update = {
+					heading: "Question is Unavailable",
+					description: "This question was reported by 3 different users and has been removed for being inappropriate",
+				}
+				await QuestionSchema.findOneAndUpdate(query,
+					{ $set: update },
+					{ new: true }
+				);
+			}
+			res.send("Reported");
+		} else res.send("Already Reported. Cannot report again");
+	} catch (err) {
+		res.json(err);
+	}
+};
+
 exports.saveQuestion = async (req, res, next) => {
 	try {
 		const userData = await User.findOne({ emailID: req.body.email });
