@@ -57,120 +57,83 @@ const Dashboard = () => {
 		getData();
 	}, [a]);
 
-	let convertDate = (createdAt) => {
-		if (createdAt === undefined) return "";
-		let result = createdAt.substring(0, 10);
-		let day = result.substring(8, 10);
-		let month = result.substring(5, 7);
-		let year = result.substring(0, 4);
-		if (month === "01") month = "Jan";
-		else if (month === "02") month = "Feb";
-		else if (month === "03") month = "Mar";
-		else if (month === "04") month = "Apr";
-		else if (month === "05") month = "May";
-		else if (month === "06") month = "Jun";
-		else if (month === "07") month = "Jul";
-		else if (month === "08") month = "Aug";
-		else if (month === "09") month = "Sep";
-		else if (month === "10") month = "Oct";
-		else if (month === "11") month = "Nov";
-		else if (month === "12") month = "Dec";
-		result = day + " " + month + " " + year;
-		return result;
-	};
-	
 	if (isAuthenticated === true) {
 		return (
-			<div className="container">
-				<Sidebar setMenu={setMenu} menu={menu} />
-				<Searchbar />
-				<Menu menu={menu} setMenu={setMenu} />
-				<div className="centerContent">
-					<Routes>
-						<Route
-							path="/:id"
-							element={
-								<>
-									<NewQuestion updateFunction={getData} />
-									<PaginationComponent
-										page="dashboard"
-										number={number}
-										size={questionData.length}
+			<>
+				<div className="container" id="dashContainer">
+					<Searchbar />
+					<Sidebar setMenu={setMenu} menu={menu} />
+					<Menu menu={menu} setMenu={setMenu} />
+					<div className="centerContent">
+						<Routes>
+							<Route
+								path="/:id"
+								element={
+									<>
+										<NewQuestion updateFunction={getData} />
+										<PaginationComponent
+											page="dashboard"
+											number={number}
+											size={questionData.length}
+										/>
+										<AllQuestions
+											data={questionData}
+											getData={getData}
+										/>
+									</>
+								}
+							></Route>
+							<Route
+								exact
+								path="/myQuestions"
+								element={
+									<MyQuestions
+										data={myData}
+										getData={myDataFunc}
 									/>
-									<AllQuestions
-										data={questionData}
+								}
+							></Route>
+							<Route
+								exact
+								path="/saved"
+								element={
+									<Saved
+										data={savedData}
 										getData={getData}
+										setData={setSavedData}
 									/>
-								</>
-							}
-						></Route>
-						<Route
-							exact
-							path="/myQuestions"
-							element={
-								<MyQuestions
-									data={myData}
-									getData={myDataFunc}
-									convertDate={convertDate}
-								/>
-							}
-						></Route>
-						<Route
-							exact
-							path="/saved"
-							element={
-								<Saved
-									data={savedData}
-									getData={getData}
-									convertDate={convertDate}
-									setData={setSavedData}
-								/>
-							}
-						></Route>
+								}
+							></Route>
 
-						<Route
-							exact
-							path="/profile"
-							element={<Profile />}
-						></Route>
-						<Route
-							exact
-							path="/settings"
-							element={<Settings />}
-						></Route>
-						<Route
-							exact
-							path="/q/:id"
-							element={
-								<QuestionPage
-									convertDate={convertDate}
-									getData={getData}
-								/>
-							}
-						></Route>
-						<Route
-							exact
-							path="/edit/:id"
-							element={
-								<EditPage
-									convertDate={convertDate}
-									getData={getData}
-								/>
-							}
-						></Route>
-						<Route
-							exact
-							path="/u/:username"
-							element={
-								<UserPage
-									getData={getData}
-									convertDate={convertDate}
-								/>
-							}
-						></Route>
-					</Routes>
+							<Route
+								exact
+								path="/profile"
+								element={<Profile />}
+							></Route>
+							<Route
+								exact
+								path="/settings"
+								element={<Settings />}
+							></Route>
+							<Route
+								exact
+								path="/q/:id"
+								element={<QuestionPage getData={getData} />}
+							></Route>
+							<Route
+								exact
+								path="/edit/:id"
+								element={<EditPage getData={getData} />}
+							></Route>
+							<Route
+								exact
+								path="/u/:username"
+								element={<UserPage getData={getData} />}
+							></Route>
+						</Routes>
+					</div>
 				</div>
-			</div>
+			</>
 		);
 	} else if (isAuthenticated === false) {
 		return <Navigate to="/login" />;

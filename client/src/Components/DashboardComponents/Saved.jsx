@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Question from "./Question";
+import { convertDate } from "../../helper";
 import axios from "axios";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
@@ -45,7 +46,7 @@ const Saved = (props) => {
 						updateData={getData}
 						key={question._id}
 						question={question}
-						date={props.convertDate(question.createdAt)}
+						date={convertDate(question.createdAt)}
 					/>
 				))}
 			</div>

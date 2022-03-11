@@ -1,12 +1,11 @@
 .container {
 	padding-top: 4vh;
 	width: 100vw;
-	background: #fcfcfc;
 	position: fixed;
-	z-index: 200;
 }
 
 .searchComponent {
+	position: relative;
 	width: 48vw;
 	margin-left: calc(44vh - 1vw);
 	height: 8vh;
@@ -87,6 +86,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	text-transform: uppercase;
 }
 
 @media screen and (max-width: 900px) {
@@ -100,4 +100,22 @@
 	.container {
 		min-width: 0;
 	}
+}
+
+.dark {
+	width: 100vw;
+	background-color: white;
+	top: 0;
+	left: 0;
+	transition: opacity 0.5s ease;
+	background: #ffffffde;
+	/* -webkit-filter: blur(8px); */
+	z-index: 200;
+	/* transition: height 0.5s ease; */
+}
+
+.result {
+	position: absolute;
+	opacity: 0;
+	transition: opacity 0.5s ease;
 }

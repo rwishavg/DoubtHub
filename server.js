@@ -14,6 +14,7 @@ dotenv.config({
 
 const userRoutes = require("./Routes/user");
 const questionRoutes = require("./Routes/questions");
+const searchRoutes = require("./Routes/search");
 const commentRoutes = require("./Routes/comments");
 const auth = require("./Middlewares/auth");
 const localauth = require("./Middlewares/localauth");
@@ -50,6 +51,7 @@ if (process.env.NODE_ENV === "production") {
 	app.use("/user", userRoutes);
 	app.use("/question", questionRoutes);
 	app.use("/comment", commentRoutes);
+	app.use("/search", searchRoutes);
 }
 
 app.listen(process.env.PORT || 5000, () => {

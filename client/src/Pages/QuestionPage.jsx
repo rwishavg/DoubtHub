@@ -1,10 +1,9 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-
+import axios from "axios";
 import Question from "../Components/DashboardComponents/Question";
 import AllComments from "../Components/CommentComponents/AllComments";
-
+import { useParams } from "react-router-dom";
+import { convertDate } from "../helper";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
 const QuestionPage = (props) => {
@@ -36,7 +35,7 @@ const QuestionPage = (props) => {
 				<Question
 					key={questionData._id}
 					updateData={props.getData}
-					date={props.convertDate(questionData.createdAt)}
+					date={convertDate(questionData.createdAt)}
 					page={"QuesPage"}
 					question={questionData}
 				/>
