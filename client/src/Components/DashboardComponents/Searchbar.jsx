@@ -6,14 +6,18 @@ import { UilSearch } from "@iconscout/react-unicons";
 import axios from "axios";
 import Question from "./Question";
 import { convertDate } from "../../helper";
+import SearchResults from "./SearchResults";
 const tagNames = ["question", "tag", "username", "name"];
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 const activeStyle = {
 	cardStyle: { height: "60vh", width: "100%" },
 	body: { height: "35vh", width: "100%" },
-	search: { zIndex: "250", background: "transparent" },
+	search: {
+		zIndex: "250",
+		background: "#fff",
+	},
 	dark: {
-		opacity: "0.8",
+		opacity: "1",
 		minHeight: "100vh",
 	},
 	opac: { opacity: "1", display: "block" },
@@ -23,8 +27,8 @@ const inactiveStyle = {
 	cardStyle: { height: "18vh" },
 	body: { display: "none" },
 	search: { zIndex: "5", background: "#fcfcfc" },
-	dark: { opacity: "0", minHeight: "1vh" },
-	opac: { opacity: "1" },
+	dark: { opacity: "0", minHeight: "100vh" },
+	opac: { opacity: "0" },
 };
 
 const inactiveStyle2 = {
@@ -44,6 +48,7 @@ const Searchbar = () => {
 	const [style, setStyle] = useState(inactiveStyle2);
 
 	const [questionResult, setQuestionResult] = useState([]);
+	const [result, setResult] = useState([]);
 	const changeTag = () => {
 		setCounter((counter + 1) % tagNames.length);
 	};
@@ -54,16 +59,16 @@ const Searchbar = () => {
 
 	useEffect(() => {
 		async function fetchData() {
-				let response = await axios.get(
-						api_endpoint + `/search/${filterState}/${debouncedText}`,
-						{
-								withCredentials: true,
-						}
-				);
-				setQuestionResult(response.data);
+			let response = await axios.get(
+				api_endpoint + `/search/${filterState}/${debouncedText}`,
+				{
+					withCredentials: true,
+				}
+			);
+			setResult(response.data);
 		}
 		if (debouncedText !== "") {
-				fetchData();
+			fetchData();
 		}
 	}, [debouncedText, filterState]);
 	
@@ -82,47 +87,47 @@ const Searchbar = () => {
 		let timeout;
 		if (active === true) {
 			setStyle(activeStyle);
+			disableScroll();
 		} else {
+			enableScroll();
 			setStyle(inactiveStyle);
-
 			timeout = setTimeout(() => {
 				setStyle(inactiveStyle2);
 			}, 500);
 		}
-
 		return () => {
 			clearTimeout(timeout);
 		};
 	}, [active]);
 
+	function disableScroll() {
+		let scrollTop =
+			window.pageYOffset || document.documentElement.scrollTop;
+		let scrollLeft =
+			window.pageXOffset || document.documentElement.scrollLeft;
+		window.onscroll = function () {
+			window.scrollTo(scrollLeft, scrollTop);
+		};
+	}
+
+	function enableScroll() {
+		window.onscroll = function () {};
+	}
+
 	return (
 		<>
-			<div className={classes["dark"]} style={style.dark}></div>
+			<div
+				className={classes["dark"]}
+				style={style.dark}
+				onClick={() => setActive(false)}
+			></div>
 			<div className={classes["container"]} style={style.search}>
-				<div className={classes["resultContainer"]}>
-					<div
-						className={`centerContent ${classes.result}`}
-						style={style.opac}
-					>
-						{questionResult.length > 0 &&
-							(filterState === "question" ||
-								filterState === "all") && (
-								<>
-									{questionResult.map((question) => (
-										<Question
-											key={question._id}
-											// updateData={props.getData}
-											question={question}
-											date={convertDate(
-												question.createdAt
-											)}
-										/>
-									))}
-								</>
-							)}
-					</div>
-				</div>
-
+				<SearchResults
+					type={filterState}
+					results={result}
+					style={style.opac}
+					active={setActive}
+				/>
 				<div className={`cardComponent ${classes.searchComponent}`}>
 					<div className={`${classes.background}`}>
 						<div className={classes["searchTag"]}>

@@ -10,7 +10,8 @@ exports.name = async (req, res, next) => {
 		let query = {
 			firstName: { $regex: searchText },
 		};
-		let userData = await User.find(query);
+		let userData = await User.find(query).limit(5);
+		console.log(userData);
 		res.status(200).send(userData);
 	} catch (err) {
 		res.json(err);
@@ -23,7 +24,7 @@ exports.username = async (req, res, next) => {
 		let query = {
 			username: { $regex: searchText },
 		};
-		let userData = await User.find(query);
+		let userData = await User.find(query).limit(5);
 		res.status(200).send(userData);
 	} catch (err) {
 		res.json(err);
@@ -51,10 +52,12 @@ exports.question = async (req, res, next) => {
 		let query = {
 			heading: { $regex: searchText },
 		};
-		let questionData = await QuestionSchema.find(query).populate(
-			"userid",
-			"username firstName lastName profileIMG emailID"
-		);
+		let questionData = await QuestionSchema.find(query)
+			.populate(
+				"userid",
+				"username firstName lastName profileIMG emailID"
+			)
+			.limit(5);
 		res.status(200).send(questionData);
 	} catch (err) {
 		res.json(err);
