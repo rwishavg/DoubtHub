@@ -19,3 +19,12 @@ export const convertDate = (createdAt) => {
 	result = day + " " + month + " " + year;
 	return result;
 };
+
+export const shorten = (str, maxLen, separator = " ") => {
+	if (str.length <= maxLen) return str;
+	else {
+		let tt = str.substr(0, str.lastIndexOf(separator, maxLen));
+		tt = tt + "...";
+		return tt;
+	}
+};
