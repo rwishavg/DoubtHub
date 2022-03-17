@@ -1,5 +1,6 @@
-import React, { useEffect} from "react";
+import React, { useEffect } from "react";
 import Question from "./Question";
+import { convertDate } from "../../helper";
 
 const zeroStyle = {
 	margin: "0 auto",
@@ -32,7 +33,7 @@ const AllQuestions = (props) => {
 						key={question._id}
 						updateData={props.getData}
 						question={question}
-						date={props.convertDate(question.createdAt)}
+						date={convertDate(question.createdAt)}
 					/>
 				))}
 			</div>
