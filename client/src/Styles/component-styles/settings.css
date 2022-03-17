@@ -1,0 +1,101 @@
+.profileCard {
+	display: flex;
+}
+
+.profileForm {
+	width: 100%;
+	margin: 55px;
+}
+
+.bioBg {
+	width: 100%;
+	background-color: #eff0f6;
+	border-radius: 15px;
+	height: 15vh;
+	display: flex;
+	transition: 0.3s all ease;
+	border: 2px solid transparent;
+	margin-bottom: 18px;
+}
+.bioBg:hover {
+	border: 2px solid #602eea70;
+}
+
+.bioBg:focus-within {
+	background-color: transparent;
+	border: 2px solid #5f2eea;
+}
+.bioBg > div {
+	width: 100%;
+}
+.profileName {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.nameSize {
+	width: 55%;
+	margin-bottom: -18px;
+}
+
+.bio {
+	margin-right: 20px;
+	border: none;
+	outline: none;
+	font-family: inherit;
+	resize: none;
+	width: 90%;
+	height: 70%;
+	font-weight: 500;
+	background-color: transparent;
+}
+
+.bioHeading {
+	margin-top: 10px;
+	font-size: 13px;
+	color: #6e7191;
+}
+.bio::placeholder {
+	font-weight: 600;
+	color: #6e7191;
+}
+
+.bioIcon {
+	align-self: center;
+	width: 25px;
+	margin: 0 20px;
+}
+
+.profilePic {
+	flex-grow: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.profilePic img {
+	width: 90px;
+	border-radius: 100%;
+	transition: all 0.3s ease;
+	box-shadow: rgba(149, 157, 165, 0.822) 0px 8px 24px;
+}
+
+.circleCard {
+	width: 140px;
+	height: 140px;
+	border-radius: 100%;
+	border: 2px solid #602eea9d;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.3s ease;
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.profilePic:hover > .circleCard {
+	transform: scale(0.95);
+}
+.profilePic:hover img {
+	transform: scale(1.1);
+}

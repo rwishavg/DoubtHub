@@ -103,11 +103,13 @@
 }
 
 .dark {
+	/* position: fixed; */
 	width: 100vw;
 	background-color: white;
 	top: 0;
 	left: 0;
-	transition: opacity 0.5s ease;
+	z-index: 250;
+	/* transition: opacity 0.5s ease; */
 	background: #ffffffde;
 	/* -webkit-filter: blur(8px); */
 	z-index: 200;

@@ -23,7 +23,7 @@ const inactiveStyle = {
 	cardStyle: { height: "18vh" },
 	body: { display: "none" },
 	search: { zIndex: "5", background: "#fcfcfc" },
-	dark: { opacity: "0", minHeight: "100vh" },
+	dark: { opacity: "0", minHeight: "1vh" },
 	opac: { opacity: "1" },
 };
 
@@ -52,18 +52,21 @@ const Searchbar = () => {
 		setFilterState(tagNames[counter]);
 	}, [counter]);
 
-	useEffect(async () => {
+	useEffect(() => {
+		async function fetchData() {
+				let response = await axios.get(
+						api_endpoint + `/search/${filterState}/${debouncedText}`,
+						{
+								withCredentials: true,
+						}
+				);
+				setQuestionResult(response.data);
+		}
 		if (debouncedText !== "") {
-			let response = await axios.get(
-				api_endpoint + `/search/${filterState}/${debouncedText}`,
-				{
-					withCredentials: true,
-				}
-			);
-			setQuestionResult(response.data);
+				fetchData();
 		}
 	}, [debouncedText, filterState]);
-
+	
 	useEffect(() => {
 		if (searchText !== "") setActive(true);
 		else setActive(false);
@@ -94,9 +97,9 @@ const Searchbar = () => {
 
 	return (
 		<>
-			{/* <div className={classes["dark"]} style={style.dark}></div> */}
+			<div className={classes["dark"]} style={style.dark}></div>
 			<div className={classes["container"]} style={style.search}>
-				{/* <div className={classes["resultContainer"]}>
+				<div className={classes["resultContainer"]}>
 					<div
 						className={`centerContent ${classes.result}`}
 						style={style.opac}
@@ -118,7 +121,7 @@ const Searchbar = () => {
 								</>
 							)}
 					</div>
-				</div> */}
+				</div>
 
 				<div className={`cardComponent ${classes.searchComponent}`}>
 					<div className={`${classes.background}`}>
