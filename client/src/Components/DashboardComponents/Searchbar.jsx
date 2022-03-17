@@ -124,7 +124,7 @@ const Searchbar = () => {
 			<div className={classes["container"]} style={style.search}>
 				<SearchResults
 					type={filterState}
-					result={result}
+					results={result}
 					style={style.opac}
 					active={setActive}
 				/>

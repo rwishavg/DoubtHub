@@ -6,10 +6,10 @@ import Result from "./Result";
 const SearchResults = (props) => {
 	const [headingText, setHeadingText] = useState("No Result");
 	useEffect(() => {
-		if (props.result.length !== 0) setHeadingText("Results: ");
+		if (props.results.length !== 0) setHeadingText("Results: ");
 		else setHeadingText("No Results ");
-	}, [props.result]);
-
+	}, [props.results]);
+	console.log(props.results);
 	return (
 		<div className={classes["resultContainer"]}>
 			<div
@@ -17,19 +17,22 @@ const SearchResults = (props) => {
 				style={props.style}
 			>
 				<div className={classes["resHeading"]}>{headingText}</div>
-				{props.result.length > 0 && props.type === "question" && (
-					<>
-						{props.result.map((question) => (
-							<Result
-								key={question._id}
-								// updateData={props.getData}
-								question={question}
-								date={convertDate(question.createdAt)}
-								active={props.active}
-							/>
-						))}
-					</>
-				)}
+				<div className={classes["wrapper"]}>
+					{props.results.length > 0 && (
+						<>
+							{props.results.map((result) => (
+								<Result
+									key={result._id}
+									// updateData={props.getData}
+									result={result}
+									date={convertDate(result.createdAt)}
+									active={props.active}
+									type={props.type}
+								/>
+							))}
+						</>
+					)}
+				</div>
 			</div>
 		</div>
 	);

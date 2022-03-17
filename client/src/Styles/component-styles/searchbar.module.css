@@ -135,3 +135,17 @@
 	font-weight: 800;
 	font-size: 30px;
 }
+
+.wrapper {
+	margin-top: -10px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.wrapper::after {
+	/* flex: auto; */
+	width: 20vw;
+	margin: 13px 10px;
+	content: "";
+}

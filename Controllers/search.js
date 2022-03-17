@@ -10,7 +10,8 @@ exports.name = async (req, res, next) => {
 		let query = {
 			firstName: { $regex: searchText },
 		};
-		let userData = await User.find(query);
+		let userData = await User.find(query).limit(5);
+		console.log(userData);
 		res.status(200).send(userData);
 	} catch (err) {
 		res.json(err);
