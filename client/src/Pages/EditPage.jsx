@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
 import Question from "../Components/DashboardComponents/Question";
-import Input from "../Components/DashboardComponents/Input";
-// import classes from "../Styles/page-styles/editPage.module.css";
-import { userObjectContext } from "../Context";
 import classes from "../Styles/component-styles/newQuestion.module.css";
+
+import { useParams } from "react-router-dom";
+import { convertDate } from "../helper";
+import { userObjectContext } from "../Context";
 import { toast } from "wc-toast";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
@@ -63,7 +63,7 @@ const EditPage = (props) => {
 					updateData={props.getData}
 					question={questionData}
 					remOptions={false}
-					// date={convertDate(questionData.createdAt)}
+					date={convertDate(questionData.createdAt)}
 				/>
 				<div
 					className={`cardComponent ${classes.newQuestion}`}

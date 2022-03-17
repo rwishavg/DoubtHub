@@ -1,0 +1,40 @@
+.smallQuestion {
+	display: flex;
+	align-items: center;
+	margin: 13px 20px;
+	width: 100%;
+}
+
+.smallTile {
+	display: flex;
+	align-items: center;
+	width: 20vw;
+	margin: 13px 10px;
+	justify-content: right;
+}
+
+.smallTile > .content {
+	justify-content: center;
+}
+
+.content {
+	width: 100%;
+	margin: 10px 30px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.content > div {
+	margin: 0;
+	margin-top: 3px;
+}
+
+.heading {
+	font-weight: 600;
+	font-size: 16px;
+}
+
+.description {
+	font-size: 13px;
+}

@@ -2,7 +2,7 @@
 	position: fixed;
 	left: 5vh;
 	top: 4vh;
-	z-index: 700;
+	z-index: 200;
 }
 
 .sidebarComponent {
@@ -33,6 +33,8 @@
 	width: 6vh;
 	height: 6vh;
 	margin: 0 0 0 2vh;
+	padding: 5px;
+	/* border: 2px solid #7548f0; */
 }
 
 .name {
@@ -55,6 +57,16 @@
 	font-size: 2vh;
 	letter-spacing: 0.2vh;
 	margin: 1vh 0;
+	color: black;
+	transition: color 0.2s ease;
+}
+
+.sidebarLink:hover {
+	color: #7f53f7;
+}
+
+.sidebarLink:hover > .iconSmaller {
+	color: #7f53f7;
 }
 
 .iconSmaller {
@@ -62,7 +74,7 @@
 	margin: 0 2vh 0 2vh;
 }
 
-.unhide{
+.unhide {
 	display: none;
 }
 

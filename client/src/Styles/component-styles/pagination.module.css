@@ -1,0 +1,35 @@
+.container {
+	display: flex;
+	margin-bottom: 1vh;
+	width: 20vw;
+	padding: 5px;
+	align-items: center;
+}
+
+.number {
+	color: #fff;
+	background-color: #fff;
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+	border: 2px solid #7548f0;
+	font-weight: 800;
+	font-size: 14px;
+	color: #7f53f7;
+	margin: 0 2vh 0 0;
+	min-width: 65px;
+	height: 4vh;
+	border-radius: 8px;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.links {
+	display: flex;
+	align-items: center;
+}
+
+.links svg {
+	width: 3.2vh;
+	height: 3.2vh;
+}

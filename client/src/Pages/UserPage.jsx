@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import classes from "../Styles/page-styles/userPage.module.css";
 // import { Rings } from "react-loader-spinner";
+import { convertDate } from "../helper";
 import Question from "../Components/DashboardComponents/Question";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 const UserPage = (props) => {
@@ -46,7 +47,7 @@ const UserPage = (props) => {
 						key={question._id}
 						updateData={props.getData}
 						question={question}
-						date={props.convertDate(question.createdAt)}
+						date={convertDate(question.createdAt)}
 					/>
 				))}
 			</div>

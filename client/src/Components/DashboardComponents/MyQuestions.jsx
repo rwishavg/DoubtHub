@@ -1,8 +1,7 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect } from "react";
 import Question from "./Question";
-import { userObjectContext } from "../../Context";
-import axios from "axios";
-const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
+import { convertDate } from "../../helper";
+
 const zeroStyle = {
 	margin: "0 auto",
 	width: "100%",
@@ -33,7 +32,7 @@ const AllQuestions = (props) => {
 						key={question._id}
 						updateData={props.getData}
 						question={question}
-						date={props.convertDate(question.createdAt)}
+						date={convertDate(question.createdAt)}
 					/>
 				))}
 			</div>
