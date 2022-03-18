@@ -1,13 +1,16 @@
-:root {
-  --font-color: #333;
-  --background-color: #eee;
-  --link-color: cornflowerblue;
+:root, html {
+  --font-color: rgb(0, 0, 0);
+  --background-color: #fcfcfc;
+  --link-color: #7f53f7;
+  --card-color: rgb(255, 255, 255);
 }
 
+
 [data-theme="dark"] {
-  --font-color: #eee;
-  --background-color: #333;
+  --font-color: rgb(66, 66, 66);
+  --background-color: rgb(31, 29, 29);
   --link-color: lightblue;
+  --card-color: rgb(206, 206, 206);
 }
 
 body {
@@ -70,7 +73,7 @@ input:checked + .slider:before {
 }
 
 input:checked + .slider {
-  background-color: cornflowerblue;
+  background-color: #7f53f7;
 }
 
 .slider.round {

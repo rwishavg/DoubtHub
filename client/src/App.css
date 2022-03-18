@@ -1,10 +1,11 @@
 :root {
-	background-color: #fcfcfc;
+	/* background-color: #fcfcfc; */
 	overflow-x: hidden;
 	--color: #7548f0;
-
+	min-height: 100vh;
 	/* 8e69f1 */
 }
+
 ::selection {
 	color: #fff;
 	background: #4400ff80;
@@ -21,7 +22,7 @@ body::-webkit-scrollbar-thumb {
 .cardComponent {
 	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 	border-radius: 15px;
-	background-color: #fff;
+	background-color: var(--card-color);
 }
 
 .button {
