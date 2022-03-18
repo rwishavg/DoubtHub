@@ -21,7 +21,8 @@
 }
 
 .Input {
-	background-color: #eff0f6;
+	background-color: var(--input-background);
+	color: var(--font-color);
 	border-radius: 6px;
 	padding: 1.5vh;
 	width: 100%;
@@ -44,12 +45,13 @@
 	height: 90%;
 	width: 100%;
 	resize: none;
+	color: var(--font-color);
 }
 
 .bg {
+	background-color: var(--input-background);
 	height: 35vh;
 	display: flex;
-	background-color: #eff0f6;
 	border-radius: 6px;
 	width: 100%;
 	margin-bottom: 7vh;

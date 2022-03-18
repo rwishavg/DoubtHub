@@ -36,7 +36,7 @@ const toggleTheme = (e) => {
 const DarkMode = () => {
   return (
     <div className="toggle-theme-wrapper">
-      <span><UilSun/></span>
+      <span><UilSun  color="#A0A3BD"/></span>
       <label className="toggle-theme" htmlFor="checkbox">
         <input
           type="checkbox"
@@ -46,7 +46,7 @@ const DarkMode = () => {
         />
         <div className="slider round"></div>
       </label>
-      <span><UilMoon/></span>
+      <span><UilMoon color="#A0A3BD"/></span>
     </div>
   );
 };

@@ -179,6 +179,7 @@ const Question = (props) => {
 						</div>
 						<UilEllipsisV
 							onClick={(e) => setOptionState(!optionState)}
+							color="var(--font-color)"
 						/>
 					</div>
 					<div className={classes["questionHeading"]}>
@@ -203,6 +204,7 @@ const Question = (props) => {
 						<UilThumbsUp
 							onClick={likeQuestion}
 							style={{ cursor: "pointer" }}
+							color="var(--font-color)"
 						/>
 						<div></div>
 						<div></div>
@@ -212,7 +214,7 @@ const Question = (props) => {
 							to={`/dashboard/q/${props.question.questionID}`}
 							className="removeWid"
 						>
-							<UilCommentAltLines />
+							<UilCommentAltLines color="var(--font-color)"/>
 						</Link>
 					</div>
 				</div>

@@ -155,7 +155,7 @@
 }
 
 .name > a {
-	color: black;
+	color: var(--font-color);
 	transition: color 0.2s ease;
 }
 
