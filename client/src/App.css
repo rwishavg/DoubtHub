@@ -20,7 +20,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .cardComponent {
-	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+	box-shadow: var(--shadow);
 	border-radius: 15px;
 	background-color: var(--card-color);
 }
@@ -42,6 +42,7 @@ body::-webkit-scrollbar-thumb {
 	cursor: pointer;
 	user-select: none;
 	text-align: center;
+	background-color: var(--background-color);
 }
 
 .button:hover {
