@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import Logo from "../../Assets/DoubtHub Logo.png";
+import LogoDark from "../../Assets/DoubtHub_Logo_White.png";
 import { Link } from "react-router-dom";
 import classes from "../../Styles/component-styles/sidebar.module.css";
 import { userObjectContext } from "../../Context";
@@ -16,11 +17,14 @@ import { UilApps } from "@iconscout/react-unicons";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
 const Sidebar = (props) => {
+	let theme = localStorage.getItem('theme');
+	console.log(typeof(theme));
 	const [user, isAuthenticated] = useContext(userObjectContext);
 	return (
 		<div className={`${classes.sidebarContainer}`}>
 			<div className={`cardComponent ${classes.sidebarComponent}`}>
-				<img src={Logo} alt="" className={`${classes.logo}`} />
+				{theme === "light" && <img src={Logo} alt="" className={`${classes.logo}`} />}
+				{theme === "dark" && <img src={LogoDark} alt="" className={`${classes.logo}`} />}
 				<div className={`cardComponent ${classes.eventCard}`}></div>
 				<Link
 					to="/dashboard/1"

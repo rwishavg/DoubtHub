@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import classes from "../../Styles/component-styles/searchbar.module.css";
-import Question from "./Question";
 import { convertDate } from "../../helper";
 import Result from "./Result";
 const SearchResults = (props) => {

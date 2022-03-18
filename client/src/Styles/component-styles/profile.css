@@ -1,5 +1,4 @@
 .profileCard {
-	/* max-height: 92vh; */
 	display: flex;
 }
 
@@ -10,11 +9,10 @@
 
 .bioBg {
 	width: 100%;
-	background-color: #eff0f6;
+	background-color: var(--input-background);
 	border-radius: 15px;
 	height: 15vh;
 	display: flex;
-	/* justify-content: space-between; */
 	transition: 0.3s all ease;
 	border: 2px solid transparent;
 	margin-bottom: 18px;
@@ -26,7 +24,6 @@
 .bioBg:focus-within {
 	background-color: transparent;
 	border: 2px solid #5f2eea;
-	/* transition: border 0.3s ease-in; */
 }
 .bioBg > div {
 	width: 100%;
@@ -42,11 +39,6 @@
 	margin-bottom: -18px;
 }
 
-.nameSize > div {
-	/* margin: 0;
-	margin-bottom: 18px; */
-}
-
 .bio {
 	margin-right: 20px;
 	border: none;
@@ -56,6 +48,7 @@
 	width: 90%;
 	height: 70%;
 	font-weight: 500;
+	color: var(--input-color);
 	background-color: transparent;
 }
 
@@ -76,7 +69,6 @@
 }
 
 .profilePic {
-	/* aspect-ratio: 1/1; */
 	flex-grow: 1;
 	display: flex;
 	align-items: center;
@@ -87,7 +79,7 @@
 	width: 90px;
 	border-radius: 100%;
 	transition: all 0.3s ease;
-	box-shadow: rgba(149, 157, 165, 0.822) 0px 8px 24px;
+	box-shadow: var(--shadow);
 }
 
 .circleCard {
@@ -100,6 +92,7 @@
 	justify-content: center;
 	transition: all 0.3s ease;
 	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+	box-shadow: var(--shadow);
 }
 
 .profilePic:hover > .circleCard {

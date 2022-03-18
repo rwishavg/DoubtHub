@@ -3,6 +3,7 @@
 	left: 5vh;
 	top: 4vh;
 	z-index: 200;
+	color: var(--font-color);
 }
 
 .sidebarComponent {
@@ -11,7 +12,6 @@
 	align-items: center;
 	width: 34vh;
 	height: 92vh;
-	/* background-color: #ad8ae811 !important; */
 }
 
 .logo {
@@ -34,12 +34,12 @@
 	height: 6vh;
 	margin: 0 0 0 2vh;
 	padding: 5px;
-	/* border: 2px solid #7548f0; */
 }
 
 .name {
 	margin: 0 auto;
 	color: #6e7191;
+	color: inherit;
 	font-weight: 600;
 	font-size: 1.8vh;
 	letter-spacing: 0.2vh;
@@ -57,7 +57,7 @@
 	font-size: 2vh;
 	letter-spacing: 0.2vh;
 	margin: 1vh 0;
-	color: black;
+	color: inherit;
 	transition: color 0.2s ease;
 }
 
@@ -72,6 +72,7 @@
 .iconSmaller {
 	width: 2.3vh;
 	margin: 0 2vh 0 2vh;
+	color: inherit;
 }
 
 .unhide {

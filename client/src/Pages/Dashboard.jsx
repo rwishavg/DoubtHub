@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Routes, Route, Navigate, useParams, Link } from "react-router-dom";
+import { Routes, Route, Navigate, useParams } from "react-router-dom";
+import axios from "axios";
+
 import Profile from "../Components/DashboardComponents/Profile";
 import AllQuestions from "../Components/DashboardComponents/AllQuestions";
 import NewQuestion from "../Components/DashboardComponents/NewQuestion";
@@ -12,13 +14,15 @@ import UserPage from "../Pages/UserPage";
 import EditPage from "./EditPage";
 import PaginationComponent from "../Components/DashboardComponents/PaginationComponent";
 import QuestionPage from "./QuestionPage";
-import "../Styles/page-styles/dashboard.css";
 import Menu from "../Components/DashboardComponents/Menu";
+
 import { userObjectContext } from "../Context";
-import axios from "axios";
+
+import "../Styles/page-styles/dashboard.css";
+
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
+
 const Dashboard = () => {
-	// const createQuestion = () => {};
 	let a = useParams();
 	let number = parseInt(a["*"]);
 	if (number <= 1) number = 1;
@@ -37,6 +41,7 @@ const Dashboard = () => {
 		);
 		setQuestionData(response.data);
 	};
+
 	const myDataFunc = async () => {
 		let response = await axios.get(
 			api_endpoint + `/question/myQuestions/${user._id}`,
@@ -47,6 +52,7 @@ const Dashboard = () => {
 		setMyData(response.data);
 		getData();
 	};
+
 	useEffect(() => {
 		getData();
 	}, [a]);

@@ -9,6 +9,7 @@ const {
 	signup,
 	login,
 	getUser,
+	changePassword
 } = require("../Controllers/user");
 
 router.route("/data").get(data);
@@ -24,5 +25,6 @@ router.post("/auth/local", login);
 const { editProfile } = require("../Controllers/editUser");
 
 router.route("/profile/edit").put(editProfile);
+router.route("/profile/changePassword").put(changePassword);
 
 module.exports = router;

@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const { string } = require("prop-types");
 const { Schema } = mongoose;
 
 const questionSchema = new Schema({

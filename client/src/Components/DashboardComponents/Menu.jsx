@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from "react";
-import styled from "styled-components";
 import { Link } from "react-router-dom";
 import classes from "../../Styles/component-styles/menu.module.css";
 
@@ -15,13 +14,16 @@ const inactiveStyle = {
 	transform: "translateY(100%)",
 	opacity: "0",
 };
+
 const activeStyle = {
 	transform: "translateY(0%)",
 	opacity: "1",
 };
+
 const Menu = ({ menu, setMenu }) => {
 	const [user, isAuthenticated] = useContext(userObjectContext);
 	const [menuStyle, setMenuStyle] = useState(inactiveStyle);
+
 	useEffect(() => {
 		if (menu === false) setMenuStyle(inactiveStyle);
 		else setMenuStyle(activeStyle);
@@ -69,8 +71,5 @@ const Menu = ({ menu, setMenu }) => {
 		</div>
 	);
 };
-
-//style for dev container
-const DevContainer = styled.div``;
 
 export default React.memo(Menu);

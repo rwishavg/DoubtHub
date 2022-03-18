@@ -6,10 +6,7 @@ import { UilEllipsisV } from "@iconscout/react-unicons";
 
 const DeletedQuestion = (props) => {
 	return (
-		<div
-			className={`cardComponent ${classes.questionComponent}`}
-			// style={styleState.cardStyle}
-		>
+		<div className={`cardComponent ${classes.questionComponent}`}>
 			<div className={classes["content"]}>
 				<div className={classes["questionHeading"]}>
 					This Post Is No Longer Available &#128565;

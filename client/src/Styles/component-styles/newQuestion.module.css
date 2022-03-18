@@ -21,7 +21,8 @@
 }
 
 .Input {
-	background-color: #eff0f6;
+	background-color: var(--input-background);
+	color: var(--font-color);
 	border-radius: 6px;
 	padding: 1.5vh;
 	width: 100%;
@@ -44,12 +45,13 @@
 	height: 90%;
 	width: 100%;
 	resize: none;
+	color: var(--font-color);
 }
 
 .bg {
+	background-color: var(--input-background);
 	height: 35vh;
 	display: flex;
-	background-color: #eff0f6;
 	border-radius: 6px;
 	width: 100%;
 	margin-bottom: 7vh;
@@ -79,7 +81,6 @@
 	background: transparent;
 	border: 1px solid #eff0f6;
 	border-radius: 1.2vh;
-	/* margin: 0 auto; */
 	letter-spacing: 0.2vh;
 	font-size: 1.2vh;
 	color: #5f2eea;
@@ -89,7 +90,6 @@
 	justify-content: center;
 	transition: background 0.3s ease;
 	cursor: pointer;
-	/* margin-bottom: 2vh; */
 	opacity: 0;
 	transition: opacity 0.5s ease;
 	transition-delay: 0.2s;

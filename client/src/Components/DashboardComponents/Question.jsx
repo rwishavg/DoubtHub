@@ -37,8 +37,8 @@ const Question = (props) => {
 		props.question.comments.length
 	);
 
-	const expandCard = () => setCurrentCard(!currentCard);
 	const navigate = useNavigate();
+	const expandCard = () => setCurrentCard(!currentCard);
 	let defaultOptions = props.remOptions;
 	if (defaultOptions === undefined) defaultOptions = true;
 	useEffect(() => {
@@ -81,7 +81,7 @@ const Question = (props) => {
 			withCredentials: true,
 			url: api_endpoint + "/question/banQuestion",
 		}).then((response) => {
-			toast.success("Reported");
+			toast.success(response.data);
 			props.updateData();
 		});
 		setOptionStyle(optionInactiveStyle);
@@ -179,6 +179,7 @@ const Question = (props) => {
 						</div>
 						<UilEllipsisV
 							onClick={(e) => setOptionState(!optionState)}
+							color="var(--font-color)"
 						/>
 					</div>
 					<div className={classes["questionHeading"]}>
@@ -203,6 +204,7 @@ const Question = (props) => {
 						<UilThumbsUp
 							onClick={likeQuestion}
 							style={{ cursor: "pointer" }}
+							color="var(--font-color)"
 						/>
 						<div></div>
 						<div></div>
@@ -212,7 +214,7 @@ const Question = (props) => {
 							to={`/dashboard/q/${props.question.questionID}`}
 							className="removeWid"
 						>
-							<UilCommentAltLines />
+							<UilCommentAltLines color="var(--font-color)"/>
 						</Link>
 					</div>
 				</div>

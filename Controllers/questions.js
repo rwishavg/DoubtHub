@@ -20,9 +20,7 @@ exports.addNewQuestion = async (req, res, next) => {
 
 exports.getQuestions = async (req, res, next) => {
 	try {
-		// if(req.params.pages === Nan)
 		let skip = (parseInt(req.params.pages) - 1) * 10;
-		// console.log(req.params);
 		let questions = await QuestionSchema.find()
 			.populate("userid", "username firstName lastName profileIMG")
 			.populate("comments", "body createdAt userid")
@@ -118,7 +116,7 @@ exports.banQuestion = async (req, res, next) => {
 		if (i === -1) {
 			question.ban.push(req.body.userId);
 			question.save();
-			if (question.ban.length > 3) {
+			if (question.ban.length > 2) {
 				const update = {
 					heading: "Question is Unavailable",
 					description:
@@ -131,7 +129,7 @@ exports.banQuestion = async (req, res, next) => {
 				);
 			}
 			res.send("Reported");
-		} else res.send("Already Reported. Cannot report again");
+		} else res.send("Already Reported. Cannot report again!");
 	} catch (err) {
 		res.json(err);
 	}
