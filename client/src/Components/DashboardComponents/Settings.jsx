@@ -106,6 +106,7 @@ const Settings = () => {
 						marginTop: "2vh",
 						width: "10vw",
 						border: "2px solid red",
+						color: "red",
 					}}
 				>
 					Delete Account

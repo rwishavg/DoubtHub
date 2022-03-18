@@ -19,7 +19,7 @@
 	font-weight: 400;
 	font-size: 1.5vh;
 	letter-spacing: 0.1vh;
-	color: #666666;
+	color: var(--secondary-font-color);
 	max-height: 7vh;
 	margin-bottom: 3vh;
 }
@@ -63,11 +63,12 @@
 	height: 4vh;
 	width: 15vh;
 	background: transparent;
-	border: 1px solid #eff0f6;
 	border-radius: 1.2vh;
 	letter-spacing: 0.2vh;
 	font-size: 1.2vh;
 	color: #5f2eea;
+	background: var(--background-color);
+	border: 1px solid var(--second-button);
 	font-weight: 600;
 	display: flex;
 	align-items: center;

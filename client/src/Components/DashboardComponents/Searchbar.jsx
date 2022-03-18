@@ -12,7 +12,7 @@ const activeStyle = {
 	body: { height: "35vh", width: "100%" },
 	search: {
 		zIndex: "250",
-		background: "var(--background-colour)",
+		background: "var(--background-color)",
 	},
 	dark: {
 		opacity: "1",
@@ -24,7 +24,7 @@ const activeStyle = {
 const inactiveStyle = {
 	cardStyle: { height: "18vh" },
 	body: { display: "none" },
-	search: { zIndex: "5", background: "var(--background-colour)" },
+	search: { zIndex: "5", background: "var(--background-color)" },
 	dark: { opacity: "0", minHeight: "100vh" },
 	opac: { opacity: "0" },
 };
@@ -32,7 +32,7 @@ const inactiveStyle = {
 const inactiveStyle2 = {
 	cardStyle: { height: "18vh" },
 	body: { display: "none" },
-	search: { zIndex: "5", background: "var(--background-colour)" },
+	search: { zIndex: "5", background: "var(--background-color)" },
 	dark: { opacity: "1", minHeight: "0" },
 	opac: { opacity: "1", display: "none" },
 };
@@ -69,7 +69,7 @@ const Searchbar = () => {
 			fetchData();
 		}
 	}, [debouncedText, filterState]);
-	
+
 	useEffect(() => {
 		if (searchText !== "") setActive(true);
 		else setActive(false);
@@ -145,7 +145,7 @@ const Searchbar = () => {
 					<div className={`${classes.filterBg}`} onClick={changeTag}>
 						<UilSlidersVAlt
 							className={classes["filterIcon"]}
-							color="var(--font-color)"
+							color="#5f2eea"
 						/>
 					</div>
 				</div>
