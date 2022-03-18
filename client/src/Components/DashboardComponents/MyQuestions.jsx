@@ -5,17 +5,18 @@ import { convertDate } from "../../helper";
 const zeroStyle = {
 	margin: "0 auto",
 	width: "100%",
-	// display: "flex",
-	// justifyContent: "center",
 	marginTop: "4vh",
 	marginLeft: "4vh",
 	fontWeight: "300",
 	color: "#666666",
 };
+
 const AllQuestions = (props) => {
+	
 	useEffect(() => {
 		props.getData();
 	}, []);
+
 	if (props.data.length === 0) {
 		return (
 			<div style={zeroStyle}>

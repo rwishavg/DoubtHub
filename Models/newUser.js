@@ -4,6 +4,7 @@ const { nanoid } = require("nanoid");
 const userSchema = new Schema({
 	googleID: {
 		type: String,
+		default: "",
 		required: false,
 	},
 	firstName: {

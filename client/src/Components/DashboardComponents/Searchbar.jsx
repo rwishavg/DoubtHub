@@ -14,7 +14,7 @@ const activeStyle = {
 	body: { height: "35vh", width: "100%" },
 	search: {
 		zIndex: "250",
-		background: "#fff",
+		background: "var(--background-colour)",
 	},
 	dark: {
 		opacity: "1",
@@ -26,7 +26,7 @@ const activeStyle = {
 const inactiveStyle = {
 	cardStyle: { height: "18vh" },
 	body: { display: "none" },
-	search: { zIndex: "5", background: "#fcfcfc" },
+	search: { zIndex: "5", background: "var(--background-colour)" },
 	dark: { opacity: "0", minHeight: "100vh" },
 	opac: { opacity: "0" },
 };
@@ -34,7 +34,7 @@ const inactiveStyle = {
 const inactiveStyle2 = {
 	cardStyle: { height: "18vh" },
 	body: { display: "none" },
-	search: { zIndex: "5", background: "#fcfcfc" },
+	search: { zIndex: "5", background: "var(--background-colour)" },
 	dark: { opacity: "1", minHeight: "0" },
 	opac: { opacity: "1", display: "none" },
 };
@@ -71,7 +71,7 @@ const Searchbar = () => {
 			fetchData();
 		}
 	}, [debouncedText, filterState]);
-
+	
 	useEffect(() => {
 		if (searchText !== "") setActive(true);
 		else setActive(false);

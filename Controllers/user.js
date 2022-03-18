@@ -105,3 +105,35 @@ exports.getUser = async (req, res, next) => {
 		res.json(err);
 	}
 };
+
+exports.changePassword = async (req, res, next) => {
+	try {
+		const user = await User.findOne({ emailID: req.body.emailID });
+		console.log(req.body);
+		if (user.password) {
+			const isMatch = await bcrypt.compare(
+				req.body.oldPassword,
+				user.password
+			);
+			if (isMatch) {
+				//Update password for user with new password
+				bcrypt.genSalt(10, (err, salt) =>
+					bcrypt.hash(req.body.newPassword, salt, async (err, hash) => {
+						if (err) throw err;
+						user.password = hash;
+						await user.save();
+					})
+				);
+			} else {
+				//Password does not match
+				console.log("Password does not match");
+			}
+		} else {
+			console.log("password null");
+		}
+		res.send("Password Changed");
+	} catch (err) {
+		res.json(err);
+	}
+};
+

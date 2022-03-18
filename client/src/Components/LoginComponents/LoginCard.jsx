@@ -124,4 +124,4 @@ const LoginCard = (props) => {
 	);
 };
 
-export default LoginCard;
+export default React.memo(LoginCard);

@@ -1,18 +1,21 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import Logo from "../Assets/DoubtHub Logo.png";
 import bg from "../Assets/background.svg";
-import "../Styles/page-styles/landing.css";
 import { motion } from "framer-motion";
+
+import "../Styles/page-styles/landing.css";
 
 const variants = {
 	open: { translateX: ["-49vw", "0vw"] },
 	closed: { translateX: ["0", "-49vw"] },
 };
+
 const Landing = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [opacity, setOpacity] = useState(1);
 	const navigate = useNavigate();
+
 	return (
 		<div className="landingContainer">
 			<div className="logoLanding">
@@ -23,7 +26,6 @@ const Landing = () => {
 					className="landingContent"
 					style={{
 						opacity: `${opacity}`,
-						// transition: "opacity 0.5s ease",
 					}}
 				>
 					<div className="landingHeading">
@@ -162,4 +164,4 @@ const Landing = () => {
 	);
 };
 
-export default Landing;
+export default React.memo(Landing);

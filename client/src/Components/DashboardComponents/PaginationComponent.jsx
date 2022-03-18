@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { UilArrowCircleRight } from "@iconscout/react-unicons";
-import { UilArrowCircleLeft } from "@iconscout/react-unicons";
 import { UilAngleRight } from "@iconscout/react-unicons";
 import { UilAngleLeft } from "@iconscout/react-unicons";
 import classes from "../../Styles/component-styles/pagination.module.css";
 import { motion } from "framer-motion";
-import { number } from "prop-types";
 
 const variants = {
 	open: {
@@ -56,4 +53,4 @@ const PaginationComponent = (props) => {
 		);
 };
 
-export default PaginationComponent;
+export default React.memo(PaginationComponent);

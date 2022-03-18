@@ -79,7 +79,6 @@
 	background: transparent;
 	border: 1px solid #eff0f6;
 	border-radius: 1.2vh;
-	/* margin: 0 auto; */
 	letter-spacing: 0.2vh;
 	font-size: 1.2vh;
 	color: #5f2eea;
@@ -89,7 +88,6 @@
 	justify-content: center;
 	transition: background 0.3s ease;
 	cursor: pointer;
-	/* margin-bottom: 2vh; */
 	opacity: 0;
 	transition: opacity 0.5s ease;
 	transition-delay: 0.2s;
