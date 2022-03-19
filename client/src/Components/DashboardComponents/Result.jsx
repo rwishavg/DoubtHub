@@ -2,10 +2,9 @@ import React from "react";
 import QuestionUser from "../QuestionComponents/QuestionUser";
 import classes from "../../Styles/component-styles/result.module.css";
 import { shorten } from "../../helper";
-import { Link, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 const Result = (props) => {
 	const navigate = useNavigate();
-	console.log(props.type);
 	if (props.type === "question") {
 		let shortDesc = shorten(props.result.description, 50);
 		let shortHeading = shorten(props.result.heading, 40);

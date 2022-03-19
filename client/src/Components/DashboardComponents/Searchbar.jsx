@@ -44,9 +44,8 @@ const Searchbar = () => {
 	const [debouncedText, setDebouncedText] = useState("");
 	const [active, setActive] = useState(false);
 	const [style, setStyle] = useState(inactiveStyle2);
-
-	const [questionResult, setQuestionResult] = useState([]);
 	const [result, setResult] = useState([]);
+	
 	const changeTag = () => {
 		setCounter((counter + 1) % tagNames.length);
 	};

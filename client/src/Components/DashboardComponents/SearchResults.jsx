@@ -8,7 +8,6 @@ const SearchResults = (props) => {
 		if (props.results.length !== 0) setHeadingText("Results: ");
 		else setHeadingText("No Results ");
 	}, [props.results]);
-	console.log(props.results);
 	return (
 		<div className={classes["resultContainer"]}>
 			<div
@@ -19,7 +18,7 @@ const SearchResults = (props) => {
 				<div className={classes["wrapper"]}>
 					{props.results.length > 0 && (
 						<>
-							{props.results.map((result) => (
+							{props.results.map((result) =>(
 								<Result
 									key={result._id}
 									// updateData={props.getData}

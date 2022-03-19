@@ -49,7 +49,6 @@ const NewQuestion = (props) => {
 		setQuestionText("");
 		setTags([]);
 	};
-	console.log(tags);
 	useEffect(() => {
 		if (cardState === true) {
 			setStyle(activeStyle);
