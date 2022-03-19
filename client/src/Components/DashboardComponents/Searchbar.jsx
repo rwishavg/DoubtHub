@@ -12,7 +12,7 @@ const activeStyle = {
 	body: { height: "35vh", width: "100%" },
 	search: {
 		zIndex: "250",
-		background: "var(--background-color)",
+		background: "transparent",
 	},
 	dark: {
 		opacity: "1",
