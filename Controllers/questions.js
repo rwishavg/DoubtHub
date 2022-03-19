@@ -1,17 +1,25 @@
 const QuestionSchema = require("../Models/newQuestion");
 const User = require("../Models/newUser");
-const Comment = require("../Models/newComment");
+const Tag = require("../Models/newTag");
 const { nanoid } = require("nanoid");
 
 exports.addNewQuestion = async (req, res, next) => {
 	try {
+		console.log(req.body);
 		let result = await new QuestionSchema({
 			userid: req.body.userid,
 			heading: req.body.questionHeading,
 			description: req.body.description,
+			tags: req.body.tags,
 			questionID: nanoid(15),
 			createdAt: Date.now(),
 		}).save();
+		for (i = 0; i < req.body.tags.length; i++) {
+			await new Tag({
+				tagName: req.body.tags[i],
+				questionID: result.questionID,
+			}).save();
+		}
 		res.status(200).send(result);
 	} catch (err) {
 		res.json(err);

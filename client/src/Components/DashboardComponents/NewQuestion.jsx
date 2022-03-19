@@ -36,6 +36,7 @@ const NewQuestion = (props) => {
 				userid: user._id,
 				questionHeading: questionText,
 				description: description,
+				tags: tags,
 			},
 			withCredentials: true,
 			url: api_endpoint + "/question/addNewQuestion",
@@ -46,8 +47,9 @@ const NewQuestion = (props) => {
 		setCardState(false);
 		setDescription("");
 		setQuestionText("");
+		setTags([]);
 	};
-
+	console.log(tags);
 	useEffect(() => {
 		if (cardState === true) {
 			setStyle(activeStyle);
@@ -81,7 +83,7 @@ const NewQuestion = (props) => {
 						Submit
 					</div>
 				</div>
-				<div className={classes["heading"]}>Enter Tags</div>
+				<div className={classes["heading"]}>Tags :</div>
 				<div className={classes["inputRow"]}>
 					<ReactTagInput
 						maxTags={5}
@@ -96,12 +98,12 @@ const NewQuestion = (props) => {
 						}}
 						validator={(value) => {
 							if (value.length > 10) {
-								toast.error("Length Greater than 10!!");
+								toast.error("Max Tag Length Exceded !");
 								return 0;
 							}
 							const space = value.indexOf(" ") !== -1;
 							if (space) {
-								toast.error("No Spaces!!");
+								toast.error("No Spaces!");
 								return !space;
 							}
 							return !space;
