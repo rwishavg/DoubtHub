@@ -1,25 +1,27 @@
 import axios from "axios";
 import React, { useEffect, useState, useContext } from "react";
+import ReactTagInput from "@pathofdev/react-tag-input";
 import classes from "../../Styles/component-styles/newQuestion.module.css";
 import { userObjectContext } from "../../Context";
 import { toast } from "wc-toast";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
 const activeStyle = {
-	cardStyle: { height: "60vh", width: "100%" },
+	cardStyle: { height: "70vh", width: "100%" },
 	body: { height: "35vh", width: "100%" },
 	descriptionStyle: {},
 	collapse: { opacity: "1", zIndex: "1" },
 };
 
 const inactiveStyle = {
-	cardStyle: { height: "18vh" },
+	cardStyle: { height: "17vh" },
 	body: { display: "none" },
 	descriptionStyle: { display: "none" },
 	collapse: { opacity: "0", zIndex: "-1" },
 };
 
 const NewQuestion = (props) => {
+	const [tags, setTags] = useState([]);
 	const [cardState, setCardState] = useState(false);
 	const [style, setStyle] = useState(inactiveStyle);
 	const [title, setTitle] = useState("Have a Question?");
@@ -79,6 +81,33 @@ const NewQuestion = (props) => {
 						Submit
 					</div>
 				</div>
+				<div className={classes["heading"]}>Enter Tags</div>
+				<div className={classes["inputRow"]}>
+					<ReactTagInput
+						maxTags={5}
+						tags={tags}
+						removeOnBackspace={true}
+						onChange={(newTags) => {
+							if (newTags.length - 1 > -1) {
+								newTags[newTags.length - 1] =
+									newTags[newTags.length - 1].toUpperCase();
+							}
+							setTags(newTags);
+						}}
+						validator={(value) => {
+							if (value.length > 10) {
+								toast.error("Length Greater than 10!!");
+								return 0;
+							}
+							const space = value.indexOf(" ") !== -1;
+							if (space) {
+								toast.error("No Spaces!!");
+								return !space;
+							}
+							return !space;
+						}}
+					/>
+				</div>
 				<div
 					className={classes["heading"]}
 					style={style.descriptionStyle}
@@ -94,6 +123,7 @@ const NewQuestion = (props) => {
 						value={description}
 					/>
 				</div>
+
 				<div
 					className={classes["filterBg"]}
 					style={style.collapse}

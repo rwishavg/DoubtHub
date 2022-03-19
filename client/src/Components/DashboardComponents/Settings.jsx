@@ -34,8 +34,6 @@ const Settings = () => {
 		}
 	};
 
-	console.log(user);
-
 	const deleteAccount = () => {
 		axios({
 			method: "DELETE",

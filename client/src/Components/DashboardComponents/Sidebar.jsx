@@ -17,10 +17,8 @@ import { UilApps } from "@iconscout/react-unicons";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
 const Sidebar = (props) => {
-	// let theme = localStorage.getItem("theme");
 	const [user, isAuthenticated] = useContext(userObjectContext);
 	const theme = useContext(userObjectContext)[5];
-	console.log(typeof theme);
 	return (
 		<div className={`${classes.sidebarContainer}`}>
 			<div className={`cardComponent ${classes.sidebarComponent}`}>

@@ -29,8 +29,9 @@ if (defaultDark) {
 const DarkMode = () => {
 	const data = useContext(userObjectContext);
 	const updateTheme = data[4];
+	const [def, setDef] = useState(defaultDark);
 	const toggleTheme = (e) => {
-		if (e.target.checked) {
+		if (def === 0) {
 			setDark();
 			updateTheme("dark");
 		} else {
@@ -38,6 +39,11 @@ const DarkMode = () => {
 			updateTheme("light");
 		}
 	};
+
+	useEffect(() => {
+		if (data[5] === "light") setDef(0);
+		else setDef(1);
+	}, [data[5]]);
 
 	return (
 		<div className="toggle-theme-wrapper">
@@ -49,7 +55,7 @@ const DarkMode = () => {
 					type="checkbox"
 					id="checkbox"
 					onChange={toggleTheme}
-					defaultChecked={defaultDark}
+					defaultChecked={def}
 				/>
 				<div className="slider round"></div>
 			</label>
