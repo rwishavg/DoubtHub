@@ -3,6 +3,7 @@ import { Routes, Route, Navigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 import Profile from "../Components/DashboardComponents/Profile";
+import Redirect from "../Components/DashboardComponents/Redirect";
 import AllQuestions from "../Components/DashboardComponents/AllQuestions";
 import NewQuestion from "../Components/DashboardComponents/NewQuestion";
 import MyQuestions from "../Components/DashboardComponents/MyQuestions";
@@ -57,7 +58,7 @@ const Dashboard = () => {
 		getData();
 	}, [a]);
 
-	if (isAuthenticated === true) {
+	if (isAuthenticated === true || isAuthenticated === false) {
 		return (
 			<>
 				<div className="container" id="dashContainer">
@@ -66,6 +67,11 @@ const Dashboard = () => {
 					<Menu menu={menu} setMenu={setMenu} />
 					<div className="centerContent">
 						<Routes>
+							<Route
+								exact
+								path="/"
+								element={<Redirect />}
+							></Route>
 							<Route
 								path="/:id"
 								element={
@@ -135,8 +141,6 @@ const Dashboard = () => {
 				</div>
 			</>
 		);
-	} else if (isAuthenticated === false) {
-		return <Navigate to="/login" />;
 	} else {
 		return null;
 	}

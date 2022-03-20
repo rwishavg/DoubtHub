@@ -28,6 +28,7 @@ const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
 const Question = (props) => {
 	const user = useContext(userObjectContext)[0];
+	const isAuthenticated = useContext(userObjectContext)[1];
 	const [currentCard, setCurrentCard] = useState(false);
 	const [styleState, setStyleState] = useState(inactiveStyle);
 	const [optionState, setOptionState] = useState(false);
@@ -53,6 +54,13 @@ const Question = (props) => {
 		else setOptionStyle(optionInactiveStyle);
 	}, [optionState]);
 
+	const checkAuth = () => {
+		if (isAuthenticated === false) {
+			navigate("../../login", { replace: true });
+			toast("Login To continue");
+			return 0;
+		} else return 1;
+	};
 	const deleteQuestion = () => {
 		axios({
 			method: "DELETE",
@@ -72,56 +80,67 @@ const Question = (props) => {
 	};
 
 	const banQuestion = () => {
-		axios({
-			method: "PUT",
-			data: {
-				questionId: props.question._id,
-				userId: user.emailID,
-			},
-			withCredentials: true,
-			url: api_endpoint + "/question/banQuestion",
-		}).then((response) => {
-			toast.success(response.data);
-			props.updateData();
-		});
-		setOptionStyle(optionInactiveStyle);
+		if (checkAuth()) {
+			axios({
+				method: "PUT",
+				data: {
+					questionId: props.question._id,
+					userId: user.emailID,
+				},
+				withCredentials: true,
+				url: api_endpoint + "/question/banQuestion",
+			}).then((response) => {
+				toast.success(response.data);
+				props.updateData();
+			});
+			setOptionStyle(optionInactiveStyle);
+		}
 	};
 
 	const saveQuestion = () => {
-		axios({
-			method: "PUT",
-			data: {
-				email: user.emailID,
-				id: props.question._id,
-			},
-			withCredentials: true,
-			url: api_endpoint + "/question/saveQuestion",
-		}).then((response) => {
-			if (response.data === "Added")
-				toast.success("Question " + response.data + " to bookmarks");
-			else toast.success("Question " + response.data + " from bookmarks");
-			props.updateData();
-		});
+		if (checkAuth()) {
+			axios({
+				method: "PUT",
+				data: {
+					email: user.emailID,
+					id: props.question._id,
+				},
+				withCredentials: true,
+				url: api_endpoint + "/question/saveQuestion",
+			}).then((response) => {
+				if (response.data === "Added")
+					toast.success(
+						"Question " + response.data + " to bookmarks"
+					);
+				else
+					toast.success(
+						"Question " + response.data + " from bookmarks"
+					);
+				props.updateData();
+			});
 
-		setOptionStyle(optionInactiveStyle);
+			setOptionStyle(optionInactiveStyle);
+		}
 	};
 
 	const likeQuestion = () => {
-		axios({
-			method: "PUT",
-			data: {
-				userID: user._id,
-				questionID: props.question._id,
-			},
-			withCredentials: true,
-			url: api_endpoint + "/question/likeQuestion",
-		}).then((response) => {
-			setLikeCount(response.data.count);
-			if (response.data.message === "Liked")
-				toast.success("Question " + response.data.message);
-			else toast.success("Question " + response.data.message);
-			props.updateData();
-		});
+		if (checkAuth()) {
+			axios({
+				method: "PUT",
+				data: {
+					userID: user._id,
+					questionID: props.question._id,
+				},
+				withCredentials: true,
+				url: api_endpoint + "/question/likeQuestion",
+			}).then((response) => {
+				setLikeCount(response.data.count);
+				if (response.data.message === "Liked")
+					toast.success("Question " + response.data.message);
+				else toast.success("Question " + response.data.message);
+				props.updateData();
+			});
+		}
 	};
 
 	if (props.exists === false) {
@@ -214,7 +233,7 @@ const Question = (props) => {
 							to={`/dashboard/q/${props.question.questionID}`}
 							className="removeWid"
 						>
-							<UilCommentAltLines color="var(--font-color)"/>
+							<UilCommentAltLines color="var(--font-color)" />
 						</Link>
 					</div>
 				</div>

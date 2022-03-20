@@ -12,7 +12,6 @@ const zeroStyle = {
 };
 
 const AllQuestions = (props) => {
-	
 	useEffect(() => {
 		props.getData();
 	}, []);

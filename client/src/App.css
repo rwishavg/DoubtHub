@@ -45,8 +45,18 @@ body::-webkit-scrollbar-thumb {
 	background-color: var(--background-color);
 }
 
+.button svg {
+	color: #7548f0;
+	transition: 0.3s all ease-in-out;
+}
+
 .button:hover {
 	background: var(--color);
+	color: #fff;
+	cursor: pointer;
+}
+
+.button:hover svg {
 	color: #fff;
 	cursor: pointer;
 }
