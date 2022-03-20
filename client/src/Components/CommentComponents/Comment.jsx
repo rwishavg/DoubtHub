@@ -76,11 +76,13 @@ const Comment = (props) => {
 						<UilAngleUp
 							style={{ cursor: "pointer" }}
 							onClick={upvoteComment}
+							color="var(--font-color)"
 						/>
 						{upvote}
 						<UilAngleDown
 							style={{ cursor: "pointer" }}
 							onClick={downvoteComment}
+							color="var(--font-color)"
 						/>
 					</div>
 					<QuestionUser

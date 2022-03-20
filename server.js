@@ -44,6 +44,7 @@ if (process.env.NODE_ENV === "production") {
 	app.use("/user", userRoutes);
 	app.use("/question", questionRoutes);
 	app.use("/comment", commentRoutes);
+	app.use("/search", searchRoutes);
 	app.get("*", (req, res) =>
 		res.sendFile(path.resolve("client", "build", "index.html"))
 	);

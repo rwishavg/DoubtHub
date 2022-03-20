@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Logo from "../Assets/DoubtHub Logo.png";
 import bg from "../Assets/background.svg";
 import { motion } from "framer-motion";
@@ -113,6 +113,20 @@ const Landing = () => {
 							}}
 						>
 							<div className="loginSign">
+								<div
+									className="button landingButton"
+									onClick={() => {
+										setIsOpen((isOpen) => !isOpen);
+										setOpacity(0);
+										setTimeout(() => {
+											navigate("/dashboard/1", {
+												replace: true,
+											});
+										}, 1000);
+									}}
+								>
+									Explore
+								</div>
 								<div
 									className="button landingButton"
 									onClick={() => {

@@ -25,6 +25,7 @@ const questionSchema = new Schema({
 		default: "THIS IS A QUESTION DESCRIPTION",
 	},
 	likes: [mongoose.Schema.Types.ObjectId],
+	tags: [String],
 	comments: {
 		// default: undefined,
 		type: [

@@ -30,7 +30,7 @@
 	font-weight: 400;
 	font-size: 1.45vh;
 	letter-spacing: 0.1vh;
-	color: #666666;
+	color: var(--secondary-font-color);
 	max-height: 999vh;
 	margin-bottom: 3vh;
 }
@@ -76,12 +76,13 @@
 	height: 90%;
 	width: 100%;
 	resize: none;
+	color: var(--font-color);
 }
 
 .bg {
 	height: 25vh;
 	display: flex;
-	background-color: #eff0f6;
+	background-color: var(--input-background);
 	border-radius: 6px;
 	width: 100%;
 	margin-bottom: 4vh;

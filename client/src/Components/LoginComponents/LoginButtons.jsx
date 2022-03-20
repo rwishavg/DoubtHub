@@ -29,7 +29,7 @@ const LoginButtons = (props) => {
 				href={api_endpoint + "/user/auth/google"}
 				className="button button-full"
 			>
-				<UilGoogle size={24} color="#7548f0" />
+				<UilGoogle size={24} />
 				&nbsp; Sign In With google
 			</a>
 		</div>

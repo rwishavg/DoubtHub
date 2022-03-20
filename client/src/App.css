@@ -45,8 +45,18 @@ body::-webkit-scrollbar-thumb {
 	background-color: var(--background-color);
 }
 
+.button svg {
+	color: #7548f0;
+	transition: 0.3s all ease-in-out;
+}
+
 .button:hover {
 	background: var(--color);
+	color: #fff;
+	cursor: pointer;
+}
+
+.button:hover svg {
 	color: #fff;
 	cursor: pointer;
 }
@@ -108,4 +118,78 @@ textarea {
 
 img {
 	user-select: none;
+}
+
+.react-tag-input {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+}
+
+.react-tag-input > input {
+	background-color: var(--input-background);
+	color: var(--font-color);
+	border-radius: 6px;
+	padding: 1.5vh;
+	width: 100%;
+	outline: none;
+	border: 0;
+	font-family: inherit;
+	font-size: 13px;
+	font-weight: 600;
+	letter-spacing: 1px;
+	outline: none;
+}
+.react-tag-input__tag {
+	background-color: var(--color);
+	/* background-color: var(--background-color); */
+	color: #fff;
+	/* color: var(--font-color); */
+	border: 2px solid var(--color);
+	display: flex;
+	margin-bottom: 15px;
+	margin-right: 20px;
+	padding: 5px 10px;
+	border-radius: 100px;
+	align-items: center;
+}
+.react-tag-input__tag__content {
+	font-size: 12px;
+	border-radius: 100px;
+	padding: 0 10px 0 0;
+	font-weight: 600;
+}
+
+.react-tag-input__tag__remove {
+	width: 10px;
+	height: 10px;
+	position: relative;
+	/* padding: 20px; */
+}
+
+.react-tag-input__tag__remove:before {
+	position: absolute;
+	top: 55%;
+	left: 50%;
+	content: " ";
+	height: 0.7em;
+	width: 0.1em;
+	background-color: #fff;
+	/* background-color: var(--font-color); */
+	transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	border-radius: 100px;
+}
+
+.react-tag-input__tag__remove:after {
+	position: absolute;
+	top: 55%;
+	left: 50%;
+	content: " ";
+	height: 0.7em;
+	width: 0.1em;
+	background-color: #fff;
+	/* background-color: var(--font-color); */
+	transform: translateX(-50%) translateY(-50%) rotate(135deg);
+	border-radius: 100px;
 }

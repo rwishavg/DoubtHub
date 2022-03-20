@@ -84,6 +84,8 @@
 	letter-spacing: 0.2vh;
 	font-size: 1.2vh;
 	color: #5f2eea;
+	background: var(--background-color);
+	border: 1px solid var(--second-button);
 	font-weight: 600;
 	display: flex;
 	align-items: center;

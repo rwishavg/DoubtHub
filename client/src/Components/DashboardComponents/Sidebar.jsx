@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import Logo from "../../Assets/DoubtHub Logo.png";
 import LogoDark from "../../Assets/DoubtHub_Logo_White.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import classes from "../../Styles/component-styles/sidebar.module.css";
 import { userObjectContext } from "../../Context";
+import { toast } from "wc-toast";
 
 //icons
 import { UilEstate } from "@iconscout/react-unicons";
@@ -17,14 +18,35 @@ import { UilApps } from "@iconscout/react-unicons";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
 const Sidebar = (props) => {
-	let theme = localStorage.getItem('theme');
-	console.log(typeof(theme));
 	const [user, isAuthenticated] = useContext(userObjectContext);
+	const theme = useContext(userObjectContext)[5];
+	const navigate = useNavigate();
+	const checkAuth = (arg) => {
+		if (isAuthenticated === false) {
+			navigate("../../login", { replace: true });
+			toast("Login To continue");
+			return 0;
+		} else {
+			navigate(arg, { replace: true });
+		}
+	};
 	return (
 		<div className={`${classes.sidebarContainer}`}>
 			<div className={`cardComponent ${classes.sidebarComponent}`}>
-				{theme === "light" && <img src={Logo} alt="" className={`${classes.logo}`} />}
-				{theme === "dark" && <img src={LogoDark} alt="" className={`${classes.logo}`} />}
+				{theme === "light" && (
+					<Link to={"../"}>
+						<img src={Logo} alt="" className={`${classes.logo}`} />
+					</Link>
+				)}
+				{theme === "dark" && (
+					<Link to={"../"}>
+						<img
+							src={LogoDark}
+							alt=""
+							className={`${classes.logo}`}
+						/>
+					</Link>
+				)}
 				<div className={`cardComponent ${classes.eventCard}`}></div>
 				<Link
 					to="/dashboard/1"
@@ -34,22 +56,26 @@ const Sidebar = (props) => {
 					<UilEstate className={`${classes.iconSmaller}`} />
 					<div className={`${classes.hide}`}>Dashboard</div>
 				</Link>
-				<Link
-					to="./myQuestions"
+				<div
 					className={`${classes.sidebarLink} ${classes.hide}`}
-					onClick={() => props.setMenu(false)}
+					onClick={() => {
+						checkAuth("./myQuestions");
+						props.setMenu(false);
+					}}
 				>
 					<UilFileBookmarkAlt className={`${classes.iconSmaller}`} />
 					<div className={`${classes.hide}`}>My Questions</div>
-				</Link>
-				<Link
-					to="./saved"
+				</div>
+				<div
 					className={`${classes.sidebarLink}`}
-					onClick={() => props.setMenu(false)}
+					onClick={() => {
+						checkAuth("./saved");
+						props.setMenu(false);
+					}}
 				>
 					<UilBookmark className={`${classes.iconSmaller}`} />
 					<div className={`${classes.hide}`}>Saved</div>
-				</Link>
+				</div>
 				<Link
 					to="./settings"
 					className={`${classes.sidebarLink}`}
@@ -58,36 +84,55 @@ const Sidebar = (props) => {
 					<UilSetting className={`${classes.iconSmaller}`} />
 					<div className={`${classes.hide}`}>Settings</div>
 				</Link>
-				<Link
-					to="./profile"
+				<div
 					className={`${classes.sidebarLink}`}
-					onClick={() => props.setMenu(false)}
+					onClick={() => {
+						checkAuth("./profile");
+						props.setMenu(false);
+					}}
 				>
 					<UilUser className={`${classes.iconSmaller}`} />
 					<div className={`${classes.hide}`}>Profile</div>
-				</Link>
-				<a
-					href={api_endpoint + "/user/logout"}
-					className={`${classes.sidebarLink}`}
-				>
-					<UilSignout
-						className={`${classes.iconSmaller} ${classes.hide}`}
-					/>
-					<div className={`${classes.hide}`}>Logout</div>
-				</a>
+				</div>
+				{isAuthenticated === true && (
+					<a
+						href={api_endpoint + "/user/logout"}
+						className={`${classes.sidebarLink}`}
+					>
+						<UilSignout
+							className={`${classes.iconSmaller} ${classes.hide}`}
+						/>
+						<div className={`${classes.hide}`}>Logout</div>
+					</a>
+				)}
+
 				<UilApps
 					onClick={() => props.setMenu(!props.menu)}
 					className={`${classes.iconSmaller} ${classes.unhide}`}
 				/>
 				<div className={`cardComponent ${classes.userCard}`}>
-					<img
-						src={user.profileIMG}
-						alt=""
-						className={`${classes.userPhoto}`}
-					/>
-					<div className={`${classes.name} ${classes.hide}`}>
-						{user.firstName} {user.lastName}
-					</div>
+					{isAuthenticated === true && (
+						<img
+							src={user.profileIMG}
+							alt=""
+							className={`${classes.userPhoto}`}
+						/>
+					)}
+					{isAuthenticated === true && (
+						<div className={`${classes.name} ${classes.hide}`}>
+							{user.firstName} {user.lastName}
+						</div>
+					)}
+					{isAuthenticated === false && (
+						<Link
+							to={"../login"}
+							className={`${classes.name} ${classes.hide}`}
+						>
+							<div className={`${classes.name} ${classes.hide}`}>
+								Login / Sign Up
+							</div>
+						</Link>
+					)}
 				</div>
 			</div>
 		</div>

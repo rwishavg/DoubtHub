@@ -8,6 +8,9 @@ html {
 	--link-color: #7f53f7;
 	--card-color: rgb(255, 255, 255);
 	--shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+	--blur: inset 0 0 0 3000px rgba(255, 254, 254, 0.74);
+	--second-button: #eff0f6;
+	--secondary-font-color: #666666;
 }
 
 [data-theme="dark"] {
@@ -18,6 +21,9 @@ html {
 	--link-color: lightblue;
 	--card-color: #25242a;
 	--shadow: 0 4px 12px rgb(23 23 23 / 90%);
+	--blur: inset 0 0 0 3000px #25242a9a;
+	--second-button: #5f2eea;
+	--secondary-font-color: #b8b8b8;
 }
 
 body {
