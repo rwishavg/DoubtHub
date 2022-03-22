@@ -42,6 +42,7 @@ const Question = (props) => {
 	const expandCard = () => setCurrentCard(!currentCard);
 	let defaultOptions = props.remOptions;
 	if (defaultOptions === undefined) defaultOptions = true;
+
 	useEffect(() => {
 		if (props.question.description.length > 250)
 			if (currentCard === true) setStyleState(activeStyle);
@@ -200,6 +201,13 @@ const Question = (props) => {
 							onClick={(e) => setOptionState(!optionState)}
 							color="var(--font-color)"
 						/>
+					</div>
+					<div className={classes["tags"]}>
+						{props.question.tags.map((tag) => (
+							<div key={tag} className={classes["tag"]}>
+								{tag}
+							</div>
+						))}
 					</div>
 					<div className={classes["questionHeading"]}>
 						{props.question.heading}

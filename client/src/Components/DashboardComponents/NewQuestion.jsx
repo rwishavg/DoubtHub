@@ -39,15 +39,20 @@ const NewQuestion = (props) => {
 		} else return 1;
 	};
 
+	let onlyUnique = (value, index, self) => {
+		return self.indexOf(value) === index;
+	};
+
 	const postQuestion = () => {
 		if (checkAuth()) {
+			let uniqueTags = tags.filter(onlyUnique);
 			axios({
 				method: "POST",
 				data: {
 					userid: user._id,
 					questionHeading: questionText,
 					description: description,
-					tags: tags,
+					tags: uniqueTags,
 				},
 				withCredentials: true,
 				url: api_endpoint + "/question/addNewQuestion",
@@ -61,7 +66,7 @@ const NewQuestion = (props) => {
 			setTags([]);
 		}
 	};
-	
+
 	useEffect(() => {
 		if (cardState === true) {
 			setStyle(activeStyle);

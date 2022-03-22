@@ -1,6 +1,7 @@
 const QuestionSchema = require("../Models/newQuestion");
 const User = require("../Models/newUser");
 const Comment = require("../Models/newComment");
+const Tag = require("../Models/newTag");
 const { nanoid } = require("nanoid");
 
 exports.name = async (req, res, next) => {
@@ -33,21 +34,30 @@ exports.username = async (req, res, next) => {
 
 exports.tag = async (req, res, next) => {
 	try {
-		console.log("tag");
-		// let searchText = new RegExp(req.params.id, "i");
-		// let query = {
-		// 	username: { $regex: searchText },
-		// };
-		// let userData = await User.find(query);
-		// res.status(200).send(userData);
+		console.log(req.params.id);
+		let searchText = new RegExp(req.params.id, "i");
+		let query = {
+			tagName: { $regex: searchText },
+		};
+		let tagData = await Tag.findOne(query)
+			.populate({
+				path: "questionID",
+				populate: {
+					path: "userid",
+					select: "username firstName lastName profileIMG",
+				},
+			})
+			.limit(5);
+		console.log(tagData.questionID);
+		res.status(200).send(tagData.questionID);
 	} catch (err) {
+		console.log(err);
 		res.json(err);
 	}
 };
 
 exports.question = async (req, res, next) => {
 	try {
-		console.log("tag");
 		let searchText = new RegExp(req.params.id, "i");
 		let query = {
 			heading: { $regex: searchText },

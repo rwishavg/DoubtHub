@@ -45,7 +45,7 @@ const Searchbar = () => {
 	const [active, setActive] = useState(false);
 	const [style, setStyle] = useState(inactiveStyle2);
 	const [result, setResult] = useState([]);
-	
+
 	const changeTag = () => {
 		setCounter((counter + 1) % tagNames.length);
 	};
@@ -63,6 +63,7 @@ const Searchbar = () => {
 				}
 			);
 			setResult(response.data);
+			console.log(response.data);
 		}
 		if (debouncedText !== "") {
 			fetchData();

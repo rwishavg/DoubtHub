@@ -20,8 +20,9 @@ export const convertDate = (createdAt) => {
 	return result;
 };
 
-export const shorten = (str, maxLen, separator = " ") => {
-	if (str.length <= maxLen) return str;
+export const shorten = (str = "", maxLen, separator = " ") => {
+	if (str === "") return str;
+	else if (str.length <= maxLen) return str;
 	else {
 		let tt = str.substr(0, str.lastIndexOf(separator, maxLen));
 		tt = tt + "...";
