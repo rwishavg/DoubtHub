@@ -16,6 +16,7 @@ const userRoutes = require("./Routes/user");
 const questionRoutes = require("./Routes/questions");
 const searchRoutes = require("./Routes/search");
 const commentRoutes = require("./Routes/comments");
+const godmode = require("./Routes/godmode");
 const auth = require("./Middlewares/auth");
 const localauth = require("./Middlewares/localauth");
 const passport = require("passport");
@@ -53,6 +54,7 @@ if (process.env.NODE_ENV === "production") {
 	app.use("/question", questionRoutes);
 	app.use("/comment", commentRoutes);
 	app.use("/search", searchRoutes);
+	app.use("/godmode", godmode);
 }
 
 app.listen(process.env.PORT || 5000, () => {

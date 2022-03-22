@@ -8,16 +8,16 @@ export const activeStyle = {
 };
 
 export const inactiveStyle = {
-	cardStyle: { maxHeight: "35vh" },
+	cardStyle: { maxHeight: "40vh" },
 	maskStyle: {
 		WebkitMaskImage: "linear-gradient(180deg, #000 0%, transparent)",
-		maxHeight: "7vh",
+		maxHeight: "10vh",
 	},
 	moreText: "MORE",
 };
 
 export const smallDesc = {
-	cardStyle: { maxHeight: "35vh" },
+	cardStyle: { maxHeight: "40vh" },
 	maskStyle: {
 		WebkitMaskImage: "none",
 	},

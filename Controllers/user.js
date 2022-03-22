@@ -4,9 +4,6 @@ const User = require("../Models/newUser");
 const QuestionSchema = require("../Models/newQuestion");
 const { nanoid } = require("nanoid");
 const bcrypt = require("bcrypt");
-dotenv.config({
-	path: "./utils/config.env",
-});
 
 let host = "";
 if (process.env.NODE_ENV === "development") {
@@ -118,11 +115,15 @@ exports.changePassword = async (req, res, next) => {
 			if (isMatch) {
 				//Update password for user with new password
 				bcrypt.genSalt(10, (err, salt) =>
-					bcrypt.hash(req.body.newPassword, salt, async (err, hash) => {
-						if (err) throw err;
-						user.password = hash;
-						await user.save();
-					})
+					bcrypt.hash(
+						req.body.newPassword,
+						salt,
+						async (err, hash) => {
+							if (err) throw err;
+							user.password = hash;
+							await user.save();
+						}
+					)
 				);
 			} else {
 				//Password does not match
@@ -136,4 +137,3 @@ exports.changePassword = async (req, res, next) => {
 		res.json(err);
 	}
 };
-

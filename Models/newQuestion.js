@@ -9,7 +9,7 @@ const questionSchema = new Schema({
 	},
 	userid: {
 		type: mongoose.Schema.Types.ObjectId,
-		ref: "User",
+		ref: "user",
 	},
 	createdAt: {
 		type: Date,
@@ -31,10 +31,10 @@ const questionSchema = new Schema({
 		type: [
 			{
 				type: mongoose.Schema.Types.ObjectId,
-				ref: "Comment",
+				ref: "comment",
 			},
 		],
 	},
 });
 
-module.exports = mongoose.model("question", questionSchema, "Questions");
+module.exports = mongoose.model("question", questionSchema);

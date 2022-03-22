@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const commentSchema = new Schema({
 	userid: {
 		type: mongoose.Schema.Types.ObjectId,
-		ref: "User",
+		ref: "user",
 	},
 	createdAt: {
 		type: Date,
@@ -17,4 +17,4 @@ const commentSchema = new Schema({
 	downvote: [mongoose.Schema.Types.ObjectId],
 });
 
-module.exports = mongoose.model("Comment", commentSchema, "Comments");
+module.exports = mongoose.model("comment", commentSchema);
