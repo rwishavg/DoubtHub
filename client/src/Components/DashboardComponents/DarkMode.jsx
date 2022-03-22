@@ -3,47 +3,44 @@ import "../../Styles/Dark.css";
 import { UilSun } from "@iconscout/react-unicons";
 import { UilMoon } from "@iconscout/react-unicons";
 import { userObjectContext } from "../../Context";
-const setDark = () => {
-	localStorage.setItem("theme", "dark");
-	document.documentElement.setAttribute("data-theme", "dark");
-};
-
-const setLight = () => {
-	localStorage.setItem("theme", "light");
-	document.documentElement.setAttribute("data-theme", "light");
-};
-
-const storedTheme = localStorage.getItem("theme");
-
-const prefersDark =
-	window.matchMedia &&
-	window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-const defaultDark =
-	storedTheme === "dark" || (storedTheme === null && prefersDark);
-
-if (defaultDark) {
-	setDark();
-}
 
 const DarkMode = () => {
 	const data = useContext(userObjectContext);
 	const updateTheme = data[4];
-	const [def, setDef] = useState(defaultDark);
+	let theme = data[5];
+
+	if (theme === "") {
+		theme = "light";
+	}
+
+	const setDark = () => {
+		updateTheme("dark");
+		document.documentElement.setAttribute("data-theme", "dark");
+	};
+
+	const setLight = () => {
+		updateTheme("light");
+		document.documentElement.setAttribute("data-theme", "light");
+	};
+
+	//1 for dark, 0 for light
+	const [def, setDef] = useState(theme === "light" ? 0 : 1);
+
 	const toggleTheme = (e) => {
-		if (def === 0) {
-			setDark();
-			updateTheme("dark");
-		} else {
+		console.log("def", def);
+		if (def === 1) {
 			setLight();
 			updateTheme("light");
+		} else {
+			setDark();
+			updateTheme("dark");
 		}
 	};
 
 	useEffect(() => {
-		if (data[5] === "light") setDef(0);
-		else setDef(1);
-	}, [data[5]]);
+		if (theme === "dark") setDef(1);
+		else setDef(0);
+	}, [theme]);
 
 	return (
 		<div className="toggle-theme-wrapper">

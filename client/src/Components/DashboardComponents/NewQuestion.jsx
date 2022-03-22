@@ -3,6 +3,7 @@ import React, { useEffect, useState, useContext } from "react";
 import ReactTagInput from "@pathofdev/react-tag-input";
 import classes from "../../Styles/component-styles/newQuestion.module.css";
 import { userObjectContext } from "../../Context";
+import { useNavigate } from "react-router-dom";
 import { toast } from "wc-toast";
 const api_endpoint = process.env.REACT_APP_API_ENDPOINT;
 
@@ -27,28 +28,40 @@ const NewQuestion = (props) => {
 	const [title, setTitle] = useState("Have a Question?");
 	const [description, setDescription] = useState("");
 	const [questionText, setQuestionText] = useState("");
-	const user = useContext(userObjectContext)[0];
+	const [user, isAuthenticated] = useContext(userObjectContext);
+	const navigate = useNavigate();
+
+	const checkAuth = () => {
+		if (isAuthenticated === false) {
+			navigate("../../login", { replace: true });
+			toast("Login To continue");
+			return 0;
+		} else return 1;
+	};
 
 	const postQuestion = () => {
-		axios({
-			method: "POST",
-			data: {
-				userid: user._id,
-				questionHeading: questionText,
-				description: description,
-				tags: tags,
-			},
-			withCredentials: true,
-			url: api_endpoint + "/question/addNewQuestion",
-		}).then((response) => {
-			props.updateFunction();
-		});
-		toast.success("Question Added");
-		setCardState(false);
-		setDescription("");
-		setQuestionText("");
-		setTags([]);
+		if (checkAuth()) {
+			axios({
+				method: "POST",
+				data: {
+					userid: user._id,
+					questionHeading: questionText,
+					description: description,
+					tags: tags,
+				},
+				withCredentials: true,
+				url: api_endpoint + "/question/addNewQuestion",
+			}).then((response) => {
+				props.updateFunction();
+			});
+			toast.success("Question Added");
+			setCardState(false);
+			setDescription("");
+			setQuestionText("");
+			setTags([]);
+		}
 	};
+	
 	useEffect(() => {
 		if (cardState === true) {
 			setStyle(activeStyle);
