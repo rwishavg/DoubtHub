@@ -11,6 +11,7 @@ const NewComment = (props) => {
 	const [description, setDescription] = useState("");
 	const [user, isAuthenticated] = useContext(userObjectContext);
 	let { id } = useParams();
+
 	const checkAuth = () => {
 		if (isAuthenticated === false) {
 			navigate("../../login", { replace: true });
@@ -18,7 +19,9 @@ const NewComment = (props) => {
 			return 0;
 		} else return 1;
 	};
+
 	const navigate = useNavigate();
+	
 	const submitResponse = () => {
 		if (checkAuth()) {
 			axios({
