@@ -7,19 +7,26 @@ const Context = (props) => {
 	const [userObject, setUserObject] = useState({});
 	const [isAuthenticated, setIsAuthenticated] = useState(null);
 	let localTheme = localStorage.getItem("theme");
+	
+	
 	const [theme, setTheme] = useState(localTheme);
 	const updateContext = () => {
 		axios
-			.get(api_endpoint + "/user/data", { withCredentials: true })
-			.then((response) => {
-				if (response.data) {
-					setUserObject(response.data);
-					setIsAuthenticated(true);
-				} else {
-					setIsAuthenticated(false);
-				}
-			});
+		.get(api_endpoint + "/user/data", { withCredentials: true })
+		.then((response) => {
+			if (response.data) {
+				setUserObject(response.data);
+				setIsAuthenticated(true);
+			} else {
+				setIsAuthenticated(false);
+			}
+		});
 	};
+
+	useEffect(() => {
+		document.documentElement.setAttribute("data-theme", localStorage.getItem("theme"));
+	}, [theme]);
+
 	useEffect(() => {
 		updateContext();
 	}, []);
