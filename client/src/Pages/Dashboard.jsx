@@ -58,9 +58,30 @@ const Dashboard = () => {
 		getData();
 	}, [a]);
 
+	const dropDb = async () => {
+		let response = await axios.delete(api_endpoint + `/godmode/drop`, {
+			withCredentials: true,
+		});
+		console.log(response);
+	};
+
 	if (isAuthenticated === true || isAuthenticated === false) {
 		return (
 			<>
+				{process.env.NODE_ENV === "development" && (
+					<button
+						style={{
+							position: "fixed",
+							right: "0",
+							top: "0",
+							zIndex: 500,
+						}}
+						onClick={dropDb}
+					>
+						Drop DB
+					</button>
+				)}
+
 				<div className="container" id="dashContainer">
 					<Searchbar />
 					<Sidebar setMenu={setMenu} menu={menu} />

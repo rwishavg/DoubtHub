@@ -2,15 +2,6 @@ const passport = require("passport");
 const dotenv = require("dotenv");
 const CommentSchema = require("../Models/newComment");
 
-dotenv.config({
-	path: "./utils/config.env",
-});
-
-let host = "";
-if (process.env.NODE_ENV === "development") {
-	host = "http://localhost:3000";
-}
-
 exports.editComment = async (req, res, next) => {
 	try {
 		const update = {
