@@ -6,7 +6,10 @@ const tagSchema = new Schema({
 		type: String,
 		unique: true,
 	},
-	questionID: [mongoose.Schema.Types.ObjectId],
+	questionID: {
+		type: [mongoose.Schema.Types.ObjectId],
+		default: [],
+	}
 });
 
-module.exports = mongoose.model("Tag", tagSchema);
+module.exports = mongoose.model("Tag", tagSchema, "Tags");

@@ -17,4 +17,4 @@ const commentSchema = new Schema({
 	downvote: [mongoose.Schema.Types.ObjectId],
 });
 
-module.exports = mongoose.model("Comment", commentSchema);
+module.exports = mongoose.model("Comment", commentSchema, "Comments");

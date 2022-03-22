@@ -5,7 +5,6 @@ const { nanoid } = require("nanoid");
 
 exports.addNewQuestion = async (req, res, next) => {
 	try {
-		console.log(req.body);
 		let result = await new QuestionSchema({
 			userid: req.body.userid,
 			heading: req.body.questionHeading,
@@ -14,14 +13,27 @@ exports.addNewQuestion = async (req, res, next) => {
 			questionID: nanoid(15),
 			createdAt: Date.now(),
 		}).save();
+
 		for (i = 0; i < req.body.tags.length; i++) {
-			await new Tag({
-				tagName: req.body.tags[i],
-				questionID: result.questionID,
-			}).save();
+
+			let currTag = await Tag.findOne(
+				{ tagName: req.body.tags[i] }
+			);
+
+			if (currTag === null) {
+				await new Tag({
+					tagName: req.body.tags[i],
+					questionID: result._id,
+				}).save();
+			}
+			else {
+				currTag.questionID.push(result._id);
+				currTag.save();
+			}
 		}
 		res.status(200).send(result);
 	} catch (err) {
+		console.log(err)
 		res.json(err);
 	}
 };

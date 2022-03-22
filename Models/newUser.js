@@ -48,4 +48,4 @@ const userSchema = new Schema({
 	},
 	saved: [mongoose.Schema.Types.ObjectId],
 });
-module.exports = mongoose.model("User", userSchema, "User");
+module.exports = mongoose.model("User", userSchema, "Users");
