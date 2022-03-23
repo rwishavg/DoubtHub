@@ -4,6 +4,8 @@ import LoginButtons from "./LoginButtons";
 import "../../Styles/page-styles/login.css";
 import axios from "axios";
 import validator from "validator";
+import { Navigate } from "react-router-dom";
+import { UilGoogle } from "@iconscout/react-unicons";
 
 import { UilEnvelope } from "@iconscout/react-unicons";
 import { UilEyeSlash } from "@iconscout/react-unicons";
@@ -113,10 +115,29 @@ const LoginCard = (props) => {
 						<button
 							type="button"
 							className="button"
+							style={{ marginTop: "10px" }}
 							onClick={submitSignUp}
 						>
 							Sign Up
-						</button>
+							</button>
+							<div className="orStyle">OR</div>
+						<div className="registerOptions">
+							<a
+								href={api_endpoint + "/user/auth/google"}
+								className="button button-full button2"
+							>
+								<UilGoogle size={24} />
+								&nbsp; Sign In With google
+							</a>
+
+							<button
+								type="button"
+								className="button button2"
+								onClick={() => window.open("/login", "_self")}
+							>
+								Log In
+							</button>
+						</div>
 					</div>
 				)}
 			</form>

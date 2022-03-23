@@ -62,6 +62,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .buttons {
+	margin-top: 5vh;
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
