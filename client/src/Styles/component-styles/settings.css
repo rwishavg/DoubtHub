@@ -4,11 +4,12 @@
 
 .settingsForm {
 	width: 100%;
-	margin: 55px;
+	margin: 4vh;
 }
 
 .heading2{
 	margin-top: 2vh;
+	width: 100%;
 }
 
 .settingsName {

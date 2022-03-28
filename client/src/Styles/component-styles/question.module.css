@@ -113,17 +113,18 @@
 }
 
 .moreOptions {
-	background-color: #fff;
+	background-color: var(--background-color);
 	padding: 1.5vh 1vh;
 	border-radius: 1vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	border: 2px solid #602eea93;
-	box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+	box-shadow: var(--shadow);
 }
 
 .moreOptions svg {
+	color: var(--font-color);
 	width: 2.2vh;
 	margin: 0 1vh;
 }

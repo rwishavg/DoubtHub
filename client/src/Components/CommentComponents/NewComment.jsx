@@ -37,6 +37,7 @@ const NewComment = (props) => {
 				props.setComments(response.data.comments);
 			});
 			toast.success("Response Added");
+			setDescription("");
 		}
 	};
 	return (
