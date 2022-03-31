@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../Assets/DoubtHub Logo.png";
 import bg from "../Assets/background.svg";
+import { ReactComponent as BackSvg } from "../Assets/background.svg";
+
 import { motion } from "framer-motion";
 
 import "../Styles/page-styles/landing.css";
@@ -165,8 +167,16 @@ const Landing = () => {
 			<div className="landingRight">
 				<div
 					className="rightInside"
-					style={{ background: `url(${bg})` }}
-				></div>
+					// style={{ background: `url(${bg})` }}
+				>
+					<BackSvg
+						style={{
+							position: "absolute",
+							right: "-40%",
+							top: "-20%",
+						}}
+					/>
+				</div>
 				<motion.div
 					className="animateWid"
 					animate={isOpen ? "open" : "closed"}

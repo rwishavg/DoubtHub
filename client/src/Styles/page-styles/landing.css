@@ -40,12 +40,18 @@
 	height: 100vh;
 	background-size: 110%;
 	background-repeat: none !important;
+	overflow: hidden;
+	position: relative;
+}
+
+.rightInside > svg {
+	/* height: 100vh; */
 }
 
 .landingContent {
 	position: relative;
 	z-index: 2;
-	margin: 0 80px 0 120px;
+	margin: 0 00px 0 120px;
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
