@@ -85,7 +85,7 @@ exports.getUser = async (req, res, next) => {
 		let userData = await User.findOne({ username: req.body.username });
 		let questions = await QuestionSchema.find().populate(
 			"userid",
-			"username firstName lastName profileIMG emailID "
+			"username firstName lastName profileIMG emailID"
 		);
 
 		const result = questions.filter(
