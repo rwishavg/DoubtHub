@@ -97,7 +97,7 @@ const Settings = () => {
 				<div className="heading2">Delete Account :</div>
 
 				<button
-					className="button"
+					className="button deleteButton"
 					type="button"
 					onClick={deleteAccount}
 					style={{

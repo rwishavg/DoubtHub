@@ -104,6 +104,7 @@ const Sidebar = (props) => {
 						/>
 						<div className={`${classes.hide}`}>Logout</div>
 					</a>
+					
 				)}
 
 				<UilApps
