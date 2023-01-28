@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.4f5f5b4c.css",
-    "main.js": "/static/js/main.cc85f980.js",
+    "main.css": "/static/css/main.5b4f68c8.css",
+    "main.js": "/static/js/main.29238cde.js",
     "static/js/787.c4e7f8f9.chunk.js": "/static/js/787.c4e7f8f9.chunk.js",
     "static/media/DoubtHub_Logo_White.png": "/static/media/DoubtHub_Logo_White.588004defac7505ba029.png",
     "static/media/DoubtHub Logo.png": "/static/media/DoubtHub Logo.8ac0a6494a751ed0606e.png",
     "static/media/background.svg": "/static/media/background.6693032dabdf56e405cd7594b1929f7e.svg",
     "index.html": "/index.html",
-    "main.4f5f5b4c.css.map": "/static/css/main.4f5f5b4c.css.map",
-    "main.cc85f980.js.map": "/static/js/main.cc85f980.js.map",
+    "main.5b4f68c8.css.map": "/static/css/main.5b4f68c8.css.map",
+    "main.29238cde.js.map": "/static/js/main.29238cde.js.map",
     "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4f5f5b4c.css",
-    "static/js/main.cc85f980.js"
+    "static/css/main.5b4f68c8.css",
+    "static/js/main.29238cde.js"
   ]
 }
